@@ -1,5 +1,4 @@
 code/data/
 code/CICIOT23/
-code/models/
 *.csv
-*.pkl
+code/models/rf_model.pkl
