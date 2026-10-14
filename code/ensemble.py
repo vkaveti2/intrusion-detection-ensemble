@@ -9,10 +9,14 @@ It supports three distinct aggregation rules (Majority, Unanimous, Weighted)
 to evaluate how collective decision-making impacts adversarial resilience.
 """
 
+import os
+# xgboost and torch each bundle libomp on macOS; with multi-threaded OpenMP in
+# one process they can deadlock. Must be set before either library loads.
+os.environ.setdefault("OMP_NUM_THREADS", "1")
+
 import json
 import joblib
 import numpy as np
-import os
 import pandas as pd
 import warnings
 from abc import ABC, abstractmethod
@@ -21,8 +25,12 @@ from abc import ABC, abstractmethod
 warnings.filterwarnings("ignore", category=UserWarning)
 warnings.filterwarnings("ignore", category=FutureWarning)
 
-# Paths for the Mac Pro filesystem
-MODEL_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "models")
+# Detector artifacts. Set IDS_MODEL_DIR to evaluate another detector set
+# (e.g. models_adv/ from train_adversarial.py) without touching the originals.
+MODEL_DIR = os.environ.get(
+    "IDS_MODEL_DIR",
+    os.path.join(os.path.dirname(os.path.abspath(__file__)), "models"),
+)
 STANDALONE_RULES = ("xgboost", "rf", "cnn")
 VOTING_RULES = ("majority", "unanimous", "weighted", "any") + STANDALONE_RULES
 

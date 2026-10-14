@@ -87,11 +87,15 @@ if __name__ == "__main__":
     sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
     from ensemble import (MODEL_DIR, STANDALONE_RULES, VOTING_RULES, CNNDetector,
                           EnsembleIDS, RandomForestDetector, XGBoostDetector)
-    # Loaded directly (not via ids_env) so the Pi doesn't need scapy/gymnasium
-    bank = np.load(os.path.join(MODEL_DIR, "probe_bank.npz"))["flows"]
+    # Loaded directly (not via ids_env) so the Pi doesn't need scapy/gymnasium.
+    # The probe bank always lives in models/, whichever detector set is benchmarked.
+    base_models = os.path.join(os.path.dirname(os.path.abspath(__file__)), "models")
+    bank = np.load(os.path.join(base_models, "probe_bank.npz"))["flows"]
     flows = bank[np.random.default_rng(0).integers(len(bank), size=args.samples)]
+    detector_set = os.path.basename(os.path.normpath(MODEL_DIR))
 
     report = {
+        "detector_set": detector_set,
         "host": socket.gethostname(), "machine": platform.machine(),
         "platform": platform.platform(), "python": platform.python_version(),
         "cpu_count": os.cpu_count(), "samples": args.samples,
@@ -126,7 +130,7 @@ if __name__ == "__main__":
     single_p50 = np.mean([report["rules"][r]["p50_ms"] for r in STANDALONE_RULES])
     report["ensemble_vs_standalone_latency_ratio"] = float(ens_p50 / single_p50)
 
-    out = f"benchmark_{report['host']}.json"
+    out = f"benchmark_{report['host']}_{detector_set}.json"
     with open(out, "w") as f:
         json.dump(report, f, indent=2)
     print(f"\nTotal RSS with all detectors: {report['total_rss_mb']:.0f} MB")
@@ -135,7 +139,7 @@ if __name__ == "__main__":
 
     from project_log import log_event
     lines = [f"host={report['host']}  machine={report['machine']}  cpus={report['cpu_count']}  "
-             f"samples={args.samples}",
+             f"samples={args.samples}  detector set={detector_set}",
              f"memory with all detectors: {report['total_rss_mb']:.0f} MB  ("
              + ", ".join(f"{n} +{d['added_rss_mb']:.0f} MB" for n, d in report["detectors"].items()) + ")",
              "defence     p50 ms   p99 ms   flows/s   cpu%"]

@@ -1,0 +1,11 @@
+# Raspberry Pi benchmark environment (benchmark_edge.py only).
+# scikit-learn and xgboost MUST match the versions the .pkl models were saved
+# with on the Mac; numpy must be 2.x (the pickles reference numpy._core).
+# These pins have wheels for Python 3.9–3.12 on 64-bit Raspberry Pi OS (aarch64).
+numpy==2.0.2
+pandas==2.3.3
+scipy==1.13.1
+scikit-learn==1.6.1
+xgboost==2.1.4
+joblib==1.5.3
+torch==2.8.0

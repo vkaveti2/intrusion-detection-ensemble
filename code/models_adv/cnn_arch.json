@@ -1,0 +1,14 @@
+{
+  "n_features": 77,
+  "n_classes": 15,
+  "hidden_dims": [
+    64,
+    128,
+    128
+  ],
+  "fc_dims": [
+    128,
+    64
+  ],
+  "dropout": 0.3
+}

@@ -10,3 +10,4 @@ models/ddqn_*.zip
 code/models/ddqn_*.zip
 results_*/**/checkpoints_ensemble/
 results_*/**/models/ddqn_*.zip
+code/models_adv/rf_model.pkl

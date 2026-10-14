@@ -1,0 +1,135 @@
+
+── xgboost ──
+{
+  "multiclass_accuracy": 0.9988832910187242,
+  "binary_precision": 0.9966130298733109,
+  "binary_recall": 0.9987081317235872,
+  "binary_f1": 0.9976594808622965,
+  "binary_false_positive_rate": 0.0006897177169150287,
+  "portscan_detected": 0.9998897403384972,
+  "padded_probe_detected": {
+    "0B": 0.8742850734551979,
+    "64B": 0.0057194123584165075,
+    "128B": 0.0057194123584165075,
+    "256B": 0.03072782325894359,
+    "512B": 0.03072782325894359,
+    "random 1-1460B": 0.028092407760457554
+  }
+}
+                            precision    recall  f1-score   support
+
+                    BENIGN     0.9997    0.9993    0.9995    419012
+                       Bot     0.9248    0.7564    0.8322       390
+                      DDoS     0.9999    1.0000    0.9999     25603
+             DoS GoldenEye     0.9961    0.9966    0.9964      2057
+                  DoS Hulk     0.9984    0.9997    0.9991     34569
+          DoS Slowhttptest     0.9886    0.9962    0.9924      1046
+             DoS slowloris     0.9963    0.9898    0.9930      1077
+               FTP-Patator     0.9992    0.9992    0.9992      1186
+                Heartbleed     1.0000    0.5000    0.6667         2
+              Infiltration     1.0000    1.0000    1.0000         7
+                  PortScan     0.9889    0.9996    0.9942     18139
+               SSH-Patator     1.0000    1.0000    1.0000       644
+  Web Attack � Brute Force     0.7267    0.8503    0.7837       294
+Web Attack � Sql Injection     0.6667    0.5000    0.5714         4
+          Web Attack � XSS     0.4634    0.2923    0.3585       130
+
+                  accuracy                         0.9989    504160
+                 macro avg     0.9166    0.8586    0.8791    504160
+              weighted avg     0.9989    0.9989    0.9989    504160
+
+
+── rf ──
+{
+  "multiclass_accuracy": 0.998242621390035,
+  "binary_precision": 0.9964601561764983,
+  "binary_recall": 0.9951026448066895,
+  "binary_f1": 0.9957809378305323,
+  "binary_false_positive_rate": 0.0007183565148492167,
+  "portscan_detected": 0.9884778653729533,
+  "padded_probe_detected": {
+    "0B": 1.0,
+    "64B": 0.0,
+    "128B": 0.0,
+    "256B": 0.0,
+    "512B": 0.05668946955254009,
+    "random 1-1460B": 0.01149489738701357
+  }
+}
+                            precision    recall  f1-score   support
+
+                    BENIGN     0.9990    0.9993    0.9991    419012
+                       Bot     0.8846    0.7667    0.8214       390
+                      DDoS     0.9998    0.9998    0.9998     25603
+             DoS GoldenEye     0.9971    0.9917    0.9944      2057
+                  DoS Hulk     0.9983    0.9973    0.9978     34569
+          DoS Slowhttptest     0.9905    0.9962    0.9933      1046
+             DoS slowloris     0.9963    0.9898    0.9930      1077
+               FTP-Patator     0.9992    0.9983    0.9987      1186
+                Heartbleed     1.0000    1.0000    1.0000         2
+              Infiltration     1.0000    1.0000    1.0000         7
+                  PortScan     0.9889    0.9880    0.9884     18139
+               SSH-Patator     1.0000    0.9984    0.9992       644
+  Web Attack � Brute Force     0.7409    0.8265    0.7814       294
+Web Attack � Sql Injection     1.0000    0.2500    0.4000         4
+          Web Attack � XSS     0.4318    0.2923    0.3486       130
+
+                  accuracy                         0.9982    504160
+                 macro avg     0.9351    0.8730    0.8877    504160
+              weighted avg     0.9982    0.9982    0.9982    504160
+
+
+── cnn ──
+{
+  "multiclass_accuracy": 0.966107981593145,
+  "binary_precision": 0.870661845894044,
+  "binary_recall": 0.9445905951989477,
+  "binary_f1": 0.9061207935738991,
+  "binary_false_positive_rate": 0.028514696476473228,
+  "portscan_detected": 0.9513203594464965,
+  "padded_probe_detected": {
+    "0B": 0.9988224739262084,
+    "64B": 0.21369294605809128,
+    "128B": 0.3339688235953796,
+    "256B": 0.1402938207917461,
+    "512B": 0.00728944712347202,
+    "random 1-1460B": 0.05668946955254009
+  }
+}
+                            precision    recall  f1-score   support
+
+                    BENIGN     0.9882    0.9725    0.9803    419012
+                       Bot     0.0691    0.9333    0.1286       390
+                      DDoS     0.9966    0.9833    0.9899     25603
+             DoS GoldenEye     0.9284    0.9767    0.9519      2057
+                  DoS Hulk     0.9985    0.9031    0.9484     34569
+          DoS Slowhttptest     0.7684    0.9962    0.8676      1046
+             DoS slowloris     0.9159    0.9814    0.9476      1077
+               FTP-Patator     0.9350    0.9216    0.9282      1186
+                Heartbleed     0.1429    1.0000    0.2500         2
+              Infiltration     0.0075    1.0000    0.0148         7
+                  PortScan     0.8314    0.9246    0.8755     18139
+               SSH-Patator     0.8383    0.9177    0.8762       644
+  Web Attack � Brute Force     0.1449    0.6871    0.2393       294
+Web Attack � Sql Injection     0.0233    0.5000    0.0444         4
+          Web Attack � XSS     0.0724    0.4769    0.1258       130
+
+                  accuracy                         0.9661    504160
+                 macro avg     0.5774    0.8783    0.6112    504160
+              weighted avg     0.9810    0.9661    0.9728    504160
+
+
+Kept existing weights {'xgboost': 0.344073, 'rf': 0.343425, 'cnn': 0.312503} (recomputed: {'xgboost': 0.344073, 'rf': 0.343425, 'cnn': 0.312503}); --update-weights to replace
+
+detector set: /Users/varunkaveti/Documents/thesis/code/models
+held-out test split: 504,160 rows
+detector  accuracy  attack-recall  false-pos  PortScan-caught
+xgboost    99.89%    99.87%       0.07%     99.99%
+rf         99.82%    99.51%       0.07%     98.85%
+cnn        96.61%    94.46%       2.85%     95.13%
+padded held-out scan probes caught (17,834 flows each):
+detector          0B         64B        128B        256B        512B  random 1-1460B
+xgboost        87.4%        0.6%        0.6%        3.1%        3.1%        2.8%
+rf            100.0%        0.0%        0.0%        0.0%        5.7%        1.1%
+cnn            99.9%       21.4%       33.4%       14.0%        0.7%        5.7%
+weighted-vote weights: {'xgboost': 0.344073, 'rf': 0.343425, 'cnn': 0.312503}

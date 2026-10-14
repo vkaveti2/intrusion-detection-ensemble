@@ -303,3 +303,224 @@ CURRENT STATUS & OPEN ROADMAP ITEMS
      payload-padded scan flows to close the dataset shortcut, then re-evaluate DDQN evasion.
 5. Version Control:
    - Stage and commit all v2 pipeline scripts, documentation, and evaluation figures.
+
+[2026-10-14 18:16:09] [auto] Adversarial training started (train_adversarial.py --stage trees)
+    71,381 padded PortScan rows (payload 1–1460 B) + 2,016,638 original train rows; same split, scaler, hyperparameters
+
+[2026-10-14 18:16:14] [auto] Adversarial training started (train_adversarial.py --stage cnn)
+
+[2026-10-14 18:16:36] [auto] Detector evaluation (evaluate_detectors.py)
+    detector set: /Users/varunkaveti/Documents/thesis/code/models
+    held-out test split: 504,160 rows
+    detector  accuracy  attack-recall  false-pos  PortScan-caught
+    xgboost    99.89%    99.87%       0.07%     99.99%
+    rf         99.82%    99.51%       0.07%     98.85%
+    cnn        96.61%    94.46%       2.85%     95.13%
+    padded held-out scan probes caught (17,834 flows each):
+    detector          0B         64B        128B        256B        512B  random 1-1460B
+    xgboost        87.4%        0.6%        0.6%        3.1%        3.1%        2.8%
+    rf            100.0%        0.0%        0.0%        0.0%        5.7%        1.1%
+    cnn            99.9%       21.4%       33.4%       14.0%        0.7%        5.7%
+    weighted-vote weights: {'xgboost': 0.344073, 'rf': 0.343425, 'cnn': 0.312503}
+
+[2026-10-14 18:17:33] [auto] Adversarial training: trees finished (train_adversarial.py --stage trees)
+    padded PortScan rows added: 71,381 (payload 1–1460 B, seed 2026) to 2,016,638 train rows
+    RF 0.8 min, XGBoost 0.6 min; saved to /Users/varunkaveti/Documents/thesis/code/models_adv
+
+[2026-10-14 18:28:00] [auto] Adversarial training: CNN finished (train_adversarial.py --stage cnn)
+    30 epochs on mps, 11.7 min; best validation accuracy 0.9631 (5% slice of augmented train split)
+    saved /Users/varunkaveti/Documents/thesis/code/models_adv/cnn_model.pth
+
+[2026-10-14 18:28:40] [auto] Detector evaluation (evaluate_detectors.py)
+    detector set: /Users/varunkaveti/Documents/thesis/code/models_adv
+    held-out test split: 504,160 rows
+    detector  accuracy  attack-recall  false-pos  PortScan-caught
+    xgboost    99.89%    99.86%       0.07%     99.98%
+    rf         99.82%    99.49%       0.07%     98.85%
+    cnn        96.20%    95.45%       3.57%     99.76%
+    padded held-out scan probes caught (17,834 flows each):
+    detector          0B         64B        128B        256B        512B  random 1-1460B
+    xgboost       100.0%      100.0%      100.0%      100.0%      100.0%      100.0%
+    rf            100.0%      100.0%      100.0%      100.0%      100.0%      100.0%
+    cnn           100.0%      100.0%      100.0%      100.0%      100.0%      100.0%
+    weighted-vote weights: {'xgboost': 0.345259, 'rf': 0.344578, 'cnn': 0.310162}
+
+[2026-10-14 18:29:02] [auto] Training batch started: 14 experiment(s)
+    rules=['majority', 'unanimous', 'weighted', 'any', 'xgboost', 'rf', 'cnn']  knowledge=['black', 'white']  timesteps=50000
+    mode=parallel (max 7)
+    detector set=/Users/varunkaveti/Documents/thesis/code/models_adv  output dir=/Users/varunkaveti/Documents/thesis/results_v3_adversarial
+
+[2026-10-14 18:29:03] [auto] Experiment started: ddqn_majority_black
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-14 18:29:03] [auto] Experiment started: ddqn_majority_white
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-14 18:29:03] [auto] Experiment started: ddqn_unanimous_black
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-14 18:29:03] [auto] Experiment started: ddqn_unanimous_white
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-14 18:29:03] [auto] Experiment started: ddqn_weighted_black
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-14 18:29:03] [auto] Experiment started: ddqn_weighted_white
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-14 18:29:03] [auto] Experiment started: ddqn_any_black
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-14 18:31:48] Fingerprint check (diagnostic, /tmp script, not part of the RL runs)
+    Question: do the adversarially trained detectors catch padded probes via
+    the attacker's TCP window fingerprint (Init_Win_bytes_forward is always
+    1024 or 29200 in CIC scan flows)? 4,000 held-out probes, window replaced
+    by common OS defaults:
+      probe                 original: xgb    rf     cnn   | adversarial: xgb    rf     cnn
+      0B,   recorded win              87.2% 100.0%  99.9% |             100.0% 100.0% 100.0%
+      0B,   win=64240                 98.1% 100.0%  85.0% |              99.9% 100.0%  81.1%
+      0B,   win=65535                 96.8% 100.0%  85.0% |              98.0% 100.0%  79.3%
+      0B,   win=8192                  89.6% 100.0%  65.0% |             100.0% 100.0%  87.7%
+      512B, recorded win               2.8%   5.6%   0.7% |             100.0% 100.0% 100.0%
+      512B, win=64240                  2.7%   5.6%   0.1% |             100.0% 100.0% 100.0%
+      512B, win=65535                  2.6%   5.6%   0.1% |             100.0% 100.0% 100.0%
+      512B, win=8192                   2.8%   5.3%   5.5% |             100.0% 100.0% 100.0%
+    - Padded-probe robustness does NOT rely on the window fingerprint.
+    - The CNN does lean on window size for unpadded probes (79–88% when changed).
+    - Not checked: other attacker-side constants (header lengths 24/40,
+      Init_Win_bytes_backward=0, ~50 µs duration). State as a limitation.
+
+[2026-10-14 18:32:46] [auto] Experiment finished: ddqn_weighted_white
+    episodes=500  wall-clock=3.7 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_weighted_white.json
+
+[2026-10-14 18:32:46] [auto] Experiment finished: ddqn_weighted_black
+    episodes=500  wall-clock=3.7 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_weighted_black.json
+
+[2026-10-14 18:32:47] [auto] Experiment finished: ddqn_unanimous_white
+    episodes=500  wall-clock=3.7 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_unanimous_white.json
+
+[2026-10-14 18:32:47] [auto] Experiment finished: ddqn_any_black
+    episodes=500  wall-clock=3.7 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_any_black.json
+
+[2026-10-14 18:32:47] [auto] Experiment finished: ddqn_unanimous_black
+    episodes=500  wall-clock=3.7 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_unanimous_black.json
+
+[2026-10-14 18:32:47] [auto] Experiment finished: ddqn_majority_white
+    episodes=500  wall-clock=3.7 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_majority_white.json
+
+[2026-10-14 18:32:48] [auto] Experiment finished: ddqn_majority_black
+    episodes=500  wall-clock=3.7 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_majority_black.json
+
+[2026-10-14 18:32:48] [auto] Experiment started: ddqn_any_white
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-14 18:32:48] [auto] Experiment started: ddqn_xgboost_black
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-14 18:32:49] [auto] Experiment started: ddqn_xgboost_white
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-14 18:32:49] [auto] Experiment started: ddqn_rf_black
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-14 18:32:49] [auto] Experiment started: ddqn_rf_white
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-14 18:32:49] [auto] Experiment started: ddqn_cnn_black
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-14 18:32:49] [auto] Experiment started: ddqn_cnn_white
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-14 18:33:50] [auto] Experiment finished: ddqn_xgboost_black
+    episodes=500  wall-clock=1.0 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_xgboost_black.json
+
+[2026-10-14 18:33:51] [auto] Experiment finished: ddqn_cnn_black
+    episodes=500  wall-clock=1.0 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_cnn_black.json
+
+[2026-10-14 18:33:51] [auto] Experiment finished: ddqn_xgboost_white
+    episodes=500  wall-clock=1.0 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_xgboost_white.json
+
+[2026-10-14 18:33:51] [auto] Experiment finished: ddqn_cnn_white
+    episodes=500  wall-clock=1.0 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_cnn_white.json
+
+[2026-10-14 18:35:12] [auto] Experiment finished: ddqn_rf_black
+    episodes=500  wall-clock=2.4 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_rf_black.json
+
+[2026-10-14 18:35:13] [auto] Experiment finished: ddqn_rf_white
+    episodes=500  wall-clock=2.4 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_rf_white.json
+
+[2026-10-14 18:35:57] [auto] Experiment finished: ddqn_any_white
+    episodes=500  wall-clock=3.1 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_any_white.json
+
+[2026-10-14 18:35:57] [auto] Training batch finished: 14 experiment(s)
+
+[2026-10-14 18:37:49] [auto] Agent evaluation (evaluate_agents.py)
+    detector set=/Users/varunkaveti/Documents/thesis/code/models_adv  results dir=/Users/varunkaveti/Documents/thesis/results_v3_adversarial
+    untrained: 5000 random probes (paired across rules); trained: 20 greedy episodes each, eval seed 12345
+    defence     untrained  trained-black  trained-white
+    majority      0.0%       0.0%           0.0%
+    unanimous     0.0%       0.0%           0.0%
+    weighted      0.0%       0.0%           0.0%
+    any           0.0%       0.0%           0.0%
+    xgboost       0.0%       0.0%           0.0%
+    rf            0.0%       0.0%           0.0%
+    cnn           0.0%       0.0%           0.0%
+    output: eval_results.json
+
+[2026-10-14 18:42:22] RUN v3 summary — DDQN vs adversarially trained detectors
+    Detectors: code/models_adv (train_adversarial.py; 71,381 padded PortScan
+    flows, payload 1–1460 B, added to the original training split).
+    Held-out cost: XGBoost/RF unchanged; CNN accuracy 96.61% -> 96.20%,
+    false-positive rate 2.85% -> 3.57%.
+    Padded held-out probes caught: 0–33% -> 100% for all three detectors.
+
+    Evasion (results_v3_adversarial/eval_results.json):
+      defence     untrained   trained black   trained white
+      all 7       0.02%       0.0%            0.0%
+    (0.02% = 1 of 5,000 random probes evaded all three detectors.)
+    Verified the runs used the real retrained models: 42 "Real ... loaded"
+    lines (14 experiments x 3 detectors), no MOCK/ERROR lines.
+
+    Interpretation for the thesis:
+    - Within this threat model (payload size, delay, flags, where only
+      payload affects per-flow features), adversarial training closes the
+      evasion route completely; DDQN never finds an evading action.
+    - The ensemble is not what provides the resilience: each standalone
+      detector is already at 0% after adversarial training, so voting
+      rules again can't be separated (all 0%). Resilience came from fixing
+      the shared training-data blind spot, not from combining models.
+    - Limitations: one seed; tiny action space; other attacker-side
+      constants (header lengths, reply window, duration) not tested.
+
+    Figures: results_v3_adversarial/thesis_convergence_results.png,
+    results_v3_adversarial/thesis_final_evasion.png,
+    thesis_defence_comparison.png (v2 vs v3).

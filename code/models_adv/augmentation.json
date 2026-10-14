@@ -1,0 +1,11 @@
+{
+  "train_rows_original": 2016638,
+  "portscan_train_rows_single_probe": 71381,
+  "padded_rows_added": 71381,
+  "payload_range_bytes": [
+    1,
+    1460
+  ],
+  "aug_copies": 1,
+  "aug_seed": 2026
+}

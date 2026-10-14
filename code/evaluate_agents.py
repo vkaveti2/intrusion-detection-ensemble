@@ -20,7 +20,7 @@ from collections import Counter
 import numpy as np
 from stable_baselines3 import DQN
 
-from ensemble import VOTING_RULES, EnsembleIDS
+from ensemble import MODEL_DIR, VOTING_RULES, EnsembleIDS
 from ids_env import (EPISODE_LENGTH, N_ACTIONS, PKTSIZE_OPTIONS, IDSEvasionEnv,
                      decode_action)
 from project_log import log_event
@@ -118,7 +118,8 @@ if __name__ == "__main__":
     print("\nSaved → eval_results.json")
 
     pct = lambda x: "  —  " if x is None else f"{x:6.1%}"
-    lines = [f"untrained: {args.probes} random probes (paired across rules); "
+    lines = [f"detector set={MODEL_DIR}  results dir={os.getcwd()}",
+             f"untrained: {args.probes} random probes (paired across rules); "
              f"trained: {args.episodes} greedy episodes each, eval seed {EVAL_SEED}",
              "defence     untrained  trained-black  trained-white"]
     for r in rules:

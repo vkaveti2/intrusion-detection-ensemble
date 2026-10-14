@@ -33,15 +33,7 @@ def get_probe_bank():
         _PROBE_BANK = np.load(_PROBE_BANK_PATH, allow_pickle=False)["flows"]
     return _PROBE_BANK
 
-# CICFlowMeter feature indices touched by the forward payload (see _simulate_probe)
-F_DST_PORT, F_FLOW_DURATION = 0, 1
-F_TOT_FWD_PKTS, F_TOT_BWD_PKTS, F_TOT_LEN_FWD, F_TOT_LEN_BWD = 2, 3, 4, 5
-F_FWD_LEN_MAX, F_FWD_LEN_MIN, F_FWD_LEN_MEAN, F_FWD_LEN_STD = 6, 7, 8, 9
-F_FLOW_BYTES_S = 14
-F_MIN_PKT_LEN, F_MAX_PKT_LEN, F_PKT_LEN_MEAN, F_PKT_LEN_STD, F_PKT_LEN_VAR = 38, 39, 40, 41, 42
-F_AVG_PKT_SIZE, F_AVG_FWD_SEG = 52, 53
-F_SUBFLOW_FWD_BYTES = 62
-F_ACT_DATA_PKT_FWD = 67
+from flow_features import F_DST_PORT, set_forward_payload
 
 # ── Constants ──────────────────────────────────────────────────────────────────
 FEATURE_DIM    = 77  # CIC-IDS2017 features after removing the Label column
@@ -152,8 +144,8 @@ class IDSEvasionEnv(gym.Env):
         """
         Builds the probe's flow record from a real held-out CIC-IDS2017 PortScan
         flow (1 fwd packet, <=1 bwd packet) and recomputes only the features the
-        agent's packet changes, using CICFlowMeter's own formulas (validated
-        exactly against 117k real single-packet flows).
+        agent's packet changes, using CICFlowMeter's own formulas
+        (flow_features.py, validated against 117k real single-packet flows).
 
         - pkt_size: forward payload bytes; all length/byte features recomputed.
         - delay: the gap *between* probes. Each probe is its own flow, so it
@@ -172,29 +164,7 @@ class IDSEvasionEnv(gym.Env):
         bank = get_probe_bank()
         f = bank[self.np_random.integers(len(bank))].copy()
         f[F_DST_PORT] = float(port)
-
-        s  = float(pkt_size)
-        nb = float(f[F_TOT_BWD_PKTS])
-        b  = float(f[F_TOT_LEN_BWD])
-
-        f[[F_TOT_LEN_FWD, F_FWD_LEN_MAX, F_FWD_LEN_MIN, F_FWD_LEN_MEAN,
-           F_AVG_FWD_SEG, F_SUBFLOW_FWD_BYTES]] = s
-        f[F_FWD_LEN_STD] = 0.0
-        f[F_ACT_DATA_PKT_FWD] = 0.0  # CICFlowMeter never counts the first fwd packet
-
-        # CICFlowMeter adds the first packet's length to the flow stats twice
-        lengths = np.array([s, s] + ([b] if nb else []), dtype=np.float64)
-        f[F_MIN_PKT_LEN]  = lengths.min()
-        f[F_MAX_PKT_LEN]  = lengths.max()
-        f[F_PKT_LEN_MEAN] = lengths.mean()
-        f[F_PKT_LEN_VAR]  = lengths.var(ddof=1)
-        f[F_PKT_LEN_STD]  = np.sqrt(f[F_PKT_LEN_VAR])
-        f[F_AVG_PKT_SIZE] = (2 * s + b) / (1 + nb)
-
-        duration_us = float(f[F_FLOW_DURATION])
-        if duration_us > 0:
-            f[F_FLOW_BYTES_S] = (s + b) / (duration_us / 1e6)
-        return f
+        return set_forward_payload(f, pkt_size)[0]
 
     def _send_real_probe(self, port, tcp_flags, delay, pkt_size):
         """Actual Scapy Packet Logic for the Pi Hardware Benchmarks."""

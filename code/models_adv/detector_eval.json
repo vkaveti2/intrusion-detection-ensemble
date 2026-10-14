@@ -1,0 +1,50 @@
+{
+  "xgboost": {
+    "multiclass_accuracy": 0.9989031259917487,
+    "binary_precision": 0.9967062078019505,
+    "binary_recall": 0.9986259219241791,
+    "binary_f1": 0.9976651413821425,
+    "binary_false_positive_rate": 0.0006706251849589033,
+    "portscan_detected": 0.9998346105077457,
+    "padded_probe_detected": {
+      "0B": 0.9999439273298194,
+      "64B": 1.0,
+      "128B": 1.0,
+      "256B": 1.0,
+      "512B": 1.0,
+      "random 1-1460B": 1.0
+    }
+  },
+  "rf": {
+    "multiclass_accuracy": 0.9982188194224055,
+    "binary_precision": 0.9964946125252906,
+    "binary_recall": 0.9949029924366984,
+    "binary_f1": 0.9956981664315938,
+    "binary_false_positive_rate": 0.0007111968153656697,
+    "portscan_detected": 0.9884778653729533,
+    "padded_probe_detected": {
+      "0B": 1.0,
+      "64B": 0.9999439273298194,
+      "128B": 0.9999439273298194,
+      "256B": 0.9999439273298194,
+      "512B": 1.0,
+      "random 1-1460B": 1.0
+    }
+  },
+  "cnn": {
+    "multiclass_accuracy": 0.9620497461123453,
+    "binary_precision": 0.8446876396553695,
+    "binary_recall": 0.95451449241321,
+    "binary_f1": 0.8962490419977174,
+    "binary_false_positive_rate": 0.035664849694042176,
+    "portscan_detected": 0.997629417277689,
+    "padded_probe_detected": {
+      "0B": 1.0,
+      "64B": 0.9997196366490972,
+      "128B": 0.9999439273298194,
+      "256B": 1.0,
+      "512B": 1.0,
+      "random 1-1460B": 0.9998878546596389
+    }
+  }
+}

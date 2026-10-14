@@ -32,7 +32,7 @@ from stable_baselines3.common.callbacks import (
     CheckpointCallback,
 )
 
-from ensemble import STANDALONE_RULES, VOTING_RULES
+from ensemble import MODEL_DIR, STANDALONE_RULES, VOTING_RULES
 from ids_env import IDSEvasionEnv, EPISODE_LENGTH
 from project_log import log_event
 
@@ -391,7 +391,8 @@ if __name__ == "__main__":
     print(f"  Mode         : {'sequential' if args.sequential else 'parallel'}\n")
     log_event(f"Training batch started: {len(experiments)} experiment(s)",
               [f"rules={args.voting}  knowledge={args.knowledge}  timesteps={args.timesteps}",
-               f"mode={'sequential' if args.sequential else f'parallel (max {args.max_parallel})'}"])
+               f"mode={'sequential' if args.sequential else f'parallel (max {args.max_parallel})'}",
+               f"detector set={MODEL_DIR}  output dir={os.getcwd()}"])
 
     if args.sequential:
         for voting_rule, knowledge_level in experiments:
