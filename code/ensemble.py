@@ -23,7 +23,8 @@ warnings.filterwarnings("ignore", category=FutureWarning)
 
 # Paths for the Mac Pro filesystem
 MODEL_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "models")
-VOTING_RULES = ("majority", "unanimous", "weighted")
+STANDALONE_RULES = ("xgboost", "rf", "cnn")
+VOTING_RULES = ("majority", "unanimous", "weighted", "any") + STANDALONE_RULES
 
 # ── Detector Interface ─────────────────────────────────────────────────────
 class BaseDetector(ABC):
@@ -48,6 +49,9 @@ class BaseDetector(ABC):
                 self.model = joblib.load(model_path)
                 self.scaler = joblib.load(scaler_path)
                 self.is_mock = False
+                # One-row inference: thread start-up costs more than it saves
+                if hasattr(self.model, "n_jobs"):
+                    self.model.set_params(n_jobs=1)
                 print(f"[Ensemble] STATUS: Real {self.name} model loaded successfully.")
             except Exception as e:
                 print(f"[Ensemble] ERROR: Failed to load {self.name}: {e}")
@@ -179,33 +183,66 @@ class CNNDetector(BaseDetector):
 
 # ── Aggregation Engine ─────────────────────────────────────────────────────
 
+def load_weights():
+    """
+    Confidence-weighted rule: per-detector weights from held-out performance,
+    written by evaluate_detectors.py. Equal weights if not yet computed.
+    """
+    path = os.path.join(MODEL_DIR, "ensemble_weights.json")
+    if os.path.exists(path):
+        with open(path) as f:
+            w = json.load(f)
+        return np.array([w["xgboost"], w["rf"], w["cnn"]], dtype=np.float64)
+    return np.ones(3) / 3
+
+
 class EnsembleIDS:
-    def __init__(self, voting="majority", weights=None, threshold=0.5):
-        self.detectors = [XGBoostDetector(), RandomForestDetector(), CNNDetector()]
+    def __init__(self, voting="majority", weights=None, threshold=0.5, detectors=None):
+        if voting not in VOTING_RULES:
+            raise ValueError(f"Unknown voting rule {voting!r}; choose from {VOTING_RULES}")
+        # Pass `detectors` to share already-loaded models between rule instances
+        self.detectors = detectors or [XGBoostDetector(), RandomForestDetector(), CNNDetector()]
         self.voting = voting
         self.threshold = threshold
-        self.weights = weights if weights else np.ones(3)/3
+        self.weights = np.asarray(weights) if weights is not None else load_weights()
+        # Standalone rules run a single detector (RQ1 baseline)
+        self._active = [d for d in self.detectors if d.name == voting] or self.detectors
 
     def classify(self, features):
         """Performs collective inference based on selected voting rule."""
-        votes, confs, p_scan_list = {}, {}, []
+        votes, confs = {}, {}
+        for det in self._active:
+            votes[det.name], confs[det.name] = det.predict(features)
+        return self.decide(votes, confs)
 
-        for det in self.detectors:
-            label, conf = det.predict(features)
-            votes[det.name] = label
-            confs[det.name] = conf
-            p_scan_list.append(conf if label == "scanning" else 1.0 - conf)
-
+    def decide(self, votes, confs):
+        """
+        Applies the voting rule to per-detector (label, confidence) outputs.
+        Separate from classify() so one set of predictions can be scored
+        under every rule (paired comparison in evaluate_agents.py).
+        """
+        names = [d.name for d in self._active]
+        votes = {n: votes[n] for n in names}
+        confs = {n: confs[n] for n in names}
+        p_scan_list = [confs[n] if votes[n] == "scanning" else 1.0 - confs[n] for n in names]
         n_scanning = sum(1 for v in votes.values() if v == "scanning")
-        
-        if self.voting == "majority":
+
+        if self.voting in STANDALONE_RULES:
+            final_label = votes[self.voting]
+            score = p_scan_list[0]
+        elif self.voting == "majority":
             final_label = "scanning" if n_scanning >= 2 else "normal"
             score = n_scanning / 3.0
         elif self.voting == "unanimous":
+            # All three must flag: the most permissive rule for the attacker
             final_label = "scanning" if n_scanning == 3 else "normal"
             score = n_scanning / 3.0
+        elif self.voting == "any":
+            # Any single detector flags: the most defensive rule
+            final_label = "scanning" if n_scanning >= 1 else "normal"
+            score = n_scanning / 3.0
         else: # Weighted
-            score = np.dot(self.weights, p_scan_list)
+            score = float(np.dot(self.weights, p_scan_list))
             final_label = "scanning" if score >= self.threshold else "normal"
 
         return {

@@ -2,3 +2,11 @@ code/data/
 code/CICIOT23/
 *.csv
 code/models/rf_model.pkl
+ids_env/
+
+# DDQN checkpoints and trained agents (GBs; regenerate with code/train_ensemble.py, seeded)
+checkpoints_ensemble/ddqn_*_steps.zip
+models/ddqn_*.zip
+code/models/ddqn_*.zip
+results_*/**/checkpoints_ensemble/
+results_*/**/models/ddqn_*.zip

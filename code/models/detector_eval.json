@@ -1,0 +1,26 @@
+{
+  "xgboost": {
+    "multiclass_accuracy": 0.9988832910187242,
+    "binary_precision": 0.9966130298733109,
+    "binary_recall": 0.9987081317235872,
+    "binary_f1": 0.9976594808622965,
+    "binary_false_positive_rate": 0.0006897177169150287,
+    "portscan_detected": 0.9998897403384972
+  },
+  "rf": {
+    "multiclass_accuracy": 0.998242621390035,
+    "binary_precision": 0.9964601561764983,
+    "binary_recall": 0.9951026448066895,
+    "binary_f1": 0.9957809378305323,
+    "binary_false_positive_rate": 0.0007183565148492167,
+    "portscan_detected": 0.9884778653729533
+  },
+  "cnn": {
+    "multiclass_accuracy": 0.966107981593145,
+    "binary_precision": 0.870661845894044,
+    "binary_recall": 0.9445905951989477,
+    "binary_f1": 0.9061207935738991,
+    "binary_false_positive_rate": 0.028514696476473228,
+    "portscan_detected": 0.9513203594464965
+  }
+}

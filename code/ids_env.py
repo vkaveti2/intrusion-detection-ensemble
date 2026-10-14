@@ -6,6 +6,8 @@ It supports both 'Hardware-in-the-loop' (sending Scapy packets to a Pi)
 and 'Local Simulation' (training against the ensemble.py library).
 """
 
+import os
+os.environ["OMP_NUM_THREADS"] = "1"
 import gymnasium as gym
 import numpy as np
 import socket
@@ -14,6 +16,32 @@ from scapy.volatile import RandShort
 import time
 import json
 from pathlib import Path
+
+# Real held-out CIC-IDS2017 PortScan flows (built by build_probe_bank.py)
+_MODEL_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "models")
+_PROBE_BANK_PATH = os.path.join(_MODEL_DIR, "probe_bank.npz")
+_PROBE_BANK = None
+
+def get_probe_bank():
+    global _PROBE_BANK
+    if _PROBE_BANK is None:
+        if not os.path.exists(_PROBE_BANK_PATH):
+            # No silent fallback: a synthetic probe would make evasion rates meaningless.
+            raise FileNotFoundError(
+                f"{_PROBE_BANK_PATH} missing. Run build_probe_bank.py first."
+            )
+        _PROBE_BANK = np.load(_PROBE_BANK_PATH, allow_pickle=False)["flows"]
+    return _PROBE_BANK
+
+# CICFlowMeter feature indices touched by the forward payload (see _simulate_probe)
+F_DST_PORT, F_FLOW_DURATION = 0, 1
+F_TOT_FWD_PKTS, F_TOT_BWD_PKTS, F_TOT_LEN_FWD, F_TOT_LEN_BWD = 2, 3, 4, 5
+F_FWD_LEN_MAX, F_FWD_LEN_MIN, F_FWD_LEN_MEAN, F_FWD_LEN_STD = 6, 7, 8, 9
+F_FLOW_BYTES_S = 14
+F_MIN_PKT_LEN, F_MAX_PKT_LEN, F_PKT_LEN_MEAN, F_PKT_LEN_STD, F_PKT_LEN_VAR = 38, 39, 40, 41, 42
+F_AVG_PKT_SIZE, F_AVG_FWD_SEG = 52, 53
+F_SUBFLOW_FWD_BYTES = 62
+F_ACT_DATA_PKT_FWD = 67
 
 # ── Constants ──────────────────────────────────────────────────────────────────
 FEATURE_DIM    = 77  # CIC-IDS2017 features after removing the Label column
@@ -24,6 +52,7 @@ REWARD_OTHER   =  0.0
 REWARD_INVALID = -0.5
 MAX_DELAY      = 100.0
 PENALTY_WEIGHT = 0.1
+OBS_CLIP       = 10.0  # Clip standardised observations to ±10 σ
 
 # Invariant thresholds for research validity
 MIN_UNIQUE_PORTS = 2
@@ -64,6 +93,8 @@ class IDSEvasionEnv(gym.Env):
         # Initialize the Defense Engine
         from ensemble import EnsembleIDS
         self.ensemble = EnsembleIDS(voting=ensemble_rule)
+        if not use_pi:
+            get_probe_bank()  # fail fast before training starts
 
         # Gym Spaces
         self.action_space = gym.spaces.Discrete(N_ACTIONS)
@@ -118,27 +149,52 @@ class IDSEvasionEnv(gym.Env):
         return obs, reward, terminated, False, {"classification": classification}
 
     def _simulate_probe(self, port, delay, tcp_flags, pkt_size):
-        """Simulates traffic for the Mac Pro to train the agent quickly."""
-        # Match the feature order used by the saved CIC-IDS2017 scaler.
-        f = np.zeros(self.feature_dim, dtype=np.float32)
-        f[0] = port
-        f[1] = delay * 1_000_000
-        f[6] = pkt_size
-        f[14] = pkt_size / (delay + 1e-6)
-        if "S" in tcp_flags:
-            f[44] = 1
-        if "F" in tcp_flags:
-            f[43] = 1
-        if "P" in tcp_flags:
-            f[46] = 1
-        if "A" in tcp_flags:
-            f[47] = 1
-        if "U" in tcp_flags:
-            f[48] = 1
-        
-        # Real Inference from ensemble.py
+        """
+        Builds the probe's flow record from a real held-out CIC-IDS2017 PortScan
+        flow (1 fwd packet, <=1 bwd packet) and recomputes only the features the
+        agent's packet changes, using CICFlowMeter's own formulas (validated
+        exactly against 117k real single-packet flows).
+
+        - pkt_size: forward payload bytes; all length/byte features recomputed.
+        - delay: the gap *between* probes. Each probe is its own flow, so it
+          does not appear in any per-flow feature (same as the Pi path, which
+          sends one packet then sleeps). It only costs reward.
+        - tcp_flags: kept at the real scan flow's recorded values. CIC-IDS2017's
+          flag-count columns don't follow TCP semantics (99.9% of scan flows
+          record PSH=1 only), so there is no faithful mapping to simulate;
+          flag effects are measured on the Pi hardware path instead.
+        """
+        f = self._probe_features(port, pkt_size)
         result = self.ensemble.classify(f)
         return result["label"], f
+
+    def _probe_features(self, port, pkt_size):
+        bank = get_probe_bank()
+        f = bank[self.np_random.integers(len(bank))].copy()
+        f[F_DST_PORT] = float(port)
+
+        s  = float(pkt_size)
+        nb = float(f[F_TOT_BWD_PKTS])
+        b  = float(f[F_TOT_LEN_BWD])
+
+        f[[F_TOT_LEN_FWD, F_FWD_LEN_MAX, F_FWD_LEN_MIN, F_FWD_LEN_MEAN,
+           F_AVG_FWD_SEG, F_SUBFLOW_FWD_BYTES]] = s
+        f[F_FWD_LEN_STD] = 0.0
+        f[F_ACT_DATA_PKT_FWD] = 0.0  # CICFlowMeter never counts the first fwd packet
+
+        # CICFlowMeter adds the first packet's length to the flow stats twice
+        lengths = np.array([s, s] + ([b] if nb else []), dtype=np.float64)
+        f[F_MIN_PKT_LEN]  = lengths.min()
+        f[F_MAX_PKT_LEN]  = lengths.max()
+        f[F_PKT_LEN_MEAN] = lengths.mean()
+        f[F_PKT_LEN_VAR]  = lengths.var(ddof=1)
+        f[F_PKT_LEN_STD]  = np.sqrt(f[F_PKT_LEN_VAR])
+        f[F_AVG_PKT_SIZE] = (2 * s + b) / (1 + nb)
+
+        duration_us = float(f[F_FLOW_DURATION])
+        if duration_us > 0:
+            f[F_FLOW_BYTES_S] = (s + b) / (duration_us / 1e6)
+        return f
 
     def _send_real_probe(self, port, tcp_flags, delay, pkt_size):
         """Actual Scapy Packet Logic for the Pi Hardware Benchmarks."""
@@ -172,12 +228,22 @@ class IDSEvasionEnv(gym.Env):
     def _get_observation(self, features):
         if self.knowledge == "black":
             return np.zeros(self.feature_dim, dtype=np.float32)
+        # Standardise with the detectors' scaler: raw CIC features span ~10 orders
+        # of magnitude, which destabilises the Q-network.
+        scaled = self._scale_obs(features)
         if self.knowledge == "white":
-            return np.asarray(features, dtype=np.float32)
+            return scaled
         # Gray: Timing + Port + Size only
         gray = np.zeros(self.feature_dim, dtype=np.float32)
-        gray[[0, 1, 6, 14]] = features[[0, 1, 6, 14]]
+        gray[[0, 1, 6, 14]] = scaled[[0, 1, 6, 14]]
         return gray
+
+    def _scale_obs(self, features):
+        scaler = self.ensemble.detectors[0].scaler
+        if scaler is None:
+            return np.asarray(features, dtype=np.float32)
+        z = (np.asarray(features, dtype=np.float64) - scaler.mean_) / scaler.scale_
+        return np.clip(z, -OBS_CLIP, OBS_CLIP).astype(np.float32)
 
     def _connect_socket(self):
         try:
