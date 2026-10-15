@@ -1,0 +1,179 @@
+{
+  "untrained": {
+    "majority": {
+      "evasion": 0.0002,
+      "by_payload": {
+        "0": 0.0,
+        "64": 0.0,
+        "128": 0.001040582726326743,
+        "256": 0.0,
+        "512": 0.0
+      }
+    },
+    "unanimous": {
+      "evasion": 0.0002,
+      "by_payload": {
+        "0": 0.0,
+        "64": 0.0,
+        "128": 0.001040582726326743,
+        "256": 0.0,
+        "512": 0.0
+      }
+    },
+    "weighted": {
+      "evasion": 0.0002,
+      "by_payload": {
+        "0": 0.0,
+        "64": 0.0,
+        "128": 0.001040582726326743,
+        "256": 0.0,
+        "512": 0.0
+      }
+    },
+    "any": {
+      "evasion": 0.0002,
+      "by_payload": {
+        "0": 0.0,
+        "64": 0.0,
+        "128": 0.001040582726326743,
+        "256": 0.0,
+        "512": 0.0
+      }
+    },
+    "xgboost": {
+      "evasion": 0.0002,
+      "by_payload": {
+        "0": 0.0,
+        "64": 0.0,
+        "128": 0.001040582726326743,
+        "256": 0.0,
+        "512": 0.0
+      }
+    },
+    "rf": {
+      "evasion": 0.0002,
+      "by_payload": {
+        "0": 0.0,
+        "64": 0.0,
+        "128": 0.001040582726326743,
+        "256": 0.0,
+        "512": 0.0
+      }
+    },
+    "cnn": {
+      "evasion": 0.0002,
+      "by_payload": {
+        "0": 0.0,
+        "64": 0.0,
+        "128": 0.001040582726326743,
+        "256": 0.0,
+        "512": 0.0
+      }
+    }
+  },
+  "trained": {
+    "majority_black": {
+      "evasion": 0.0,
+      "payload_choice": {
+        "64": 1.0
+      },
+      "median_delay_s": 0.20235896477251572
+    },
+    "unanimous_black": {
+      "evasion": 0.0,
+      "payload_choice": {
+        "128": 1.0
+      },
+      "median_delay_s": 86.85113737513521
+    },
+    "weighted_black": {
+      "evasion": 0.0,
+      "payload_choice": {
+        "64": 1.0
+      },
+      "median_delay_s": 0.20235896477251572
+    },
+    "any_black": {
+      "evasion": 0.0,
+      "payload_choice": {
+        "0": 1.0
+      },
+      "median_delay_s": 86.85113737513521
+    },
+    "xgboost_black": {
+      "evasion": 0.0,
+      "payload_choice": {
+        "64": 1.0
+      },
+      "median_delay_s": 0.20235896477251572
+    },
+    "rf_black": {
+      "evasion": 0.0,
+      "payload_choice": {
+        "64": 1.0
+      },
+      "median_delay_s": 0.20235896477251572
+    },
+    "cnn_black": {
+      "evasion": 0.0,
+      "payload_choice": {
+        "0": 1.0
+      },
+      "median_delay_s": 0.7196856730011519
+    },
+    "majority_white": {
+      "evasion": 0.0,
+      "payload_choice": {
+        "0": 0.01,
+        "64": 0.99
+      },
+      "median_delay_s": 0.3088843596477481
+    },
+    "unanimous_white": {
+      "evasion": 0.0,
+      "payload_choice": {
+        "64": 0.01,
+        "128": 0.99
+      },
+      "median_delay_s": 9.102981779915218
+    },
+    "weighted_white": {
+      "evasion": 0.0,
+      "payload_choice": {
+        "0": 0.01,
+        "64": 0.99
+      },
+      "median_delay_s": 0.3088843596477481
+    },
+    "any_white": {
+      "evasion": 0.0,
+      "payload_choice": {
+        "128": 1.0
+      },
+      "median_delay_s": 13.894954943731374
+    },
+    "xgboost_white": {
+      "evasion": 0.0,
+      "payload_choice": {
+        "0": 0.01,
+        "64": 0.99
+      },
+      "median_delay_s": 0.3088843596477481
+    },
+    "rf_white": {
+      "evasion": 0.0,
+      "payload_choice": {
+        "0": 0.01,
+        "64": 0.99
+      },
+      "median_delay_s": 0.3088843596477481
+    },
+    "cnn_white": {
+      "evasion": 0.0,
+      "payload_choice": {
+        "128": 1.0
+      },
+      "median_delay_s": 13.894954943731374
+    }
+  }
+}

@@ -45,7 +45,7 @@ TIMESTEPS       = 50_000   # Steps per experiment (≈500 episodes @ 100 steps/e
 CHECKPOINT_FREQ = 1_000    # Save a zip every N steps
 CHECKPOINT_DIR  = "./checkpoints_ensemble"
 MODELS_DIR      = "./models"
-SEED            = 0
+DEFAULT_SEED    = 0        # agent init, exploration and probe-flow sampling; --seed overrides
 
 
 # ── Double DQN ────────────────────────────────────────────────────────────────
@@ -243,10 +243,11 @@ class ConvergenceCallback(BaseCallback):
 
 
 # ── Single experiment runner (runs in its own process) ────────────────────────
-def run_experiment(voting_rule, knowledge_level, total_timesteps=TIMESTEPS):
+def run_experiment(voting_rule, knowledge_level, total_timesteps=TIMESTEPS, seed=DEFAULT_SEED):
     """
     Trains one DDQN agent against ensemble_{voting_rule} with {knowledge_level}
     knowledge. Handles fresh start and checkpoint resume transparently.
+    Output files carry no seed in their names: run each seed in its own directory.
     """
     os.makedirs(CHECKPOINT_DIR, exist_ok=True)
     os.makedirs(MODELS_DIR, exist_ok=True)
@@ -257,7 +258,7 @@ def run_experiment(voting_rule, knowledge_level, total_timesteps=TIMESTEPS):
     print(f" Timesteps : {total_timesteps}  |  Episode length: {EPISODE_LENGTH}")
     print(f"{'='*60}")
     log_event(f"Experiment started: {exp_name}",
-              [f"timesteps={total_timesteps}  seed={SEED}  agent=DoubleDQN  simulator=real-flow probe bank"])
+              [f"timesteps={total_timesteps}  seed={seed}  agent=DoubleDQN  simulator=real-flow probe bank"])
 
     # ── Environment ───────────────────────────────────────────────────────────
     env = IDSEvasionEnv(
@@ -311,7 +312,7 @@ def run_experiment(voting_rule, knowledge_level, total_timesteps=TIMESTEPS):
 
     else:
         print(f"[{exp_name}] Fresh training run — {total_timesteps} timesteps")
-        env.reset(seed=SEED)
+        env.reset(seed=seed)
         model = DoubleDQN(
             "MlpPolicy",
             env,
@@ -328,7 +329,7 @@ def run_experiment(voting_rule, knowledge_level, total_timesteps=TIMESTEPS):
             exploration_final_eps=0.05,
             policy_kwargs=dict(net_arch=[256, 256]),
             device="cpu",                   # CPU faster than MPS for small MLP inference
-            seed=SEED,
+            seed=seed,
         )
         model.learn(
             total_timesteps=total_timesteps,
@@ -374,6 +375,10 @@ if __name__ == "__main__":
         "--sequential", action="store_true",
         help="Run experiments one-by-one instead of in parallel (lower RAM usage)",
     )
+    parser.add_argument(
+        "--seed", type=int, default=DEFAULT_SEED,
+        help=f"Agent/environment seed (default: {DEFAULT_SEED}); use a separate directory per seed",
+    )
     args = parser.parse_args()
 
     # Build experiment list from CLI args
@@ -388,24 +393,26 @@ if __name__ == "__main__":
     print(f"  Knowledge    : {args.knowledge}")
     print(f"  Timesteps    : {args.timesteps}")
     print(f"  Episodes est.: ~{args.timesteps // EPISODE_LENGTH} per experiment")
+    print(f"  Seed         : {args.seed}")
     print(f"  Mode         : {'sequential' if args.sequential else 'parallel'}\n")
     log_event(f"Training batch started: {len(experiments)} experiment(s)",
-              [f"rules={args.voting}  knowledge={args.knowledge}  timesteps={args.timesteps}",
+              [f"rules={args.voting}  knowledge={args.knowledge}  timesteps={args.timesteps}  seed={args.seed}",
                f"mode={'sequential' if args.sequential else f'parallel (max {args.max_parallel})'}",
                f"detector set={MODEL_DIR}  output dir={os.getcwd()}"])
 
     if args.sequential:
         for voting_rule, knowledge_level in experiments:
-            run_experiment(voting_rule, knowledge_level, args.timesteps)
+            run_experiment(voting_rule, knowledge_level, args.timesteps, args.seed)
     else:
         with multiprocessing.Pool(processes=args.max_parallel, maxtasksperchild=1) as pool:
             pool.starmap(
                 run_experiment,
-                [(v, k, args.timesteps) for v, k in experiments],
+                [(v, k, args.timesteps, args.seed) for v, k in experiments],
                 chunksize=1,
             )
 
-    log_event(f"Training batch finished: {len(experiments)} experiment(s)")
+    log_event(f"Training batch finished: {len(experiments)} experiment(s)",
+              [f"seed={args.seed}  detector set={MODEL_DIR}  output dir={os.getcwd()}"])
     print("\n[THESIS] All experiments complete.")
     print("Convergence data → convergence_ddqn_*.json")
     print("Trained agents  → models/ddqn_*.zip")

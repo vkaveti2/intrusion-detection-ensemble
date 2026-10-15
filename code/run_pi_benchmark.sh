@@ -6,7 +6,7 @@
 # Copies only what the benchmark needs (code + both detector sets), builds a
 # venv on the Pi with requirements-pi.txt, benchmarks the original (models/)
 # and adversarially trained (models_adv/) detectors, copies the JSON results
-# back next to this repo, and appends a summary to PROJECT_LOG.txt.
+# back next to this repo, and appends a summary to docs/PROJECT_LOG.txt.
 set -euo pipefail
 
 PI="${1:?usage: $0 user@pi-host}"
@@ -29,7 +29,7 @@ echo "==> Building venv and running benchmark on the Pi (first run installs torc
 ssh "$PI" bash -s <<EOF
 set -euo pipefail
 cd ~/$REMOTE_DIR
-rm -f PROJECT_LOG.txt   # Pi-side log holds only this run's entries
+rm -f docs/PROJECT_LOG.txt   # Pi-side log holds only this run's entries
 python3 -m venv venv
 venv/bin/pip install --quiet --upgrade pip
 venv/bin/pip install --quiet -r code/requirements-pi.txt
@@ -39,5 +39,5 @@ EOF
 
 echo "==> Fetching results"
 rsync -av "$PI:~/$REMOTE_DIR/benchmark_*.json" "$REPO/"
-ssh "$PI" "cat ~/$REMOTE_DIR/PROJECT_LOG.txt" >> "$REPO/PROJECT_LOG.txt"
-echo "Done. Results: $REPO/benchmark_*.json (Pi entries appended to PROJECT_LOG.txt)"
+ssh "$PI" "cat ~/$REMOTE_DIR/docs/PROJECT_LOG.txt" >> "$REPO/docs/PROJECT_LOG.txt"
+echo "Done. Results: $REPO/benchmark_*.json (Pi entries appended to docs/PROJECT_LOG.txt)"

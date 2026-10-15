@@ -1,6 +1,7 @@
 code/data/
 code/CICIOT23/
 *.csv
+!docs/*.csv
 code/models/rf_model.pkl
 ids_env/
 
@@ -11,3 +12,6 @@ code/models/ddqn_*.zip
 results_*/**/checkpoints_ensemble/
 results_*/**/models/ddqn_*.zip
 code/models_adv/rf_model.pkl
+code/models_cov1/rf_model.pkl
+code/models_cov2/rf_model.pkl
+code/models_cov1_ms*/rf_model.pkl

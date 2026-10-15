@@ -1,0 +1,185 @@
+
+── xgboost ──
+{
+  "multiclass_accuracy": 0.9989031259917487,
+  "binary_precision": 0.9966595951663756,
+  "binary_recall": 0.998661154695354,
+  "binary_f1": 0.9976593710219573,
+  "binary_false_positive_rate": 0.000680171450936966,
+  "portscan_detected": 0.9998346105077457,
+  "padded_probe_detected": {
+    "0B": 0.9998878546596389,
+    "64B": 1.0,
+    "128B": 1.0,
+    "256B": 1.0,
+    "512B": 1.0,
+    "random 1-1460B": 1.0
+  },
+  "padded_probe_detected_sim_ports": {
+    "0B": 0.9999439273298194,
+    "64B": 1.0,
+    "128B": 1.0,
+    "256B": 0.9999439273298194,
+    "512B": 0.9999439273298194,
+    "random 1-1460B": 0.9999439273298194
+  }
+}
+                            precision    recall  f1-score   support
+
+                    BENIGN     0.9997    0.9993    0.9995    419012
+                       Bot     0.9241    0.7487    0.8272       390
+                      DDoS     0.9999    1.0000    0.9999     25603
+             DoS GoldenEye     0.9971    0.9961    0.9966      2057
+                  DoS Hulk     0.9984    0.9997    0.9990     34569
+          DoS Slowhttptest     0.9896    0.9962    0.9929      1046
+             DoS slowloris     0.9953    0.9898    0.9926      1077
+               FTP-Patator     0.9992    0.9992    0.9992      1186
+                Heartbleed     1.0000    0.5000    0.6667         2
+              Infiltration     1.0000    1.0000    1.0000         7
+                  PortScan     0.9888    0.9994    0.9941     18139
+               SSH-Patator     1.0000    1.0000    1.0000       644
+  Web Attack � Brute Force     0.7288    0.9048    0.8073       294
+Web Attack � Sql Injection     0.7500    0.7500    0.7500         4
+          Web Attack � XSS     0.5806    0.2769    0.3750       130
+
+                  accuracy                         0.9989    504160
+                 macro avg     0.9301    0.8773    0.8933    504160
+              weighted avg     0.9989    0.9989    0.9989    504160
+
+
+── rf ──
+{
+  "multiclass_accuracy": 0.9982267534116154,
+  "binary_precision": 0.9964132416063973,
+  "binary_recall": 0.9950909005496312,
+  "binary_f1": 0.9957516320666576,
+  "binary_false_positive_rate": 0.0007279027808272795,
+  "portscan_detected": 0.9888637741882133,
+  "padded_probe_detected": {
+    "0B": 1.0,
+    "64B": 0.9999439273298194,
+    "128B": 0.9999439273298194,
+    "256B": 0.9999439273298194,
+    "512B": 1.0,
+    "random 1-1460B": 0.9975888751822362
+  },
+  "padded_probe_detected_sim_ports": {
+    "0B": 0.9999439273298194,
+    "64B": 0.9999439273298194,
+    "128B": 0.9999439273298194,
+    "256B": 0.9999439273298194,
+    "512B": 0.9999439273298194,
+    "random 1-1460B": 0.9975328025120557
+  }
+}
+                            precision    recall  f1-score   support
+
+                    BENIGN     0.9990    0.9993    0.9991    419012
+                       Bot     0.8757    0.7590    0.8132       390
+                      DDoS     0.9998    0.9998    0.9998     25603
+             DoS GoldenEye     0.9971    0.9903    0.9937      2057
+                  DoS Hulk     0.9983    0.9971    0.9977     34569
+          DoS Slowhttptest     0.9914    0.9962    0.9938      1046
+             DoS slowloris     0.9963    0.9898    0.9930      1077
+               FTP-Patator     0.9992    0.9992    0.9992      1186
+                Heartbleed     1.0000    0.5000    0.6667         2
+              Infiltration     1.0000    1.0000    1.0000         7
+                  PortScan     0.9889    0.9884    0.9886     18139
+               SSH-Patator     1.0000    0.9953    0.9977       644
+  Web Attack � Brute Force     0.7469    0.8231    0.7832       294
+Web Attack � Sql Injection     1.0000    0.2500    0.4000         4
+          Web Attack � XSS     0.4396    0.3077    0.3620       130
+
+                  accuracy                         0.9982    504160
+                 macro avg     0.9355    0.8397    0.8658    504160
+              weighted avg     0.9982    0.9982    0.9982    504160
+
+
+── cnn ──
+{
+  "multiclass_accuracy": 0.9589971437638845,
+  "binary_precision": 0.8340753779250363,
+  "binary_recall": 0.946058627331235,
+  "binary_f1": 0.8865447261841874,
+  "binary_false_positive_rate": 0.03824472807461361,
+  "portscan_detected": 0.9831302717900656,
+  "padded_probe_detected": {
+    "0B": 1.0,
+    "64B": 0.8426600874733655,
+    "128B": 0.2510934170685208,
+    "256B": 0.820343164741505,
+    "512B": 1.0,
+    "random 1-1460B": 0.918526410227655
+  },
+  "padded_probe_detected_sim_ports": {
+    "0B": 0.9999439273298194,
+    "64B": 0.9404508242682517,
+    "128B": 0.21167432993159135,
+    "256B": 0.9980374565436806,
+    "512B": 1.0,
+    "random 1-1460B": 0.9467309633284737
+  }
+}
+                            precision    recall  f1-score   support
+
+                    BENIGN     0.9881    0.9628    0.9753    419012
+                       Bot     0.0472    1.0000    0.0901       390
+                      DDoS     0.9996    0.9728    0.9860     25603
+             DoS GoldenEye     0.9906    0.9713    0.9809      2057
+                  DoS Hulk     0.9996    0.8988    0.9465     34569
+          DoS Slowhttptest     0.8822    0.9876    0.9319      1046
+             DoS slowloris     0.9806    0.9861    0.9833      1077
+               FTP-Patator     0.9066    0.9089    0.9078      1186
+                Heartbleed     0.2500    0.5000    0.3333         2
+              Infiltration     0.0769    1.0000    0.1429         7
+                  PortScan     0.7666    0.9718    0.8571     18139
+               SSH-Patator     0.9883    0.9193    0.9525       644
+  Web Attack � Brute Force     0.1206    0.7959    0.2094       294
+Web Attack � Sql Injection     0.0182    0.2500    0.0339         4
+          Web Attack � XSS     0.1106    0.3769    0.1710       130
+
+                  accuracy                         0.9590    504160
+                 macro avg     0.6084    0.8335    0.6335    504160
+              weighted avg     0.9796    0.9590    0.9680    504160
+
+
+Weighted-vote weights → {'xgboost': 0.346415, 'rf': 0.345752, 'cnn': 0.307833}
+
+detector set: /Users/varunkaveti/Documents/thesis/code/models_cov1_ms3
+held-out test split: 504,160 rows
+detector  accuracy  attack-recall  false-pos  PortScan-caught
+xgboost    99.89%    99.87%       0.07%     99.98%
+rf         99.82%    99.51%       0.07%     98.89%
+cnn        95.90%    94.61%       3.82%     98.31%
+weighted-vote weights: {'xgboost': 0.346415, 'rf': 0.345752, 'cnn': 0.307833}
+decision rules on the held-out test split (paired, same detector outputs):
+rule       attack-recall  false-pos   F1
+majority     99.76%       0.07%   0.9971
+unanimous    94.23%       0.05%   0.9690
+weighted     99.81%       0.08%   0.9970
+any          99.99%       3.84%   0.9135
+xgboost      99.87%       0.07%   0.9977
+rf           99.51%       0.07%   0.9958
+cnn          94.61%       3.82%   0.8865
+padded held-out scan probes caught (17,834 flows per size, recorded destination ports):
+rule            0B       64B      128B      256B      512B  random 1-1460B
+majority    100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+unanimous   100.0%     84.3%     25.1%     82.0%    100.0%     91.6%
+weighted    100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+any         100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+xgboost     100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+rf          100.0%    100.0%    100.0%    100.0%    100.0%     99.8%
+cnn         100.0%     84.3%     25.1%     82.0%    100.0%     91.9%
+padded held-out scan probes caught (17,834 flows per size, destination ports 1001-1100, as in the simulator):
+rule            0B       64B      128B      256B      512B  random 1-1460B
+majority    100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+unanimous   100.0%     94.0%     21.2%     99.8%    100.0%     94.4%
+weighted    100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+any         100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+xgboost     100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+rf          100.0%    100.0%    100.0%    100.0%    100.0%     99.8%
+cnn         100.0%     94.0%     21.2%     99.8%    100.0%     94.7%
+detector pairs: disagreement / double-fault (test split | padded non-zero payload, sim ports)
+xgboost-rf    0.09% /  0.07%   |    0.05% /  0.00%
+xgboost-cnn   4.07% /  0.05%   |   18.06% /  0.00%
+rf-cnn        4.09% /  0.07%   |   18.11% /  0.00%

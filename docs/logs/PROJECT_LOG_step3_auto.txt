@@ -1,0 +1,2698 @@
+
+[2026-10-15 00:43:32] [auto] Training batch started: 14 experiment(s)
+    rules=['majority', 'unanimous', 'weighted', 'any', 'xgboost', 'rf', 'cnn']  knowledge=['black', 'white']  timesteps=50000  seed=1
+    mode=parallel (max 7)
+    detector set=/Users/varunkaveti/Documents/thesis/code/models  output dir=/Users/varunkaveti/Documents/thesis/results_multiseed/cov0/seed_1
+
+[2026-10-15 00:43:32] [auto] Training batch started: 14 experiment(s)
+    rules=['majority', 'unanimous', 'weighted', 'any', 'xgboost', 'rf', 'cnn']  knowledge=['black', 'white']  timesteps=50000  seed=1
+    mode=parallel (max 7)
+    detector set=/Users/varunkaveti/Documents/thesis/code/models_cov1  output dir=/Users/varunkaveti/Documents/thesis/results_multiseed/cov1/seed_1
+
+[2026-10-15 00:43:34] [auto] Experiment started: ddqn_majority_black
+    timesteps=50000  seed=1  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 00:43:34] [auto] Experiment started: ddqn_majority_black
+    timesteps=50000  seed=1  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 00:43:34] [auto] Experiment started: ddqn_majority_white
+    timesteps=50000  seed=1  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 00:43:35] [auto] Experiment started: ddqn_unanimous_black
+    timesteps=50000  seed=1  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 00:43:35] [auto] Experiment started: ddqn_majority_white
+    timesteps=50000  seed=1  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 00:43:35] [auto] Experiment started: ddqn_unanimous_black
+    timesteps=50000  seed=1  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 00:43:35] [auto] Experiment started: ddqn_unanimous_white
+    timesteps=50000  seed=1  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 00:43:35] [auto] Experiment started: ddqn_unanimous_white
+    timesteps=50000  seed=1  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 00:43:35] [auto] Experiment started: ddqn_weighted_black
+    timesteps=50000  seed=1  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 00:43:35] [auto] Experiment started: ddqn_weighted_black
+    timesteps=50000  seed=1  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 00:43:35] [auto] Experiment started: ddqn_weighted_white
+    timesteps=50000  seed=1  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 00:43:35] [auto] Experiment started: ddqn_weighted_white
+    timesteps=50000  seed=1  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 00:43:35] [auto] Experiment started: ddqn_any_black
+    timesteps=50000  seed=1  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 00:43:35] [auto] Experiment started: ddqn_any_black
+    timesteps=50000  seed=1  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 00:44:01] [auto] Adversarial training (cov1, model seed 2) started (train_adversarial.py --stage cnn)
+    bands per detector: {'xgboost': ['A'], 'rf': ['B'], 'cnn': ['C']}
+    71,381 padded PortScan rows per detector + 2,016,638 original train rows; same split, scaler, hyperparameters; output /Users/varunkaveti/Documents/thesis/code/models_cov1_ms2
+
+[2026-10-15 00:44:01] [auto] Adversarial training (cov1, model seed 1) started (train_adversarial.py --stage trees)
+    bands per detector: {'xgboost': ['A'], 'rf': ['B'], 'cnn': ['C']}
+    71,381 padded PortScan rows per detector + 2,016,638 original train rows; same split, scaler, hyperparameters; output /Users/varunkaveti/Documents/thesis/code/models_cov1_ms1
+
+[2026-10-15 00:44:02] [auto] Adversarial training (cov1, model seed 1) started (train_adversarial.py --stage cnn)
+    bands per detector: {'xgboost': ['A'], 'rf': ['B'], 'cnn': ['C']}
+    71,381 padded PortScan rows per detector + 2,016,638 original train rows; same split, scaler, hyperparameters; output /Users/varunkaveti/Documents/thesis/code/models_cov1_ms1
+
+[2026-10-15 00:46:41] [auto] Adversarial training (cov1, model seed 1): trees finished (train_adversarial.py)
+    bands per detector: {'xgboost': ['A'], 'rf': ['B'], 'cnn': ['C']}  ({'A': [1, 90], 'B': [91, 362], 'C': [363, 1460]} bytes)
+    padded PortScan rows per detector: 71,381 (seed 2026) added to 2,016,638 train rows
+    RF 1.5 min, XGBoost 1.2 min; saved to /Users/varunkaveti/Documents/thesis/code/models_cov1_ms1
+
+[2026-10-15 00:47:15] [auto] Adversarial training (cov1, model seed 2) started (train_adversarial.py --stage trees)
+    bands per detector: {'xgboost': ['A'], 'rf': ['B'], 'cnn': ['C']}
+    71,381 padded PortScan rows per detector + 2,016,638 original train rows; same split, scaler, hyperparameters; output /Users/varunkaveti/Documents/thesis/code/models_cov1_ms2
+
+[2026-10-15 00:49:58] [auto] Adversarial training (cov1, model seed 2): trees finished (train_adversarial.py)
+    bands per detector: {'xgboost': ['A'], 'rf': ['B'], 'cnn': ['C']}  ({'A': [1, 90], 'B': [91, 362], 'C': [363, 1460]} bytes)
+    padded PortScan rows per detector: 71,381 (seed 2026) added to 2,016,638 train rows
+    RF 1.5 min, XGBoost 1.3 min; saved to /Users/varunkaveti/Documents/thesis/code/models_cov1_ms2
+
+[2026-10-15 00:50:34] [auto] Adversarial training (cov1, model seed 3) started (train_adversarial.py --stage trees)
+    bands per detector: {'xgboost': ['A'], 'rf': ['B'], 'cnn': ['C']}
+    71,381 padded PortScan rows per detector + 2,016,638 original train rows; same split, scaler, hyperparameters; output /Users/varunkaveti/Documents/thesis/code/models_cov1_ms3
+
+[2026-10-15 00:53:21] [auto] Adversarial training (cov1, model seed 3): trees finished (train_adversarial.py)
+    bands per detector: {'xgboost': ['A'], 'rf': ['B'], 'cnn': ['C']}  ({'A': [1, 90], 'B': [91, 362], 'C': [363, 1460]} bytes)
+    padded PortScan rows per detector: 71,381 (seed 2026) added to 2,016,638 train rows
+    RF 1.5 min, XGBoost 1.3 min; saved to /Users/varunkaveti/Documents/thesis/code/models_cov1_ms3
+
+[2026-10-15 00:53:34] [auto] Experiment finished: ddqn_any_black
+    episodes=500  wall-clock=9.9 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_any_black.json
+
+[2026-10-15 00:53:35] [auto] Experiment finished: ddqn_majority_black
+    episodes=500  wall-clock=9.9 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_majority_black.json
+
+[2026-10-15 00:53:35] [auto] Experiment finished: ddqn_majority_black
+    episodes=500  wall-clock=10.0 min
+    evasion: first 10 eps 81.1%  last 50 eps 98.9%  mean 96.9%
+    convergence file: convergence_ddqn_majority_black.json
+
+[2026-10-15 00:53:35] [auto] Experiment finished: ddqn_weighted_black
+    episodes=500  wall-clock=9.9 min
+    evasion: first 10 eps 81.1%  last 50 eps 98.9%  mean 96.9%
+    convergence file: convergence_ddqn_weighted_black.json
+
+[2026-10-15 00:53:35] [auto] Experiment finished: ddqn_majority_white
+    episodes=500  wall-clock=10.0 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_majority_white.json
+
+[2026-10-15 00:53:35] [auto] Experiment finished: ddqn_any_black
+    episodes=500  wall-clock=10.0 min
+    evasion: first 10 eps 72.0%  last 50 eps 92.5%  mean 92.2%
+    convergence file: convergence_ddqn_any_black.json
+
+[2026-10-15 00:53:35] [auto] Experiment finished: ddqn_weighted_black
+    episodes=500  wall-clock=10.0 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_weighted_black.json
+
+[2026-10-15 00:53:35] [auto] Experiment finished: ddqn_majority_white
+    episodes=500  wall-clock=10.0 min
+    evasion: first 10 eps 81.1%  last 50 eps 97.4%  mean 96.6%
+    convergence file: convergence_ddqn_majority_white.json
+
+[2026-10-15 00:53:35] [auto] Experiment finished: ddqn_unanimous_black
+    episodes=500  wall-clock=10.0 min
+    evasion: first 10 eps 21.7%  last 50 eps 90.0%  mean 83.4%
+    convergence file: convergence_ddqn_unanimous_black.json
+
+[2026-10-15 00:53:36] [auto] Experiment finished: ddqn_weighted_white
+    episodes=500  wall-clock=10.0 min
+    evasion: first 10 eps 81.1%  last 50 eps 97.4%  mean 96.6%
+    convergence file: convergence_ddqn_weighted_white.json
+
+[2026-10-15 00:53:36] [auto] Experiment finished: ddqn_weighted_white
+    episodes=500  wall-clock=10.0 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_weighted_white.json
+
+[2026-10-15 00:53:36] [auto] Experiment finished: ddqn_unanimous_white
+    episodes=500  wall-clock=10.0 min
+    evasion: first 10 eps 84.2%  last 50 eps 95.2%  mean 95.9%
+    convergence file: convergence_ddqn_unanimous_white.json
+
+[2026-10-15 00:53:37] [auto] Experiment finished: ddqn_unanimous_black
+    episodes=500  wall-clock=10.0 min
+    evasion: first 10 eps 84.2%  last 50 eps 99.1%  mean 97.2%
+    convergence file: convergence_ddqn_unanimous_black.json
+
+[2026-10-15 00:53:37] [auto] Experiment finished: ddqn_unanimous_white
+    episodes=500  wall-clock=10.0 min
+    evasion: first 10 eps 21.7%  last 50 eps 74.1%  mean 73.8%
+    convergence file: convergence_ddqn_unanimous_white.json
+
+[2026-10-15 00:53:38] [auto] Experiment started: ddqn_any_white
+    timesteps=50000  seed=1  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 00:53:38] [auto] Experiment started: ddqn_xgboost_black
+    timesteps=50000  seed=1  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 00:53:38] [auto] Experiment started: ddqn_any_white
+    timesteps=50000  seed=1  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 00:53:38] [auto] Experiment started: ddqn_xgboost_black
+    timesteps=50000  seed=1  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 00:53:38] [auto] Experiment started: ddqn_xgboost_white
+    timesteps=50000  seed=1  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 00:53:38] [auto] Experiment started: ddqn_xgboost_white
+    timesteps=50000  seed=1  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 00:53:39] [auto] Experiment started: ddqn_rf_black
+    timesteps=50000  seed=1  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 00:53:39] [auto] Experiment started: ddqn_rf_black
+    timesteps=50000  seed=1  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 00:53:39] [auto] Experiment started: ddqn_rf_white
+    timesteps=50000  seed=1  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 00:53:39] [auto] Experiment started: ddqn_rf_white
+    timesteps=50000  seed=1  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 00:53:39] [auto] Experiment started: ddqn_cnn_black
+    timesteps=50000  seed=1  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 00:53:39] [auto] Experiment started: ddqn_cnn_black
+    timesteps=50000  seed=1  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 00:53:40] [auto] Experiment started: ddqn_cnn_white
+    timesteps=50000  seed=1  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 00:53:40] [auto] Experiment started: ddqn_cnn_white
+    timesteps=50000  seed=1  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 00:56:01] [auto] Experiment finished: ddqn_cnn_black
+    episodes=500  wall-clock=2.3 min
+    evasion: first 10 eps 21.7%  last 50 eps 90.0%  mean 83.4%
+    convergence file: convergence_ddqn_cnn_black.json
+
+[2026-10-15 00:56:01] [auto] Experiment finished: ddqn_cnn_black
+    episodes=500  wall-clock=2.3 min
+    evasion: first 10 eps 72.0%  last 50 eps 92.5%  mean 92.2%
+    convergence file: convergence_ddqn_cnn_black.json
+
+[2026-10-15 00:56:02] [auto] Experiment finished: ddqn_xgboost_black
+    episodes=500  wall-clock=2.3 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_xgboost_black.json
+
+[2026-10-15 00:56:02] [auto] Experiment finished: ddqn_cnn_white
+    episodes=500  wall-clock=2.3 min
+    evasion: first 10 eps 21.7%  last 50 eps 74.1%  mean 73.8%
+    convergence file: convergence_ddqn_cnn_white.json
+
+[2026-10-15 00:56:02] [auto] Experiment finished: ddqn_cnn_white
+    episodes=500  wall-clock=2.3 min
+    evasion: first 10 eps 72.0%  last 50 eps 90.4%  mean 90.2%
+    convergence file: convergence_ddqn_cnn_white.json
+
+[2026-10-15 00:56:02] [auto] Experiment finished: ddqn_xgboost_black
+    episodes=500  wall-clock=2.4 min
+    evasion: first 10 eps 84.2%  last 50 eps 99.1%  mean 97.2%
+    convergence file: convergence_ddqn_xgboost_black.json
+
+[2026-10-15 00:56:03] [auto] Experiment finished: ddqn_xgboost_white
+    episodes=500  wall-clock=2.4 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_xgboost_white.json
+
+[2026-10-15 00:56:04] [auto] Experiment finished: ddqn_xgboost_white
+    episodes=500  wall-clock=2.4 min
+    evasion: first 10 eps 84.2%  last 50 eps 95.2%  mean 95.9%
+    convergence file: convergence_ddqn_xgboost_white.json
+
+[2026-10-15 00:57:57] [auto] Experiment finished: ddqn_rf_black
+    episodes=500  wall-clock=4.2 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_rf_black.json
+
+[2026-10-15 00:57:57] [auto] Experiment finished: ddqn_rf_white
+    episodes=500  wall-clock=4.3 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_rf_white.json
+
+[2026-10-15 00:57:58] [auto] Experiment finished: ddqn_rf_black
+    episodes=500  wall-clock=4.3 min
+    evasion: first 10 eps 81.1%  last 50 eps 98.9%  mean 96.9%
+    convergence file: convergence_ddqn_rf_black.json
+
+[2026-10-15 00:57:59] [auto] Experiment finished: ddqn_rf_white
+    episodes=500  wall-clock=4.3 min
+    evasion: first 10 eps 81.1%  last 50 eps 97.4%  mean 96.6%
+    convergence file: convergence_ddqn_rf_white.json
+
+[2026-10-15 00:59:08] [auto] Experiment finished: ddqn_any_white
+    episodes=500  wall-clock=5.4 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_any_white.json
+
+[2026-10-15 00:59:08] [auto] Training batch finished: 14 experiment(s)
+    seed=1  detector set=/Users/varunkaveti/Documents/thesis/code/models_cov1  output dir=/Users/varunkaveti/Documents/thesis/results_multiseed/cov1/seed_1
+
+[2026-10-15 00:59:10] [auto] Experiment finished: ddqn_any_white
+    episodes=500  wall-clock=5.5 min
+    evasion: first 10 eps 72.0%  last 50 eps 90.4%  mean 90.2%
+    convergence file: convergence_ddqn_any_white.json
+
+[2026-10-15 00:59:10] [auto] Training batch finished: 14 experiment(s)
+    seed=1  detector set=/Users/varunkaveti/Documents/thesis/code/models  output dir=/Users/varunkaveti/Documents/thesis/results_multiseed/cov0/seed_1
+
+[2026-10-15 01:00:51] [auto] Agent evaluation (evaluate_agents.py)
+    detector set=/Users/varunkaveti/Documents/thesis/code/models_cov1  results dir=/Users/varunkaveti/Documents/thesis/results_multiseed/cov1/seed_1
+    untrained: 5000 random probes (paired across rules); trained: 20 greedy episodes each, eval seed 12345
+    defence     untrained  trained-black  trained-white
+    majority      0.0%       0.0%           0.0%
+    unanimous    20.7%      94.5%          94.5%
+    weighted      0.0%       0.0%           0.0%
+    any           0.0%       0.0%           0.0%
+    xgboost       0.0%       0.0%           0.0%
+    rf            0.0%       0.0%           0.0%
+    cnn          20.7%      94.5%          94.5%
+    output: eval_results.json
+
+[2026-10-15 01:00:53] [auto] Agent evaluation (evaluate_agents.py)
+    detector set=/Users/varunkaveti/Documents/thesis/code/models  results dir=/Users/varunkaveti/Documents/thesis/results_multiseed/cov0/seed_1
+    untrained: 5000 random probes (paired across rules); trained: 20 greedy episodes each, eval seed 12345
+    defence     untrained  trained-black  trained-white
+    majority     80.5%     100.0%         100.0%
+    unanimous    83.4%     100.0%         100.0%
+    weighted     80.5%     100.0%         100.0%
+    any          72.1%     100.0%          99.8%
+    xgboost      83.4%     100.0%         100.0%
+    rf           80.5%     100.0%         100.0%
+    cnn          72.1%     100.0%          99.8%
+    output: eval_results.json
+
+[2026-10-15 01:00:53] [auto] Training batch started: 14 experiment(s)
+    rules=['majority', 'unanimous', 'weighted', 'any', 'xgboost', 'rf', 'cnn']  knowledge=['black', 'white']  timesteps=50000  seed=2
+    mode=parallel (max 7)
+    detector set=/Users/varunkaveti/Documents/thesis/code/models  output dir=/Users/varunkaveti/Documents/thesis/results_multiseed/cov0/seed_2
+
+[2026-10-15 01:00:55] [auto] Experiment started: ddqn_majority_black
+    timesteps=50000  seed=2  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:00:55] [auto] Training batch started: 14 experiment(s)
+    rules=['majority', 'unanimous', 'weighted', 'any', 'xgboost', 'rf', 'cnn']  knowledge=['black', 'white']  timesteps=50000  seed=2
+    mode=parallel (max 7)
+    detector set=/Users/varunkaveti/Documents/thesis/code/models_cov1  output dir=/Users/varunkaveti/Documents/thesis/results_multiseed/cov1/seed_2
+
+[2026-10-15 01:00:55] [auto] Experiment started: ddqn_majority_white
+    timesteps=50000  seed=2  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:00:55] [auto] Experiment started: ddqn_unanimous_black
+    timesteps=50000  seed=2  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:00:55] [auto] Experiment started: ddqn_unanimous_white
+    timesteps=50000  seed=2  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:00:55] [auto] Experiment started: ddqn_weighted_black
+    timesteps=50000  seed=2  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:00:55] [auto] Experiment started: ddqn_weighted_white
+    timesteps=50000  seed=2  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:00:55] [auto] Experiment started: ddqn_any_black
+    timesteps=50000  seed=2  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:00:57] [auto] Experiment started: ddqn_majority_black
+    timesteps=50000  seed=2  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:00:57] [auto] Experiment started: ddqn_majority_white
+    timesteps=50000  seed=2  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:00:57] [auto] Experiment started: ddqn_unanimous_black
+    timesteps=50000  seed=2  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:00:57] [auto] Experiment started: ddqn_unanimous_white
+    timesteps=50000  seed=2  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:00:57] [auto] Experiment started: ddqn_weighted_black
+    timesteps=50000  seed=2  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:00:57] [auto] Experiment started: ddqn_weighted_white
+    timesteps=50000  seed=2  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:00:57] [auto] Experiment started: ddqn_any_black
+    timesteps=50000  seed=2  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:07:53] [auto] Experiment finished: ddqn_majority_black
+    episodes=500  wall-clock=6.9 min
+    evasion: first 10 eps 79.3%  last 50 eps 99.0%  mean 97.0%
+    convergence file: convergence_ddqn_majority_black.json
+
+[2026-10-15 01:07:53] [auto] Experiment finished: ddqn_unanimous_black
+    episodes=500  wall-clock=6.9 min
+    evasion: first 10 eps 82.7%  last 50 eps 99.1%  mean 96.9%
+    convergence file: convergence_ddqn_unanimous_black.json
+
+[2026-10-15 01:07:54] [auto] Experiment finished: ddqn_weighted_black
+    episodes=500  wall-clock=6.9 min
+    evasion: first 10 eps 79.3%  last 50 eps 99.0%  mean 97.0%
+    convergence file: convergence_ddqn_weighted_black.json
+
+[2026-10-15 01:07:54] [auto] Experiment finished: ddqn_unanimous_black
+    episodes=500  wall-clock=6.9 min
+    evasion: first 10 eps 20.2%  last 50 eps 88.2%  mean 83.2%
+    convergence file: convergence_ddqn_unanimous_black.json
+
+[2026-10-15 01:07:55] [auto] Experiment finished: ddqn_weighted_black
+    episodes=500  wall-clock=6.9 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_weighted_black.json
+
+[2026-10-15 01:07:55] [auto] Experiment finished: ddqn_majority_black
+    episodes=500  wall-clock=6.9 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_majority_black.json
+
+[2026-10-15 01:07:55] [auto] Experiment finished: ddqn_weighted_white
+    episodes=500  wall-clock=6.9 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_weighted_white.json
+
+[2026-10-15 01:07:56] [auto] Experiment finished: ddqn_any_black
+    episodes=500  wall-clock=7.0 min
+    evasion: first 10 eps 70.4%  last 50 eps 92.5%  mean 92.8%
+    convergence file: convergence_ddqn_any_black.json
+
+[2026-10-15 01:07:56] [auto] Experiment finished: ddqn_unanimous_white
+    episodes=500  wall-clock=7.0 min
+    evasion: first 10 eps 82.7%  last 50 eps 97.7%  mean 95.1%
+    convergence file: convergence_ddqn_unanimous_white.json
+
+[2026-10-15 01:07:56] [auto] Experiment finished: ddqn_majority_white
+    episodes=500  wall-clock=6.9 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_majority_white.json
+
+[2026-10-15 01:07:57] [auto] Experiment started: ddqn_any_white
+    timesteps=50000  seed=2  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:07:57] [auto] Experiment started: ddqn_xgboost_black
+    timesteps=50000  seed=2  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:07:57] [auto] Experiment finished: ddqn_weighted_white
+    episodes=500  wall-clock=7.0 min
+    evasion: first 10 eps 79.3%  last 50 eps 96.4%  mean 96.4%
+    convergence file: convergence_ddqn_weighted_white.json
+
+[2026-10-15 01:07:57] [auto] Experiment finished: ddqn_any_black
+    episodes=500  wall-clock=6.9 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_any_black.json
+
+[2026-10-15 01:07:57] [auto] Experiment started: ddqn_xgboost_white
+    timesteps=50000  seed=2  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:07:58] [auto] Experiment started: ddqn_any_white
+    timesteps=50000  seed=2  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:07:58] [auto] Experiment finished: ddqn_unanimous_white
+    episodes=500  wall-clock=7.0 min
+    evasion: first 10 eps 20.2%  last 50 eps 87.8%  mean 77.5%
+    convergence file: convergence_ddqn_unanimous_white.json
+
+[2026-10-15 01:07:58] [auto] Experiment started: ddqn_xgboost_black
+    timesteps=50000  seed=2  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:07:58] [auto] Experiment finished: ddqn_majority_white
+    episodes=500  wall-clock=7.0 min
+    evasion: first 10 eps 79.3%  last 50 eps 96.4%  mean 96.4%
+    convergence file: convergence_ddqn_majority_white.json
+
+[2026-10-15 01:07:58] [auto] Experiment started: ddqn_xgboost_white
+    timesteps=50000  seed=2  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:07:58] [auto] Experiment started: ddqn_rf_black
+    timesteps=50000  seed=2  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:07:59] [auto] Experiment started: ddqn_rf_black
+    timesteps=50000  seed=2  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:07:59] [auto] Experiment started: ddqn_rf_white
+    timesteps=50000  seed=2  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:08:00] [auto] Experiment started: ddqn_rf_white
+    timesteps=50000  seed=2  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:08:00] [auto] Experiment started: ddqn_cnn_black
+    timesteps=50000  seed=2  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:08:00] [auto] Experiment started: ddqn_cnn_black
+    timesteps=50000  seed=2  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:08:01] [auto] Experiment started: ddqn_cnn_white
+    timesteps=50000  seed=2  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:08:01] [auto] Experiment started: ddqn_cnn_white
+    timesteps=50000  seed=2  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:08:38] [auto] Adversarial training (cov1, model seed 1): CNN finished (train_adversarial.py)
+    bands: ['C']; 30 epochs on mps, 24.5 min; best validation accuracy 0.9602 (5% slice of augmented train split)
+    saved /Users/varunkaveti/Documents/thesis/code/models_cov1_ms1/cnn_model.pth
+
+[2026-10-15 01:08:38] [auto] Adversarial training (cov1, model seed 2): CNN finished (train_adversarial.py)
+    bands: ['C']; 30 epochs on mps, 24.5 min; best validation accuracy 0.9609 (5% slice of augmented train split)
+    saved /Users/varunkaveti/Documents/thesis/code/models_cov1_ms2/cnn_model.pth
+
+[2026-10-15 01:08:57] [auto] Adversarial training (cov1, model seed 3) started (train_adversarial.py --stage cnn)
+    bands per detector: {'xgboost': ['A'], 'rf': ['B'], 'cnn': ['C']}
+    71,381 padded PortScan rows per detector + 2,016,638 original train rows; same split, scaler, hyperparameters; output /Users/varunkaveti/Documents/thesis/code/models_cov1_ms3
+
+[2026-10-15 01:09:51] [auto] Experiment finished: ddqn_xgboost_black
+    episodes=500  wall-clock=1.8 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_xgboost_black.json
+
+[2026-10-15 01:09:51] [auto] Experiment finished: ddqn_xgboost_black
+    episodes=500  wall-clock=1.9 min
+    evasion: first 10 eps 82.7%  last 50 eps 99.1%  mean 96.9%
+    convergence file: convergence_ddqn_xgboost_black.json
+
+[2026-10-15 01:09:52] [auto] Experiment finished: ddqn_cnn_black
+    episodes=500  wall-clock=1.8 min
+    evasion: first 10 eps 70.4%  last 50 eps 92.5%  mean 92.8%
+    convergence file: convergence_ddqn_cnn_black.json
+
+[2026-10-15 01:09:52] [auto] Experiment finished: ddqn_cnn_black
+    episodes=500  wall-clock=1.8 min
+    evasion: first 10 eps 20.2%  last 50 eps 88.2%  mean 83.2%
+    convergence file: convergence_ddqn_cnn_black.json
+
+[2026-10-15 01:09:53] [auto] Experiment finished: ddqn_xgboost_white
+    episodes=500  wall-clock=1.9 min
+    evasion: first 10 eps 82.7%  last 50 eps 97.7%  mean 95.1%
+    convergence file: convergence_ddqn_xgboost_white.json
+
+[2026-10-15 01:09:53] [auto] Experiment finished: ddqn_cnn_white
+    episodes=500  wall-clock=1.8 min
+    evasion: first 10 eps 20.2%  last 50 eps 87.8%  mean 77.5%
+    convergence file: convergence_ddqn_cnn_white.json
+
+[2026-10-15 01:09:53] [auto] Experiment finished: ddqn_cnn_white
+    episodes=500  wall-clock=1.8 min
+    evasion: first 10 eps 70.4%  last 50 eps 90.6%  mean 89.8%
+    convergence file: convergence_ddqn_cnn_white.json
+
+[2026-10-15 01:09:53] [auto] Experiment finished: ddqn_xgboost_white
+    episodes=500  wall-clock=1.9 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_xgboost_white.json
+
+[2026-10-15 01:11:33] [auto] Experiment finished: ddqn_rf_black
+    episodes=500  wall-clock=3.5 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_rf_black.json
+
+[2026-10-15 01:11:35] [auto] Experiment finished: ddqn_rf_white
+    episodes=500  wall-clock=3.5 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_rf_white.json
+
+[2026-10-15 01:11:36] [auto] Experiment finished: ddqn_rf_black
+    episodes=500  wall-clock=3.6 min
+    evasion: first 10 eps 79.3%  last 50 eps 99.0%  mean 97.0%
+    convergence file: convergence_ddqn_rf_black.json
+
+[2026-10-15 01:11:37] [auto] Experiment finished: ddqn_rf_white
+    episodes=500  wall-clock=3.6 min
+    evasion: first 10 eps 79.3%  last 50 eps 96.4%  mean 96.4%
+    convergence file: convergence_ddqn_rf_white.json
+
+[2026-10-15 01:12:35] [auto] Experiment finished: ddqn_any_white
+    episodes=500  wall-clock=4.6 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_any_white.json
+
+[2026-10-15 01:12:35] [auto] Training batch finished: 14 experiment(s)
+    seed=2  detector set=/Users/varunkaveti/Documents/thesis/code/models_cov1  output dir=/Users/varunkaveti/Documents/thesis/results_multiseed/cov1/seed_2
+
+[2026-10-15 01:12:37] [auto] Experiment finished: ddqn_any_white
+    episodes=500  wall-clock=4.6 min
+    evasion: first 10 eps 70.4%  last 50 eps 90.6%  mean 89.8%
+    convergence file: convergence_ddqn_any_white.json
+
+[2026-10-15 01:12:37] [auto] Training batch finished: 14 experiment(s)
+    seed=2  detector set=/Users/varunkaveti/Documents/thesis/code/models  output dir=/Users/varunkaveti/Documents/thesis/results_multiseed/cov0/seed_2
+
+[2026-10-15 01:14:12] [auto] Agent evaluation (evaluate_agents.py)
+    detector set=/Users/varunkaveti/Documents/thesis/code/models_cov1  results dir=/Users/varunkaveti/Documents/thesis/results_multiseed/cov1/seed_2
+    untrained: 5000 random probes (paired across rules); trained: 20 greedy episodes each, eval seed 12345
+    defence     untrained  trained-black  trained-white
+    majority      0.0%       0.0%           0.0%
+    unanimous    20.7%      94.5%          91.0%
+    weighted      0.0%       0.0%           0.0%
+    any           0.0%       0.0%           0.0%
+    xgboost       0.0%       0.0%           0.0%
+    rf            0.0%       0.0%           0.0%
+    cnn          20.7%      94.5%          91.0%
+    output: eval_results.json
+
+[2026-10-15 01:14:14] [auto] Training batch started: 14 experiment(s)
+    rules=['majority', 'unanimous', 'weighted', 'any', 'xgboost', 'rf', 'cnn']  knowledge=['black', 'white']  timesteps=50000  seed=3
+    mode=parallel (max 7)
+    detector set=/Users/varunkaveti/Documents/thesis/code/models  output dir=/Users/varunkaveti/Documents/thesis/results_multiseed/cov0/seed_3
+
+[2026-10-15 01:14:14] [auto] Agent evaluation (evaluate_agents.py)
+    detector set=/Users/varunkaveti/Documents/thesis/code/models  results dir=/Users/varunkaveti/Documents/thesis/results_multiseed/cov0/seed_2
+    untrained: 5000 random probes (paired across rules); trained: 20 greedy episodes each, eval seed 12345
+    defence     untrained  trained-black  trained-white
+    majority     80.5%     100.0%         100.0%
+    unanimous    83.4%     100.0%          99.1%
+    weighted     80.5%     100.0%         100.0%
+    any          72.1%      99.8%          58.7%
+    xgboost      83.4%     100.0%          99.1%
+    rf           80.5%     100.0%         100.0%
+    cnn          72.1%      99.8%          58.7%
+    output: eval_results.json
+
+[2026-10-15 01:14:15] [auto] Experiment started: ddqn_majority_black
+    timesteps=50000  seed=3  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:14:15] [auto] Experiment started: ddqn_majority_white
+    timesteps=50000  seed=3  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:14:15] [auto] Experiment started: ddqn_unanimous_black
+    timesteps=50000  seed=3  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:14:15] [auto] Experiment started: ddqn_unanimous_white
+    timesteps=50000  seed=3  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:14:15] [auto] Experiment started: ddqn_weighted_black
+    timesteps=50000  seed=3  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:14:15] [auto] Experiment started: ddqn_weighted_white
+    timesteps=50000  seed=3  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:14:15] [auto] Experiment started: ddqn_any_black
+    timesteps=50000  seed=3  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:14:16] [auto] Training batch started: 14 experiment(s)
+    rules=['majority', 'unanimous', 'weighted', 'any', 'xgboost', 'rf', 'cnn']  knowledge=['black', 'white']  timesteps=50000  seed=3
+    mode=parallel (max 7)
+    detector set=/Users/varunkaveti/Documents/thesis/code/models_cov1  output dir=/Users/varunkaveti/Documents/thesis/results_multiseed/cov1/seed_3
+
+[2026-10-15 01:14:19] [auto] Experiment started: ddqn_majority_black
+    timesteps=50000  seed=3  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:14:19] [auto] Experiment started: ddqn_majority_white
+    timesteps=50000  seed=3  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:14:19] [auto] Experiment started: ddqn_unanimous_black
+    timesteps=50000  seed=3  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:14:19] [auto] Experiment started: ddqn_unanimous_white
+    timesteps=50000  seed=3  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:14:19] [auto] Experiment started: ddqn_weighted_black
+    timesteps=50000  seed=3  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:14:19] [auto] Experiment started: ddqn_weighted_white
+    timesteps=50000  seed=3  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:14:19] [auto] Experiment started: ddqn_any_black
+    timesteps=50000  seed=3  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:19:45] [auto] Experiment finished: ddqn_weighted_black
+    episodes=500  wall-clock=5.5 min
+    evasion: first 10 eps 78.2%  last 50 eps 98.9%  mean 97.0%
+    convergence file: convergence_ddqn_weighted_black.json
+
+[2026-10-15 01:19:46] [auto] Experiment finished: ddqn_any_black
+    episodes=500  wall-clock=5.5 min
+    evasion: first 10 eps 69.8%  last 50 eps 92.2%  mean 92.4%
+    convergence file: convergence_ddqn_any_black.json
+
+[2026-10-15 01:19:46] [auto] Experiment finished: ddqn_majority_black
+    episodes=500  wall-clock=5.5 min
+    evasion: first 10 eps 78.2%  last 50 eps 98.9%  mean 97.0%
+    convergence file: convergence_ddqn_majority_black.json
+
+[2026-10-15 01:19:47] [auto] Experiment finished: ddqn_majority_white
+    episodes=500  wall-clock=5.5 min
+    evasion: first 10 eps 78.2%  last 50 eps 98.9%  mean 96.5%
+    convergence file: convergence_ddqn_majority_white.json
+
+[2026-10-15 01:19:47] [auto] Experiment finished: ddqn_weighted_white
+    episodes=500  wall-clock=5.5 min
+    evasion: first 10 eps 78.2%  last 50 eps 98.9%  mean 96.5%
+    convergence file: convergence_ddqn_weighted_white.json
+
+[2026-10-15 01:19:47] [auto] Experiment finished: ddqn_any_black
+    episodes=500  wall-clock=5.4 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_any_black.json
+
+[2026-10-15 01:19:47] [auto] Experiment finished: ddqn_unanimous_black
+    episodes=500  wall-clock=5.5 min
+    evasion: first 10 eps 81.3%  last 50 eps 98.3%  mean 97.2%
+    convergence file: convergence_ddqn_unanimous_black.json
+
+[2026-10-15 01:19:47] [auto] Experiment finished: ddqn_majority_black
+    episodes=500  wall-clock=5.4 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_majority_black.json
+
+[2026-10-15 01:19:47] [auto] Experiment finished: ddqn_weighted_black
+    episodes=500  wall-clock=5.4 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_weighted_black.json
+
+[2026-10-15 01:19:48] [auto] Experiment finished: ddqn_majority_white
+    episodes=500  wall-clock=5.4 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_majority_white.json
+
+[2026-10-15 01:19:48] [auto] Experiment started: ddqn_any_white
+    timesteps=50000  seed=3  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:19:48] [auto] Experiment started: ddqn_xgboost_black
+    timesteps=50000  seed=3  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:19:48] [auto] Experiment started: ddqn_xgboost_white
+    timesteps=50000  seed=3  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:19:48] [auto] Experiment finished: ddqn_unanimous_white
+    episodes=500  wall-clock=5.5 min
+    evasion: first 10 eps 81.3%  last 50 eps 91.3%  mean 95.4%
+    convergence file: convergence_ddqn_unanimous_white.json
+
+[2026-10-15 01:19:49] [auto] Experiment finished: ddqn_unanimous_black
+    episodes=500  wall-clock=5.5 min
+    evasion: first 10 eps 18.8%  last 50 eps 90.7%  mean 82.8%
+    convergence file: convergence_ddqn_unanimous_black.json
+
+[2026-10-15 01:19:49] [auto] Experiment finished: ddqn_weighted_white
+    episodes=500  wall-clock=5.5 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_weighted_white.json
+
+[2026-10-15 01:19:49] [auto] Experiment started: ddqn_rf_black
+    timesteps=50000  seed=3  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:19:49] [auto] Experiment started: ddqn_rf_white
+    timesteps=50000  seed=3  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:19:50] [auto] Experiment started: ddqn_any_white
+    timesteps=50000  seed=3  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:19:50] [auto] Experiment started: ddqn_cnn_black
+    timesteps=50000  seed=3  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:19:50] [auto] Experiment started: ddqn_xgboost_black
+    timesteps=50000  seed=3  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:19:50] [auto] Experiment started: ddqn_xgboost_white
+    timesteps=50000  seed=3  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:19:50] [auto] Experiment finished: ddqn_unanimous_white
+    episodes=500  wall-clock=5.5 min
+    evasion: first 10 eps 18.8%  last 50 eps 75.2%  mean 76.0%
+    convergence file: convergence_ddqn_unanimous_white.json
+
+[2026-10-15 01:19:51] [auto] Experiment started: ddqn_rf_black
+    timesteps=50000  seed=3  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:19:51] [auto] Experiment started: ddqn_cnn_white
+    timesteps=50000  seed=3  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:19:51] [auto] Experiment started: ddqn_rf_white
+    timesteps=50000  seed=3  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:19:51] [auto] Experiment started: ddqn_cnn_black
+    timesteps=50000  seed=3  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:19:53] [auto] Experiment started: ddqn_cnn_white
+    timesteps=50000  seed=3  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:21:37] [auto] Experiment finished: ddqn_cnn_black
+    episodes=500  wall-clock=1.8 min
+    evasion: first 10 eps 69.8%  last 50 eps 93.7%  mean 92.3%
+    convergence file: convergence_ddqn_cnn_black.json
+
+[2026-10-15 01:21:38] [auto] Experiment finished: ddqn_xgboost_black
+    episodes=500  wall-clock=1.8 min
+    evasion: first 10 eps 81.3%  last 50 eps 99.1%  mean 97.2%
+    convergence file: convergence_ddqn_xgboost_black.json
+
+[2026-10-15 01:21:39] [auto] Experiment finished: ddqn_cnn_white
+    episodes=500  wall-clock=1.8 min
+    evasion: first 10 eps 69.8%  last 50 eps 89.1%  mean 89.9%
+    convergence file: convergence_ddqn_cnn_white.json
+
+[2026-10-15 01:21:39] [auto] Experiment finished: ddqn_cnn_black
+    episodes=500  wall-clock=1.8 min
+    evasion: first 10 eps 18.8%  last 50 eps 90.7%  mean 82.8%
+    convergence file: convergence_ddqn_cnn_black.json
+
+[2026-10-15 01:21:39] [auto] Experiment finished: ddqn_xgboost_white
+    episodes=500  wall-clock=1.8 min
+    evasion: first 10 eps 81.3%  last 50 eps 94.9%  mean 95.8%
+    convergence file: convergence_ddqn_xgboost_white.json
+
+[2026-10-15 01:21:39] [auto] Experiment finished: ddqn_xgboost_black
+    episodes=500  wall-clock=1.8 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_xgboost_black.json
+
+[2026-10-15 01:21:40] [auto] Experiment finished: ddqn_xgboost_white
+    episodes=500  wall-clock=1.8 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_xgboost_white.json
+
+[2026-10-15 01:21:40] [auto] Experiment finished: ddqn_cnn_white
+    episodes=500  wall-clock=1.8 min
+    evasion: first 10 eps 18.8%  last 50 eps 75.2%  mean 76.0%
+    convergence file: convergence_ddqn_cnn_white.json
+
+[2026-10-15 01:23:18] [auto] Experiment finished: ddqn_rf_black
+    episodes=500  wall-clock=3.4 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_rf_black.json
+
+[2026-10-15 01:23:19] [auto] Experiment finished: ddqn_rf_white
+    episodes=500  wall-clock=3.5 min
+    evasion: first 10 eps 78.2%  last 50 eps 98.9%  mean 96.5%
+    convergence file: convergence_ddqn_rf_white.json
+
+[2026-10-15 01:23:19] [auto] Experiment finished: ddqn_rf_white
+    episodes=500  wall-clock=3.4 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_rf_white.json
+
+[2026-10-15 01:23:19] [auto] Experiment finished: ddqn_rf_black
+    episodes=500  wall-clock=3.5 min
+    evasion: first 10 eps 78.2%  last 50 eps 98.9%  mean 97.0%
+    convergence file: convergence_ddqn_rf_black.json
+
+[2026-10-15 01:23:57] [auto] Adversarial training (cov1, model seed 3): CNN finished (train_adversarial.py)
+    bands: ['C']; 30 epochs on mps, 14.9 min; best validation accuracy 0.9606 (5% slice of augmented train split)
+    saved /Users/varunkaveti/Documents/thesis/code/models_cov1_ms3/cnn_model.pth
+
+[2026-10-15 01:24:16] [auto] Experiment finished: ddqn_any_white
+    episodes=500  wall-clock=4.4 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_any_white.json
+
+[2026-10-15 01:24:16] [auto] Training batch finished: 14 experiment(s)
+    seed=3  detector set=/Users/varunkaveti/Documents/thesis/code/models_cov1  output dir=/Users/varunkaveti/Documents/thesis/results_multiseed/cov1/seed_3
+
+[2026-10-15 01:24:17] [auto] Experiment finished: ddqn_any_white
+    episodes=500  wall-clock=4.4 min
+    evasion: first 10 eps 69.8%  last 50 eps 92.1%  mean 90.2%
+    convergence file: convergence_ddqn_any_white.json
+
+[2026-10-15 01:24:17] [auto] Training batch finished: 14 experiment(s)
+    seed=3  detector set=/Users/varunkaveti/Documents/thesis/code/models  output dir=/Users/varunkaveti/Documents/thesis/results_multiseed/cov0/seed_3
+
+[2026-10-15 01:24:21] [auto] Detector evaluation (evaluate_detectors.py)
+    detector set: /Users/varunkaveti/Documents/thesis/code/models_cov1_ms1
+    held-out test split: 504,160 rows
+    detector  accuracy  attack-recall  false-pos  PortScan-caught
+    xgboost    99.89%    99.87%       0.07%     99.98%
+    rf         99.82%    99.51%       0.07%     98.88%
+    cnn        95.87%    96.82%       4.03%     98.92%
+    weighted-vote weights: {'xgboost': 0.345543, 'rf': 0.344898, 'cnn': 0.309559}
+    decision rules on the held-out test split (paired, same detector outputs):
+    rule       attack-recall  false-pos   F1
+    majority     99.81%       0.07%   0.9973
+    unanimous    96.39%       0.05%   0.9803
+    weighted     99.87%       0.09%   0.9972
+    any          99.99%       4.04%   0.9095
+    xgboost      99.87%       0.07%   0.9977
+    rf           99.51%       0.07%   0.9958
+    cnn          96.82%       4.03%   0.8938
+    padded held-out scan probes caught (17,834 flows per size, recorded destination ports):
+    rule            0B       64B      128B      256B      512B  random 1-1460B
+    majority    100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+    unanimous   100.0%     31.9%     33.6%     73.6%    100.0%     89.8%
+    weighted    100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+    any         100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+    xgboost     100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+    rf          100.0%    100.0%    100.0%    100.0%    100.0%     99.7%
+    cnn         100.0%     31.9%     33.6%     73.6%    100.0%     90.1%
+    padded held-out scan probes caught (17,834 flows per size, destination ports 1001-1100, as in the simulator):
+    rule            0B       64B      128B      256B      512B  random 1-1460B
+    majority    100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+    unanimous   100.0%     16.9%     62.6%     99.9%    100.0%     93.9%
+    weighted    100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+    any         100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+    xgboost     100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+    rf          100.0%    100.0%    100.0%    100.0%    100.0%     99.7%
+    cnn         100.0%     16.9%     62.6%     99.9%    100.0%     94.2%
+    detector pairs: disagreement / double-fault (test split | padded non-zero payload, sim ports)
+    xgboost-rf    0.09% /  0.06%   |    0.05% /  0.00%
+    xgboost-cnn   3.87% /  0.05%   |   25.27% /  0.00%
+    rf-cnn        3.89% /  0.07%   |   25.32% /  0.01%
+
+[2026-10-15 01:24:22] [auto] Training batch started: 14 experiment(s)
+    rules=['majority', 'unanimous', 'weighted', 'any', 'xgboost', 'rf', 'cnn']  knowledge=['black', 'white']  timesteps=50000  seed=0
+    mode=parallel (max 7)
+    detector set=/Users/varunkaveti/Documents/thesis/code/models_cov1_ms1  output dir=/Users/varunkaveti/Documents/thesis/results_multiseed/cov1_ms1
+
+[2026-10-15 01:24:24] [auto] Experiment started: ddqn_majority_black
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:24:24] [auto] Experiment started: ddqn_majority_white
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:24:24] [auto] Experiment started: ddqn_unanimous_black
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:24:24] [auto] Experiment started: ddqn_unanimous_white
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:24:24] [auto] Experiment started: ddqn_weighted_black
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:24:24] [auto] Experiment started: ddqn_weighted_white
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:24:24] [auto] Experiment started: ddqn_any_black
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:25:56] [auto] Agent evaluation (evaluate_agents.py)
+    detector set=/Users/varunkaveti/Documents/thesis/code/models_cov1  results dir=/Users/varunkaveti/Documents/thesis/results_multiseed/cov1/seed_3
+    untrained: 5000 random probes (paired across rules); trained: 20 greedy episodes each, eval seed 12345
+    defence     untrained  trained-black  trained-white
+    majority      0.0%       0.0%           0.0%
+    unanimous    20.7%      94.5%          94.5%
+    weighted      0.0%       0.0%           0.0%
+    any           0.0%       0.0%           0.0%
+    xgboost       0.0%       0.0%           0.0%
+    rf            0.0%       0.0%           0.0%
+    cnn          20.7%      94.5%          94.5%
+    output: eval_results.json
+
+[2026-10-15 01:25:58] [auto] Agent evaluation (evaluate_agents.py)
+    detector set=/Users/varunkaveti/Documents/thesis/code/models  results dir=/Users/varunkaveti/Documents/thesis/results_multiseed/cov0/seed_3
+    untrained: 5000 random probes (paired across rules); trained: 20 greedy episodes each, eval seed 12345
+    defence     untrained  trained-black  trained-white
+    majority     80.5%     100.0%         100.0%
+    unanimous    83.4%     100.0%         100.0%
+    weighted     80.5%     100.0%         100.0%
+    any          72.1%      97.5%          97.0%
+    xgboost      83.4%     100.0%         100.0%
+    rf           80.5%     100.0%         100.0%
+    cnn          72.1%      97.5%          98.9%
+    output: eval_results.json
+
+[2026-10-15 01:25:58] [auto] Training batch started: 14 experiment(s)
+    rules=['majority', 'unanimous', 'weighted', 'any', 'xgboost', 'rf', 'cnn']  knowledge=['black', 'white']  timesteps=50000  seed=4
+    mode=parallel (max 7)
+    detector set=/Users/varunkaveti/Documents/thesis/code/models  output dir=/Users/varunkaveti/Documents/thesis/results_multiseed/cov0/seed_4
+
+[2026-10-15 01:25:59] [auto] Experiment started: ddqn_majority_black
+    timesteps=50000  seed=4  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:25:59] [auto] Experiment started: ddqn_majority_white
+    timesteps=50000  seed=4  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:25:59] [auto] Experiment started: ddqn_unanimous_black
+    timesteps=50000  seed=4  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:25:59] [auto] Experiment started: ddqn_unanimous_white
+    timesteps=50000  seed=4  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:25:59] [auto] Experiment started: ddqn_weighted_black
+    timesteps=50000  seed=4  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:25:59] [auto] Experiment started: ddqn_weighted_white
+    timesteps=50000  seed=4  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:25:59] [auto] Experiment started: ddqn_any_black
+    timesteps=50000  seed=4  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:26:00] [auto] Training batch started: 14 experiment(s)
+    rules=['majority', 'unanimous', 'weighted', 'any', 'xgboost', 'rf', 'cnn']  knowledge=['black', 'white']  timesteps=50000  seed=4
+    mode=parallel (max 7)
+    detector set=/Users/varunkaveti/Documents/thesis/code/models_cov1  output dir=/Users/varunkaveti/Documents/thesis/results_multiseed/cov1/seed_4
+
+[2026-10-15 01:26:02] [auto] Experiment started: ddqn_majority_black
+    timesteps=50000  seed=4  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:26:02] [auto] Experiment started: ddqn_majority_white
+    timesteps=50000  seed=4  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:26:02] [auto] Experiment started: ddqn_unanimous_black
+    timesteps=50000  seed=4  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:26:02] [auto] Experiment started: ddqn_unanimous_white
+    timesteps=50000  seed=4  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:26:02] [auto] Experiment started: ddqn_weighted_black
+    timesteps=50000  seed=4  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:26:02] [auto] Experiment started: ddqn_weighted_white
+    timesteps=50000  seed=4  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:26:02] [auto] Experiment started: ddqn_any_black
+    timesteps=50000  seed=4  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:29:31] [auto] Experiment finished: ddqn_weighted_black
+    episodes=500  wall-clock=5.1 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_weighted_black.json
+
+[2026-10-15 01:29:31] [auto] Experiment finished: ddqn_any_black
+    episodes=500  wall-clock=5.1 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_any_black.json
+
+[2026-10-15 01:29:32] [auto] Experiment finished: ddqn_majority_black
+    episodes=500  wall-clock=5.1 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_majority_black.json
+
+[2026-10-15 01:29:33] [auto] Experiment finished: ddqn_unanimous_black
+    episodes=500  wall-clock=5.1 min
+    evasion: first 10 eps 24.4%  last 50 eps 69.0%  mean 70.6%
+    convergence file: convergence_ddqn_unanimous_black.json
+
+[2026-10-15 01:29:33] [auto] Experiment finished: ddqn_majority_white
+    episodes=500  wall-clock=5.1 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_majority_white.json
+
+[2026-10-15 01:29:34] [auto] Experiment started: ddqn_any_white
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:29:34] [auto] Experiment started: ddqn_xgboost_black
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:29:35] [auto] Experiment started: ddqn_xgboost_white
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:29:36] [auto] Experiment finished: ddqn_unanimous_white
+    episodes=500  wall-clock=5.2 min
+    evasion: first 10 eps 24.4%  last 50 eps 59.7%  mean 65.0%
+    convergence file: convergence_ddqn_unanimous_white.json
+
+[2026-10-15 01:29:36] [auto] Experiment finished: ddqn_weighted_white
+    episodes=500  wall-clock=5.2 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_weighted_white.json
+
+[2026-10-15 01:29:36] [auto] Experiment started: ddqn_rf_black
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:29:36] [auto] Experiment started: ddqn_rf_white
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:29:38] [auto] Experiment started: ddqn_cnn_black
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:29:39] [auto] Experiment started: ddqn_cnn_white
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:31:26] [auto] Experiment finished: ddqn_xgboost_black
+    episodes=500  wall-clock=1.8 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_xgboost_black.json
+
+[2026-10-15 01:31:28] [auto] Experiment finished: ddqn_xgboost_white
+    episodes=500  wall-clock=1.8 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_xgboost_white.json
+
+[2026-10-15 01:31:30] [auto] Experiment finished: ddqn_cnn_black
+    episodes=500  wall-clock=1.8 min
+    evasion: first 10 eps 24.4%  last 50 eps 69.0%  mean 70.6%
+    convergence file: convergence_ddqn_cnn_black.json
+
+[2026-10-15 01:31:30] [auto] Experiment finished: ddqn_cnn_white
+    episodes=500  wall-clock=1.8 min
+    evasion: first 10 eps 24.4%  last 50 eps 58.7%  mean 63.9%
+    convergence file: convergence_ddqn_cnn_white.json
+
+[2026-10-15 01:32:06] [auto] Experiment finished: ddqn_unanimous_black
+    episodes=500  wall-clock=6.1 min
+    evasion: first 10 eps 83.3%  last 50 eps 99.2%  mean 97.3%
+    convergence file: convergence_ddqn_unanimous_black.json
+
+[2026-10-15 01:32:06] [auto] Experiment finished: ddqn_weighted_white
+    episodes=500  wall-clock=6.1 min
+    evasion: first 10 eps 80.7%  last 50 eps 97.7%  mean 96.7%
+    convergence file: convergence_ddqn_weighted_white.json
+
+[2026-10-15 01:32:06] [auto] Experiment finished: ddqn_majority_black
+    episodes=500  wall-clock=6.1 min
+    evasion: first 10 eps 80.7%  last 50 eps 99.1%  mean 96.9%
+    convergence file: convergence_ddqn_majority_black.json
+
+[2026-10-15 01:32:07] [auto] Experiment finished: ddqn_any_black
+    episodes=500  wall-clock=6.1 min
+    evasion: first 10 eps 72.6%  last 50 eps 91.1%  mean 92.3%
+    convergence file: convergence_ddqn_any_black.json
+
+[2026-10-15 01:32:08] [auto] Experiment finished: ddqn_weighted_black
+    episodes=500  wall-clock=6.1 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_weighted_black.json
+
+[2026-10-15 01:32:08] [auto] Experiment finished: ddqn_majority_white
+    episodes=500  wall-clock=6.1 min
+    evasion: first 10 eps 80.7%  last 50 eps 97.7%  mean 96.7%
+    convergence file: convergence_ddqn_majority_white.json
+
+[2026-10-15 01:32:08] [auto] Experiment finished: ddqn_any_black
+    episodes=500  wall-clock=6.1 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_any_black.json
+
+[2026-10-15 01:32:08] [auto] Experiment finished: ddqn_majority_white
+    episodes=500  wall-clock=6.1 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_majority_white.json
+
+[2026-10-15 01:32:08] [auto] Experiment finished: ddqn_majority_black
+    episodes=500  wall-clock=6.1 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_majority_black.json
+
+[2026-10-15 01:32:09] [auto] Experiment started: ddqn_any_white
+    timesteps=50000  seed=4  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:32:09] [auto] Experiment started: ddqn_xgboost_black
+    timesteps=50000  seed=4  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:32:09] [auto] Experiment started: ddqn_xgboost_white
+    timesteps=50000  seed=4  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:32:09] [auto] Experiment finished: ddqn_weighted_black
+    episodes=500  wall-clock=6.1 min
+    evasion: first 10 eps 80.7%  last 50 eps 99.1%  mean 96.9%
+    convergence file: convergence_ddqn_weighted_black.json
+
+[2026-10-15 01:32:09] [auto] Experiment finished: ddqn_weighted_white
+    episodes=500  wall-clock=6.1 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_weighted_white.json
+
+[2026-10-15 01:32:09] [auto] Experiment finished: ddqn_unanimous_white
+    episodes=500  wall-clock=6.1 min
+    evasion: first 10 eps 83.3%  last 50 eps 93.9%  mean 95.4%
+    convergence file: convergence_ddqn_unanimous_white.json
+
+[2026-10-15 01:32:10] [auto] Experiment finished: ddqn_unanimous_black
+    episodes=500  wall-clock=6.1 min
+    evasion: first 10 eps 19.6%  last 50 eps 91.0%  mean 82.9%
+    convergence file: convergence_ddqn_unanimous_black.json
+
+[2026-10-15 01:32:10] [auto] Experiment started: ddqn_rf_black
+    timesteps=50000  seed=4  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:32:10] [auto] Experiment finished: ddqn_unanimous_white
+    episodes=500  wall-clock=6.1 min
+    evasion: first 10 eps 19.6%  last 50 eps 73.3%  mean 78.2%
+    convergence file: convergence_ddqn_unanimous_white.json
+
+[2026-10-15 01:32:10] [auto] Experiment started: ddqn_any_white
+    timesteps=50000  seed=4  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:32:10] [auto] Experiment started: ddqn_rf_white
+    timesteps=50000  seed=4  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:32:10] [auto] Experiment started: ddqn_xgboost_black
+    timesteps=50000  seed=4  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:32:11] [auto] Experiment started: ddqn_xgboost_white
+    timesteps=50000  seed=4  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:32:11] [auto] Experiment started: ddqn_rf_black
+    timesteps=50000  seed=4  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:32:12] [auto] Experiment started: ddqn_cnn_black
+    timesteps=50000  seed=4  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:32:12] [auto] Experiment started: ddqn_rf_white
+    timesteps=50000  seed=4  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:32:12] [auto] Experiment started: ddqn_cnn_white
+    timesteps=50000  seed=4  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:32:12] [auto] Experiment started: ddqn_cnn_black
+    timesteps=50000  seed=4  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:32:13] [auto] Experiment started: ddqn_cnn_white
+    timesteps=50000  seed=4  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:33:44] [auto] Experiment finished: ddqn_rf_black
+    episodes=500  wall-clock=4.1 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_rf_black.json
+
+[2026-10-15 01:33:47] [auto] Experiment finished: ddqn_rf_white
+    episodes=500  wall-clock=4.1 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_rf_white.json
+
+[2026-10-15 01:33:48] [auto] Experiment finished: ddqn_xgboost_black
+    episodes=500  wall-clock=1.6 min
+    evasion: first 10 eps 83.3%  last 50 eps 99.2%  mean 97.3%
+    convergence file: convergence_ddqn_xgboost_black.json
+
+[2026-10-15 01:33:49] [auto] Experiment finished: ddqn_xgboost_white
+    episodes=500  wall-clock=1.6 min
+    evasion: first 10 eps 83.3%  last 50 eps 93.9%  mean 95.4%
+    convergence file: convergence_ddqn_xgboost_white.json
+
+[2026-10-15 01:33:49] [auto] Experiment finished: ddqn_xgboost_black
+    episodes=500  wall-clock=1.6 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_xgboost_black.json
+
+[2026-10-15 01:33:50] [auto] Experiment finished: ddqn_cnn_black
+    episodes=500  wall-clock=1.6 min
+    evasion: first 10 eps 19.6%  last 50 eps 91.0%  mean 82.9%
+    convergence file: convergence_ddqn_cnn_black.json
+
+[2026-10-15 01:33:50] [auto] Experiment finished: ddqn_cnn_black
+    episodes=500  wall-clock=1.6 min
+    evasion: first 10 eps 72.6%  last 50 eps 91.1%  mean 92.3%
+    convergence file: convergence_ddqn_cnn_black.json
+
+[2026-10-15 01:33:50] [auto] Experiment finished: ddqn_cnn_white
+    episodes=500  wall-clock=1.6 min
+    evasion: first 10 eps 72.6%  last 50 eps 90.3%  mean 90.3%
+    convergence file: convergence_ddqn_cnn_white.json
+
+[2026-10-15 01:33:50] [auto] Experiment finished: ddqn_xgboost_white
+    episodes=500  wall-clock=1.6 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_xgboost_white.json
+
+[2026-10-15 01:33:51] [auto] Experiment finished: ddqn_cnn_white
+    episodes=500  wall-clock=1.6 min
+    evasion: first 10 eps 19.6%  last 50 eps 73.3%  mean 78.2%
+    convergence file: convergence_ddqn_cnn_white.json
+
+[2026-10-15 01:34:45] [auto] Experiment finished: ddqn_any_white
+    episodes=500  wall-clock=5.2 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_any_white.json
+
+[2026-10-15 01:34:45] [auto] Training batch finished: 14 experiment(s)
+    seed=0  detector set=/Users/varunkaveti/Documents/thesis/code/models_cov1_ms1  output dir=/Users/varunkaveti/Documents/thesis/results_multiseed/cov1_ms1
+
+[2026-10-15 01:35:17] [auto] Experiment finished: ddqn_rf_black
+    episodes=500  wall-clock=3.1 min
+    evasion: first 10 eps 80.7%  last 50 eps 99.1%  mean 96.9%
+    convergence file: convergence_ddqn_rf_black.json
+
+[2026-10-15 01:35:17] [auto] Experiment finished: ddqn_rf_white
+    episodes=500  wall-clock=3.1 min
+    evasion: first 10 eps 80.7%  last 50 eps 97.7%  mean 96.7%
+    convergence file: convergence_ddqn_rf_white.json
+
+[2026-10-15 01:35:18] [auto] Experiment finished: ddqn_rf_black
+    episodes=500  wall-clock=3.1 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_rf_black.json
+
+[2026-10-15 01:35:19] [auto] Experiment finished: ddqn_rf_white
+    episodes=500  wall-clock=3.1 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_rf_white.json
+
+[2026-10-15 01:36:06] [auto] Experiment finished: ddqn_any_white
+    episodes=500  wall-clock=3.9 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_any_white.json
+
+[2026-10-15 01:36:06] [auto] Training batch finished: 14 experiment(s)
+    seed=4  detector set=/Users/varunkaveti/Documents/thesis/code/models_cov1  output dir=/Users/varunkaveti/Documents/thesis/results_multiseed/cov1/seed_4
+
+[2026-10-15 01:36:08] [auto] Experiment finished: ddqn_any_white
+    episodes=500  wall-clock=3.9 min
+    evasion: first 10 eps 72.6%  last 50 eps 90.3%  mean 90.3%
+    convergence file: convergence_ddqn_any_white.json
+
+[2026-10-15 01:36:08] [auto] Training batch finished: 14 experiment(s)
+    seed=4  detector set=/Users/varunkaveti/Documents/thesis/code/models  output dir=/Users/varunkaveti/Documents/thesis/results_multiseed/cov0/seed_4
+
+[2026-10-15 01:36:11] [auto] Agent evaluation (evaluate_agents.py)
+    detector set=/Users/varunkaveti/Documents/thesis/code/models_cov1_ms1  results dir=/Users/varunkaveti/Documents/thesis/results_multiseed/cov1_ms1
+    untrained: 5000 random probes (paired across rules); trained: 20 greedy episodes each, eval seed 12345
+    defence     untrained  trained-black  trained-white
+    majority      0.0%       0.0%           0.0%
+    unanimous    25.0%      83.4%           9.5%
+    weighted      0.0%       0.0%           0.0%
+    any           0.0%       0.0%           0.0%
+    xgboost       0.0%       0.0%           0.0%
+    rf            0.0%       0.0%           0.0%
+    cnn          25.0%      83.4%          83.4%
+    output: eval_results.json
+
+[2026-10-15 01:36:35] [auto] Detector evaluation (evaluate_detectors.py)
+    detector set: /Users/varunkaveti/Documents/thesis/code/models_cov1_ms2
+    held-out test split: 504,160 rows
+    detector  accuracy  attack-recall  false-pos  PortScan-caught
+    xgboost    99.89%    99.87%       0.07%     99.98%
+    rf         99.82%    99.51%       0.07%     98.88%
+    cnn        96.02%    99.94%       4.71%     99.87%
+    weighted-vote weights: {'xgboost': 0.345294, 'rf': 0.344646, 'cnn': 0.31006}
+    decision rules on the held-out test split (paired, same detector outputs):
+    rule       attack-recall  false-pos   F1
+    majority     99.90%       0.08%   0.9975
+    unanimous    99.43%       0.06%   0.9957
+    weighted     99.95%       0.10%   0.9974
+    any         100.00%       4.71%   0.8961
+    xgboost      99.87%       0.07%   0.9977
+    rf           99.51%       0.07%   0.9958
+    cnn          99.94%       4.71%   0.8959
+    padded held-out scan probes caught (17,834 flows per size, recorded destination ports):
+    rule            0B       64B      128B      256B      512B  random 1-1460B
+    majority    100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+    unanimous   100.0%      2.6%      9.9%     67.3%    100.0%     87.7%
+    weighted    100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+    any         100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+    xgboost     100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+    rf          100.0%    100.0%    100.0%    100.0%    100.0%     99.8%
+    cnn         100.0%      2.6%      9.9%     67.3%    100.0%     87.8%
+    padded held-out scan probes caught (17,834 flows per size, destination ports 1001-1100, as in the simulator):
+    rule            0B       64B      128B      256B      512B  random 1-1460B
+    majority    100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+    unanimous   100.0%      0.5%      1.4%     66.0%    100.0%     87.1%
+    weighted    100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+    any         100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+    xgboost     100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+    rf          100.0%    100.0%    100.0%    100.0%    100.0%     99.8%
+    cnn         100.0%      0.5%      1.4%     66.0%    100.0%     87.2%
+    detector pairs: disagreement / double-fault (test split | padded non-zero payload, sim ports)
+    xgboost-rf    0.09% /  0.07%   |    0.03% /  0.00%
+    xgboost-cnn   3.89% /  0.06%   |   48.99% /  0.00%
+    rf-cnn        3.95% /  0.06%   |   49.00% /  0.01%
+
+[2026-10-15 01:36:37] [auto] Training batch started: 14 experiment(s)
+    rules=['majority', 'unanimous', 'weighted', 'any', 'xgboost', 'rf', 'cnn']  knowledge=['black', 'white']  timesteps=50000  seed=0
+    mode=parallel (max 7)
+    detector set=/Users/varunkaveti/Documents/thesis/code/models_cov1_ms2  output dir=/Users/varunkaveti/Documents/thesis/results_multiseed/cov1_ms2
+
+[2026-10-15 01:36:38] [auto] Experiment started: ddqn_majority_black
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:36:38] [auto] Experiment started: ddqn_majority_white
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:36:39] [auto] Experiment started: ddqn_unanimous_black
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:36:39] [auto] Experiment started: ddqn_unanimous_white
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:36:39] [auto] Experiment started: ddqn_weighted_black
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:36:39] [auto] Experiment started: ddqn_weighted_white
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:36:39] [auto] Experiment started: ddqn_any_black
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:37:40] [auto] Agent evaluation (evaluate_agents.py)
+    detector set=/Users/varunkaveti/Documents/thesis/code/models_cov1  results dir=/Users/varunkaveti/Documents/thesis/results_multiseed/cov1/seed_4
+    untrained: 5000 random probes (paired across rules); trained: 20 greedy episodes each, eval seed 12345
+    defence     untrained  trained-black  trained-white
+    majority      0.0%       0.0%           0.0%
+    unanimous    20.7%      94.5%           0.9%
+    weighted      0.0%       0.0%           0.0%
+    any           0.0%       0.0%           0.0%
+    xgboost       0.0%       0.0%           0.0%
+    rf            0.0%       0.0%           0.0%
+    cnn          20.7%      94.5%           0.9%
+    output: eval_results.json
+
+[2026-10-15 01:37:41] [auto] Agent evaluation (evaluate_agents.py)
+    detector set=/Users/varunkaveti/Documents/thesis/code/models  results dir=/Users/varunkaveti/Documents/thesis/results_multiseed/cov0/seed_4
+    untrained: 5000 random probes (paired across rules); trained: 20 greedy episodes each, eval seed 12345
+    defence     untrained  trained-black  trained-white
+    majority     80.5%     100.0%         100.0%
+    unanimous    83.4%     100.0%         100.0%
+    weighted     80.5%     100.0%         100.0%
+    any          72.1%      99.8%          97.5%
+    xgboost      83.4%     100.0%         100.0%
+    rf           80.5%     100.0%         100.0%
+    cnn          72.1%      99.8%          97.5%
+    output: eval_results.json
+
+[2026-10-15 01:37:41] [auto] Training batch started: 14 experiment(s)
+    rules=['majority', 'unanimous', 'weighted', 'any', 'xgboost', 'rf', 'cnn']  knowledge=['black', 'white']  timesteps=50000  seed=1
+    mode=parallel (max 7)
+    detector set=/Users/varunkaveti/Documents/thesis/code/models_cov2  output dir=/Users/varunkaveti/Documents/thesis/results_multiseed/cov2/seed_1
+
+[2026-10-15 01:37:43] [auto] Experiment started: ddqn_majority_black
+    timesteps=50000  seed=1  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:37:43] [auto] Experiment started: ddqn_majority_white
+    timesteps=50000  seed=1  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:37:43] [auto] Experiment started: ddqn_unanimous_black
+    timesteps=50000  seed=1  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:37:43] [auto] Experiment started: ddqn_unanimous_white
+    timesteps=50000  seed=1  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:37:43] [auto] Experiment started: ddqn_weighted_black
+    timesteps=50000  seed=1  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:37:43] [auto] Experiment started: ddqn_weighted_white
+    timesteps=50000  seed=1  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:37:43] [auto] Training batch started: 14 experiment(s)
+    rules=['majority', 'unanimous', 'weighted', 'any', 'xgboost', 'rf', 'cnn']  knowledge=['black', 'white']  timesteps=50000  seed=1
+    mode=parallel (max 7)
+    detector set=/Users/varunkaveti/Documents/thesis/code/models_adv  output dir=/Users/varunkaveti/Documents/thesis/results_multiseed/cov3/seed_1
+
+[2026-10-15 01:37:43] [auto] Experiment started: ddqn_any_black
+    timesteps=50000  seed=1  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:37:46] [auto] Experiment started: ddqn_majority_black
+    timesteps=50000  seed=1  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:37:46] [auto] Experiment started: ddqn_majority_white
+    timesteps=50000  seed=1  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:37:46] [auto] Experiment started: ddqn_unanimous_black
+    timesteps=50000  seed=1  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:37:46] [auto] Experiment started: ddqn_unanimous_white
+    timesteps=50000  seed=1  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:37:46] [auto] Experiment started: ddqn_weighted_black
+    timesteps=50000  seed=1  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:37:46] [auto] Experiment started: ddqn_weighted_white
+    timesteps=50000  seed=1  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:37:46] [auto] Experiment started: ddqn_any_black
+    timesteps=50000  seed=1  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:42:05] [auto] Experiment finished: ddqn_any_black
+    episodes=500  wall-clock=5.4 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_any_black.json
+
+[2026-10-15 01:42:06] [auto] Experiment finished: ddqn_unanimous_white
+    episodes=500  wall-clock=5.4 min
+    evasion: first 10 eps 43.6%  last 50 eps 86.9%  mean 85.0%
+    convergence file: convergence_ddqn_unanimous_white.json
+
+[2026-10-15 01:42:06] [auto] Experiment finished: ddqn_majority_white
+    episodes=500  wall-clock=5.4 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_majority_white.json
+
+[2026-10-15 01:42:06] [auto] Experiment finished: ddqn_weighted_white
+    episodes=500  wall-clock=5.4 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_weighted_white.json
+
+[2026-10-15 01:42:06] [auto] Experiment finished: ddqn_majority_black
+    episodes=500  wall-clock=5.4 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_majority_black.json
+
+[2026-10-15 01:42:06] [auto] Experiment finished: ddqn_unanimous_black
+    episodes=500  wall-clock=5.4 min
+    evasion: first 10 eps 43.6%  last 50 eps 88.6%  mean 89.2%
+    convergence file: convergence_ddqn_unanimous_black.json
+
+[2026-10-15 01:42:07] [auto] Experiment finished: ddqn_weighted_black
+    episodes=500  wall-clock=5.4 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_weighted_black.json
+
+[2026-10-15 01:42:08] [auto] Experiment started: ddqn_any_white
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:42:08] [auto] Experiment started: ddqn_xgboost_black
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:42:08] [auto] Experiment started: ddqn_xgboost_white
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:42:09] [auto] Experiment started: ddqn_rf_black
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:42:09] [auto] Experiment started: ddqn_rf_white
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:42:09] [auto] Experiment started: ddqn_cnn_black
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:42:09] [auto] Experiment started: ddqn_cnn_white
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:43:53] [auto] Experiment finished: ddqn_any_black
+    episodes=500  wall-clock=6.1 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_any_black.json
+
+[2026-10-15 01:43:53] [auto] Experiment finished: ddqn_weighted_white
+    episodes=500  wall-clock=6.1 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_weighted_white.json
+
+[2026-10-15 01:43:54] [auto] Experiment finished: ddqn_majority_black
+    episodes=500  wall-clock=6.1 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_majority_black.json
+
+[2026-10-15 01:43:54] [auto] Experiment finished: ddqn_majority_white
+    episodes=500  wall-clock=6.1 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_majority_white.json
+
+[2026-10-15 01:43:55] [auto] Experiment finished: ddqn_unanimous_black
+    episodes=500  wall-clock=6.1 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_unanimous_black.json
+
+[2026-10-15 01:43:55] [auto] Experiment finished: ddqn_weighted_black
+    episodes=500  wall-clock=6.2 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_weighted_black.json
+
+[2026-10-15 01:43:56] [auto] Experiment finished: ddqn_weighted_black
+    episodes=500  wall-clock=6.1 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_weighted_black.json
+
+[2026-10-15 01:43:56] [auto] Experiment started: ddqn_any_white
+    timesteps=50000  seed=1  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:43:56] [auto] Experiment started: ddqn_xgboost_black
+    timesteps=50000  seed=1  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:43:56] [auto] Experiment finished: ddqn_unanimous_white
+    episodes=500  wall-clock=6.2 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_unanimous_white.json
+
+[2026-10-15 01:43:56] [auto] Experiment finished: ddqn_majority_black
+    episodes=500  wall-clock=6.1 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_majority_black.json
+
+[2026-10-15 01:43:56] [auto] Experiment started: ddqn_xgboost_white
+    timesteps=50000  seed=1  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:43:57] [auto] Experiment finished: ddqn_any_black
+    episodes=500  wall-clock=6.1 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_any_black.json
+
+[2026-10-15 01:43:57] [auto] Experiment finished: ddqn_majority_white
+    episodes=500  wall-clock=6.1 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_majority_white.json
+
+[2026-10-15 01:43:57] [auto] Experiment finished: ddqn_unanimous_black
+    episodes=500  wall-clock=6.1 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_unanimous_black.json
+
+[2026-10-15 01:43:57] [auto] Experiment started: ddqn_rf_black
+    timesteps=50000  seed=1  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:43:57] [auto] Experiment finished: ddqn_unanimous_white
+    episodes=500  wall-clock=6.1 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_unanimous_white.json
+
+[2026-10-15 01:43:58] [auto] Experiment started: ddqn_rf_white
+    timesteps=50000  seed=1  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:43:58] [auto] Experiment started: ddqn_cnn_black
+    timesteps=50000  seed=1  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:43:59] [auto] Experiment started: ddqn_any_white
+    timesteps=50000  seed=1  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:43:59] [auto] Experiment started: ddqn_cnn_white
+    timesteps=50000  seed=1  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:43:59] [auto] Experiment finished: ddqn_weighted_white
+    episodes=500  wall-clock=6.2 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_weighted_white.json
+
+[2026-10-15 01:43:59] [auto] Experiment started: ddqn_xgboost_black
+    timesteps=50000  seed=1  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:44:00] [auto] Experiment started: ddqn_xgboost_white
+    timesteps=50000  seed=1  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:44:00] [auto] Experiment started: ddqn_rf_black
+    timesteps=50000  seed=1  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:44:00] [auto] Experiment finished: ddqn_cnn_black
+    episodes=500  wall-clock=1.8 min
+    evasion: first 10 eps 43.6%  last 50 eps 88.6%  mean 89.2%
+    convergence file: convergence_ddqn_cnn_black.json
+
+[2026-10-15 01:44:00] [auto] Experiment started: ddqn_rf_white
+    timesteps=50000  seed=1  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:44:00] [auto] Experiment started: ddqn_cnn_black
+    timesteps=50000  seed=1  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:44:01] [auto] Experiment finished: ddqn_cnn_white
+    episodes=500  wall-clock=1.8 min
+    evasion: first 10 eps 43.6%  last 50 eps 86.9%  mean 85.0%
+    convergence file: convergence_ddqn_cnn_white.json
+
+[2026-10-15 01:44:01] [auto] Experiment finished: ddqn_xgboost_black
+    episodes=500  wall-clock=1.8 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_xgboost_black.json
+
+[2026-10-15 01:44:02] [auto] Experiment finished: ddqn_xgboost_white
+    episodes=500  wall-clock=1.9 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_xgboost_white.json
+
+[2026-10-15 01:44:02] [auto] Experiment started: ddqn_cnn_white
+    timesteps=50000  seed=1  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:45:34] [auto] Experiment finished: ddqn_xgboost_black
+    episodes=500  wall-clock=1.6 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_xgboost_black.json
+
+[2026-10-15 01:45:35] [auto] Experiment finished: ddqn_cnn_black
+    episodes=500  wall-clock=1.6 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_cnn_black.json
+
+[2026-10-15 01:45:35] [auto] Experiment finished: ddqn_cnn_white
+    episodes=500  wall-clock=1.6 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_cnn_white.json
+
+[2026-10-15 01:45:35] [auto] Experiment finished: ddqn_xgboost_white
+    episodes=500  wall-clock=1.6 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_xgboost_white.json
+
+[2026-10-15 01:45:36] [auto] Experiment finished: ddqn_cnn_black
+    episodes=500  wall-clock=1.5 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_cnn_black.json
+
+[2026-10-15 01:45:36] [auto] Experiment finished: ddqn_xgboost_black
+    episodes=500  wall-clock=1.6 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_xgboost_black.json
+
+[2026-10-15 01:45:37] [auto] Experiment finished: ddqn_xgboost_white
+    episodes=500  wall-clock=1.6 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_xgboost_white.json
+
+[2026-10-15 01:45:38] [auto] Experiment finished: ddqn_cnn_white
+    episodes=500  wall-clock=1.6 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_cnn_white.json
+
+[2026-10-15 01:46:05] [auto] Experiment finished: ddqn_rf_black
+    episodes=500  wall-clock=3.9 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_rf_black.json
+
+[2026-10-15 01:46:06] [auto] Experiment finished: ddqn_rf_white
+    episodes=500  wall-clock=3.9 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_rf_white.json
+
+[2026-10-15 01:47:04] [auto] Experiment finished: ddqn_rf_black
+    episodes=500  wall-clock=3.1 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_rf_black.json
+
+[2026-10-15 01:47:04] [auto] Experiment finished: ddqn_any_white
+    episodes=500  wall-clock=4.9 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_any_white.json
+
+[2026-10-15 01:47:04] [auto] Training batch finished: 14 experiment(s)
+    seed=0  detector set=/Users/varunkaveti/Documents/thesis/code/models_cov1_ms2  output dir=/Users/varunkaveti/Documents/thesis/results_multiseed/cov1_ms2
+
+[2026-10-15 01:47:06] [auto] Experiment finished: ddqn_rf_white
+    episodes=500  wall-clock=3.1 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_rf_white.json
+
+[2026-10-15 01:47:07] [auto] Experiment finished: ddqn_rf_black
+    episodes=500  wall-clock=3.1 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_rf_black.json
+
+[2026-10-15 01:47:07] [auto] Experiment finished: ddqn_rf_white
+    episodes=500  wall-clock=3.1 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_rf_white.json
+
+[2026-10-15 01:47:54] [auto] Experiment finished: ddqn_any_white
+    episodes=500  wall-clock=3.9 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_any_white.json
+
+[2026-10-15 01:47:54] [auto] Training batch finished: 14 experiment(s)
+    seed=1  detector set=/Users/varunkaveti/Documents/thesis/code/models_cov2  output dir=/Users/varunkaveti/Documents/thesis/results_multiseed/cov2/seed_1
+
+[2026-10-15 01:47:54] [auto] Experiment finished: ddqn_any_white
+    episodes=500  wall-clock=3.9 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_any_white.json
+
+[2026-10-15 01:47:54] [auto] Training batch finished: 14 experiment(s)
+    seed=1  detector set=/Users/varunkaveti/Documents/thesis/code/models_adv  output dir=/Users/varunkaveti/Documents/thesis/results_multiseed/cov3/seed_1
+
+[2026-10-15 01:48:24] [auto] Agent evaluation (evaluate_agents.py)
+    detector set=/Users/varunkaveti/Documents/thesis/code/models_cov1_ms2  results dir=/Users/varunkaveti/Documents/thesis/results_multiseed/cov1_ms2
+    untrained: 5000 random probes (paired across rules); trained: 20 greedy episodes each, eval seed 12345
+    defence     untrained  trained-black  trained-white
+    majority      0.0%       0.0%           0.0%
+    unanimous    46.7%      98.7%          98.7%
+    weighted      0.0%       0.0%           0.0%
+    any           0.0%       0.0%           0.0%
+    xgboost       0.0%       0.0%           0.0%
+    rf            0.0%       0.0%           0.0%
+    cnn          46.7%      98.7%          98.7%
+    output: eval_results.json
+
+[2026-10-15 01:48:49] [auto] Detector evaluation (evaluate_detectors.py)
+    detector set: /Users/varunkaveti/Documents/thesis/code/models_cov1_ms3
+    held-out test split: 504,160 rows
+    detector  accuracy  attack-recall  false-pos  PortScan-caught
+    xgboost    99.89%    99.87%       0.07%     99.98%
+    rf         99.82%    99.51%       0.07%     98.89%
+    cnn        95.90%    94.61%       3.82%     98.31%
+    weighted-vote weights: {'xgboost': 0.346415, 'rf': 0.345752, 'cnn': 0.307833}
+    decision rules on the held-out test split (paired, same detector outputs):
+    rule       attack-recall  false-pos   F1
+    majority     99.76%       0.07%   0.9971
+    unanimous    94.23%       0.05%   0.9690
+    weighted     99.81%       0.08%   0.9970
+    any          99.99%       3.84%   0.9135
+    xgboost      99.87%       0.07%   0.9977
+    rf           99.51%       0.07%   0.9958
+    cnn          94.61%       3.82%   0.8865
+    padded held-out scan probes caught (17,834 flows per size, recorded destination ports):
+    rule            0B       64B      128B      256B      512B  random 1-1460B
+    majority    100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+    unanimous   100.0%     84.3%     25.1%     82.0%    100.0%     91.6%
+    weighted    100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+    any         100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+    xgboost     100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+    rf          100.0%    100.0%    100.0%    100.0%    100.0%     99.8%
+    cnn         100.0%     84.3%     25.1%     82.0%    100.0%     91.9%
+    padded held-out scan probes caught (17,834 flows per size, destination ports 1001-1100, as in the simulator):
+    rule            0B       64B      128B      256B      512B  random 1-1460B
+    majority    100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+    unanimous   100.0%     94.0%     21.2%     99.8%    100.0%     94.4%
+    weighted    100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+    any         100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+    xgboost     100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+    rf          100.0%    100.0%    100.0%    100.0%    100.0%     99.8%
+    cnn         100.0%     94.0%     21.2%     99.8%    100.0%     94.7%
+    detector pairs: disagreement / double-fault (test split | padded non-zero payload, sim ports)
+    xgboost-rf    0.09% /  0.07%   |    0.05% /  0.00%
+    xgboost-cnn   4.07% /  0.05%   |   18.06% /  0.00%
+    rf-cnn        4.09% /  0.07%   |   18.11% /  0.00%
+
+[2026-10-15 01:48:50] [auto] Training batch started: 14 experiment(s)
+    rules=['majority', 'unanimous', 'weighted', 'any', 'xgboost', 'rf', 'cnn']  knowledge=['black', 'white']  timesteps=50000  seed=0
+    mode=parallel (max 7)
+    detector set=/Users/varunkaveti/Documents/thesis/code/models_cov1_ms3  output dir=/Users/varunkaveti/Documents/thesis/results_multiseed/cov1_ms3
+
+[2026-10-15 01:48:52] [auto] Experiment started: ddqn_majority_black
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:48:52] [auto] Experiment started: ddqn_majority_white
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:48:52] [auto] Experiment started: ddqn_unanimous_black
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:48:52] [auto] Experiment started: ddqn_unanimous_white
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:48:52] [auto] Experiment started: ddqn_weighted_black
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:48:52] [auto] Experiment started: ddqn_weighted_white
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:48:52] [auto] Experiment started: ddqn_any_black
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:49:19] [auto] Agent evaluation (evaluate_agents.py)
+    detector set=/Users/varunkaveti/Documents/thesis/code/models_cov2  results dir=/Users/varunkaveti/Documents/thesis/results_multiseed/cov2/seed_1
+    untrained: 5000 random probes (paired across rules); trained: 20 greedy episodes each, eval seed 12345
+    defence     untrained  trained-black  trained-white
+    majority      0.0%       0.0%           0.0%
+    unanimous     0.0%       0.0%           0.0%
+    weighted      0.0%       0.0%           0.0%
+    any           0.0%       0.0%           0.0%
+    xgboost       0.0%       0.0%           0.0%
+    rf            0.0%       0.0%           0.0%
+    cnn           0.0%       0.0%           0.0%
+    output: eval_results.json
+
+[2026-10-15 01:49:20] [auto] Agent evaluation (evaluate_agents.py)
+    detector set=/Users/varunkaveti/Documents/thesis/code/models_adv  results dir=/Users/varunkaveti/Documents/thesis/results_multiseed/cov3/seed_1
+    untrained: 5000 random probes (paired across rules); trained: 20 greedy episodes each, eval seed 12345
+    defence     untrained  trained-black  trained-white
+    majority      0.0%       0.0%           0.0%
+    unanimous     0.0%       0.0%           0.0%
+    weighted      0.0%       0.0%           0.0%
+    any           0.0%       0.0%           0.0%
+    xgboost       0.0%       0.0%           0.0%
+    rf            0.0%       0.0%           0.0%
+    cnn           0.0%       0.0%           0.0%
+    output: eval_results.json
+
+[2026-10-15 01:49:21] [auto] Training batch started: 14 experiment(s)
+    rules=['majority', 'unanimous', 'weighted', 'any', 'xgboost', 'rf', 'cnn']  knowledge=['black', 'white']  timesteps=50000  seed=2
+    mode=parallel (max 7)
+    detector set=/Users/varunkaveti/Documents/thesis/code/models_cov2  output dir=/Users/varunkaveti/Documents/thesis/results_multiseed/cov2/seed_2
+
+[2026-10-15 01:49:22] [auto] Training batch started: 14 experiment(s)
+    rules=['majority', 'unanimous', 'weighted', 'any', 'xgboost', 'rf', 'cnn']  knowledge=['black', 'white']  timesteps=50000  seed=2
+    mode=parallel (max 7)
+    detector set=/Users/varunkaveti/Documents/thesis/code/models_adv  output dir=/Users/varunkaveti/Documents/thesis/results_multiseed/cov3/seed_2
+
+[2026-10-15 01:49:23] [auto] Experiment started: ddqn_majority_black
+    timesteps=50000  seed=2  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:49:23] [auto] Experiment started: ddqn_majority_white
+    timesteps=50000  seed=2  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:49:23] [auto] Experiment started: ddqn_unanimous_black
+    timesteps=50000  seed=2  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:49:23] [auto] Experiment started: ddqn_unanimous_white
+    timesteps=50000  seed=2  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:49:23] [auto] Experiment started: ddqn_weighted_black
+    timesteps=50000  seed=2  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:49:23] [auto] Experiment started: ddqn_weighted_white
+    timesteps=50000  seed=2  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:49:23] [auto] Experiment started: ddqn_any_black
+    timesteps=50000  seed=2  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:49:24] [auto] Experiment started: ddqn_majority_black
+    timesteps=50000  seed=2  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:49:24] [auto] Experiment started: ddqn_majority_white
+    timesteps=50000  seed=2  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:49:24] [auto] Experiment started: ddqn_unanimous_black
+    timesteps=50000  seed=2  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:49:24] [auto] Experiment started: ddqn_unanimous_white
+    timesteps=50000  seed=2  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:49:24] [auto] Experiment started: ddqn_weighted_black
+    timesteps=50000  seed=2  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:49:24] [auto] Experiment started: ddqn_weighted_white
+    timesteps=50000  seed=2  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:49:24] [auto] Experiment started: ddqn_any_black
+    timesteps=50000  seed=2  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:54:40] [auto] Experiment finished: ddqn_unanimous_black
+    episodes=500  wall-clock=5.8 min
+    evasion: first 10 eps 17.3%  last 50 eps 75.1%  mean 69.1%
+    convergence file: convergence_ddqn_unanimous_black.json
+
+[2026-10-15 01:54:40] [auto] Experiment finished: ddqn_weighted_black
+    episodes=500  wall-clock=5.8 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_weighted_black.json
+
+[2026-10-15 01:54:41] [auto] Experiment finished: ddqn_majority_black
+    episodes=500  wall-clock=5.8 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_majority_black.json
+
+[2026-10-15 01:54:41] [auto] Experiment finished: ddqn_any_black
+    episodes=500  wall-clock=5.8 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_any_black.json
+
+[2026-10-15 01:54:42] [auto] Experiment finished: ddqn_weighted_white
+    episodes=500  wall-clock=5.8 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_weighted_white.json
+
+[2026-10-15 01:54:42] [auto] Experiment finished: ddqn_unanimous_white
+    episodes=500  wall-clock=5.8 min
+    evasion: first 10 eps 17.3%  last 50 eps 68.6%  mean 64.5%
+    convergence file: convergence_ddqn_unanimous_white.json
+
+[2026-10-15 01:54:43] [auto] Experiment started: ddqn_any_white
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:54:43] [auto] Experiment started: ddqn_xgboost_black
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:54:43] [auto] Experiment finished: ddqn_majority_white
+    episodes=500  wall-clock=5.8 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_majority_white.json
+
+[2026-10-15 01:54:43] [auto] Experiment started: ddqn_xgboost_white
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:54:44] [auto] Experiment started: ddqn_rf_black
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:54:45] [auto] Experiment started: ddqn_rf_white
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:54:45] [auto] Experiment started: ddqn_cnn_black
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:54:45] [auto] Experiment started: ddqn_cnn_white
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:55:28] [auto] Experiment finished: ddqn_unanimous_black
+    episodes=500  wall-clock=6.0 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_unanimous_black.json
+
+[2026-10-15 01:55:30] [auto] Experiment finished: ddqn_majority_black
+    episodes=500  wall-clock=6.1 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_majority_black.json
+
+[2026-10-15 01:55:30] [auto] Experiment finished: ddqn_weighted_black
+    episodes=500  wall-clock=6.1 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_weighted_black.json
+
+[2026-10-15 01:55:30] [auto] Experiment finished: ddqn_majority_white
+    episodes=500  wall-clock=6.1 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_majority_white.json
+
+[2026-10-15 01:55:31] [auto] Experiment started: ddqn_any_white
+    timesteps=50000  seed=2  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:55:31] [auto] Experiment finished: ddqn_unanimous_white
+    episodes=500  wall-clock=6.1 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_unanimous_white.json
+
+[2026-10-15 01:55:31] [auto] Experiment finished: ddqn_unanimous_black
+    episodes=500  wall-clock=6.1 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_unanimous_black.json
+
+[2026-10-15 01:55:31] [auto] Experiment finished: ddqn_any_black
+    episodes=500  wall-clock=6.1 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_any_black.json
+
+[2026-10-15 01:55:31] [auto] Experiment finished: ddqn_weighted_black
+    episodes=500  wall-clock=6.1 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_weighted_black.json
+
+[2026-10-15 01:55:32] [auto] Experiment finished: ddqn_weighted_white
+    episodes=500  wall-clock=6.1 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_weighted_white.json
+
+[2026-10-15 01:55:32] [auto] Experiment finished: ddqn_majority_black
+    episodes=500  wall-clock=6.1 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_majority_black.json
+
+[2026-10-15 01:55:32] [auto] Experiment finished: ddqn_majority_white
+    episodes=500  wall-clock=6.1 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_majority_white.json
+
+[2026-10-15 01:55:33] [auto] Experiment started: ddqn_xgboost_black
+    timesteps=50000  seed=2  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:55:33] [auto] Experiment started: ddqn_xgboost_white
+    timesteps=50000  seed=2  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:55:33] [auto] Experiment started: ddqn_rf_black
+    timesteps=50000  seed=2  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:55:33] [auto] Experiment finished: ddqn_unanimous_white
+    episodes=500  wall-clock=6.1 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_unanimous_white.json
+
+[2026-10-15 01:55:33] [auto] Experiment finished: ddqn_weighted_white
+    episodes=500  wall-clock=6.1 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_weighted_white.json
+
+[2026-10-15 01:55:34] [auto] Experiment started: ddqn_rf_white
+    timesteps=50000  seed=2  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:55:34] [auto] Experiment started: ddqn_any_white
+    timesteps=50000  seed=2  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:55:34] [auto] Experiment started: ddqn_cnn_black
+    timesteps=50000  seed=2  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:55:34] [auto] Experiment started: ddqn_xgboost_black
+    timesteps=50000  seed=2  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:55:35] [auto] Experiment started: ddqn_cnn_white
+    timesteps=50000  seed=2  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:55:35] [auto] Experiment started: ddqn_xgboost_white
+    timesteps=50000  seed=2  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:55:35] [auto] Experiment started: ddqn_rf_black
+    timesteps=50000  seed=2  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:55:36] [auto] Experiment started: ddqn_rf_white
+    timesteps=50000  seed=2  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:55:36] [auto] Experiment finished: ddqn_any_black
+    episodes=500  wall-clock=6.2 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_any_black.json
+
+[2026-10-15 01:55:36] [auto] Experiment started: ddqn_cnn_black
+    timesteps=50000  seed=2  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:55:39] [auto] Experiment started: ddqn_cnn_white
+    timesteps=50000  seed=2  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 01:56:38] [auto] Experiment finished: ddqn_xgboost_black
+    episodes=500  wall-clock=1.9 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_xgboost_black.json
+
+[2026-10-15 01:56:38] [auto] Experiment finished: ddqn_cnn_black
+    episodes=500  wall-clock=1.9 min
+    evasion: first 10 eps 17.3%  last 50 eps 75.1%  mean 69.1%
+    convergence file: convergence_ddqn_cnn_black.json
+
+[2026-10-15 01:56:39] [auto] Experiment finished: ddqn_xgboost_white
+    episodes=500  wall-clock=1.9 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_xgboost_white.json
+
+[2026-10-15 01:56:39] [auto] Experiment finished: ddqn_cnn_white
+    episodes=500  wall-clock=1.9 min
+    evasion: first 10 eps 17.3%  last 50 eps 62.6%  mean 62.8%
+    convergence file: convergence_ddqn_cnn_white.json
+
+[2026-10-15 01:57:21] [auto] Experiment finished: ddqn_cnn_black
+    episodes=500  wall-clock=1.7 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_cnn_black.json
+
+[2026-10-15 01:57:21] [auto] Experiment finished: ddqn_xgboost_black
+    episodes=500  wall-clock=1.8 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_xgboost_black.json
+
+[2026-10-15 01:57:22] [auto] Experiment finished: ddqn_xgboost_white
+    episodes=500  wall-clock=1.8 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_xgboost_white.json
+
+[2026-10-15 01:57:22] [auto] Experiment finished: ddqn_xgboost_black
+    episodes=500  wall-clock=1.8 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_xgboost_black.json
+
+[2026-10-15 01:57:22] [auto] Experiment finished: ddqn_cnn_white
+    episodes=500  wall-clock=1.7 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_cnn_white.json
+
+[2026-10-15 01:57:22] [auto] Experiment finished: ddqn_cnn_black
+    episodes=500  wall-clock=1.7 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_cnn_black.json
+
+[2026-10-15 01:57:23] [auto] Experiment finished: ddqn_xgboost_white
+    episodes=500  wall-clock=1.8 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_xgboost_white.json
+
+[2026-10-15 01:57:24] [auto] Experiment finished: ddqn_cnn_white
+    episodes=500  wall-clock=1.7 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_cnn_white.json
+
+[2026-10-15 01:58:26] [auto] Experiment finished: ddqn_rf_black
+    episodes=500  wall-clock=3.7 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_rf_black.json
+
+[2026-10-15 01:58:28] [auto] Experiment finished: ddqn_rf_white
+    episodes=500  wall-clock=3.7 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_rf_white.json
+
+[2026-10-15 01:58:53] [auto] Experiment finished: ddqn_rf_black
+    episodes=500  wall-clock=3.3 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_rf_black.json
+
+[2026-10-15 01:58:54] [auto] Experiment finished: ddqn_rf_black
+    episodes=500  wall-clock=3.3 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_rf_black.json
+
+[2026-10-15 01:58:55] [auto] Experiment finished: ddqn_rf_white
+    episodes=500  wall-clock=3.3 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_rf_white.json
+
+[2026-10-15 01:58:56] [auto] Experiment finished: ddqn_rf_white
+    episodes=500  wall-clock=3.3 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_rf_white.json
+
+[2026-10-15 01:59:21] [auto] Experiment finished: ddqn_any_white
+    episodes=500  wall-clock=4.6 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_any_white.json
+
+[2026-10-15 01:59:21] [auto] Training batch finished: 14 experiment(s)
+    seed=0  detector set=/Users/varunkaveti/Documents/thesis/code/models_cov1_ms3  output dir=/Users/varunkaveti/Documents/thesis/results_multiseed/cov1_ms3
+
+[2026-10-15 01:59:44] [auto] Experiment finished: ddqn_any_white
+    episodes=500  wall-clock=4.2 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_any_white.json
+
+[2026-10-15 01:59:44] [auto] Training batch finished: 14 experiment(s)
+    seed=2  detector set=/Users/varunkaveti/Documents/thesis/code/models_cov2  output dir=/Users/varunkaveti/Documents/thesis/results_multiseed/cov2/seed_2
+
+[2026-10-15 01:59:45] [auto] Experiment finished: ddqn_any_white
+    episodes=500  wall-clock=4.2 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_any_white.json
+
+[2026-10-15 01:59:45] [auto] Training batch finished: 14 experiment(s)
+    seed=2  detector set=/Users/varunkaveti/Documents/thesis/code/models_adv  output dir=/Users/varunkaveti/Documents/thesis/results_multiseed/cov3/seed_2
+
+[2026-10-15 02:00:41] [auto] Agent evaluation (evaluate_agents.py)
+    detector set=/Users/varunkaveti/Documents/thesis/code/models_cov1_ms3  results dir=/Users/varunkaveti/Documents/thesis/results_multiseed/cov1_ms3
+    untrained: 5000 random probes (paired across rules); trained: 20 greedy episodes each, eval seed 12345
+    defence     untrained  trained-black  trained-white
+    majority      0.0%       0.0%           0.0%
+    unanimous    16.5%      79.3%          40.1%
+    weighted      0.0%       0.0%           0.0%
+    any           0.0%       0.0%           0.0%
+    xgboost       0.0%       0.0%           0.0%
+    rf            0.0%       0.0%           0.0%
+    cnn          16.5%      79.3%          78.3%
+    output: eval_results.json
+
+[2026-10-15 02:01:02] [auto] Agent evaluation (evaluate_agents.py)
+    detector set=/Users/varunkaveti/Documents/thesis/code/models_cov2  results dir=/Users/varunkaveti/Documents/thesis/results_multiseed/cov2/seed_2
+    untrained: 5000 random probes (paired across rules); trained: 20 greedy episodes each, eval seed 12345
+    defence     untrained  trained-black  trained-white
+    majority      0.0%       0.0%           0.0%
+    unanimous     0.0%       0.0%           0.0%
+    weighted      0.0%       0.0%           0.0%
+    any           0.0%       0.0%           0.0%
+    xgboost       0.0%       0.0%           0.0%
+    rf            0.0%       0.0%           0.0%
+    cnn           0.0%       0.0%           0.0%
+    output: eval_results.json
+
+[2026-10-15 02:01:04] [auto] Training batch started: 14 experiment(s)
+    rules=['majority', 'unanimous', 'weighted', 'any', 'xgboost', 'rf', 'cnn']  knowledge=['black', 'white']  timesteps=50000  seed=3
+    mode=parallel (max 7)
+    detector set=/Users/varunkaveti/Documents/thesis/code/models_cov2  output dir=/Users/varunkaveti/Documents/thesis/results_multiseed/cov2/seed_3
+
+[2026-10-15 02:01:05] [auto] Experiment started: ddqn_majority_black
+    timesteps=50000  seed=3  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 02:01:05] [auto] Experiment started: ddqn_majority_white
+    timesteps=50000  seed=3  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 02:01:05] [auto] Experiment started: ddqn_unanimous_black
+    timesteps=50000  seed=3  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 02:01:05] [auto] Experiment started: ddqn_unanimous_white
+    timesteps=50000  seed=3  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 02:01:05] [auto] Experiment started: ddqn_weighted_black
+    timesteps=50000  seed=3  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 02:01:05] [auto] Experiment started: ddqn_weighted_white
+    timesteps=50000  seed=3  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 02:01:05] [auto] Experiment started: ddqn_any_black
+    timesteps=50000  seed=3  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 02:01:05] [auto] Agent evaluation (evaluate_agents.py)
+    detector set=/Users/varunkaveti/Documents/thesis/code/models_adv  results dir=/Users/varunkaveti/Documents/thesis/results_multiseed/cov3/seed_2
+    untrained: 5000 random probes (paired across rules); trained: 20 greedy episodes each, eval seed 12345
+    defence     untrained  trained-black  trained-white
+    majority      0.0%       0.0%           0.0%
+    unanimous     0.0%       0.0%           0.0%
+    weighted      0.0%       0.0%           0.0%
+    any           0.0%       0.0%           0.0%
+    xgboost       0.0%       0.0%           0.0%
+    rf            0.0%       0.0%           0.0%
+    cnn           0.0%       0.0%           0.0%
+    output: eval_results.json
+
+[2026-10-15 02:01:07] [auto] Training batch started: 14 experiment(s)
+    rules=['majority', 'unanimous', 'weighted', 'any', 'xgboost', 'rf', 'cnn']  knowledge=['black', 'white']  timesteps=50000  seed=3
+    mode=parallel (max 7)
+    detector set=/Users/varunkaveti/Documents/thesis/code/models_adv  output dir=/Users/varunkaveti/Documents/thesis/results_multiseed/cov3/seed_3
+
+[2026-10-15 02:01:09] [auto] Experiment started: ddqn_majority_white
+    timesteps=50000  seed=3  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 02:01:09] [auto] Experiment started: ddqn_majority_black
+    timesteps=50000  seed=3  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 02:01:09] [auto] Experiment started: ddqn_unanimous_black
+    timesteps=50000  seed=3  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 02:01:09] [auto] Experiment started: ddqn_unanimous_white
+    timesteps=50000  seed=3  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 02:01:09] [auto] Experiment started: ddqn_weighted_black
+    timesteps=50000  seed=3  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 02:01:09] [auto] Experiment started: ddqn_weighted_white
+    timesteps=50000  seed=3  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 02:01:09] [auto] Experiment started: ddqn_any_black
+    timesteps=50000  seed=3  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 02:05:28] [auto] Experiment finished: ddqn_majority_white
+    episodes=500  wall-clock=4.4 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_majority_white.json
+
+[2026-10-15 02:05:28] [auto] Experiment finished: ddqn_weighted_white
+    episodes=500  wall-clock=4.4 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_weighted_white.json
+
+[2026-10-15 02:05:29] [auto] Experiment finished: ddqn_unanimous_white
+    episodes=500  wall-clock=4.4 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_unanimous_white.json
+
+[2026-10-15 02:05:29] [auto] Experiment finished: ddqn_any_black
+    episodes=500  wall-clock=4.4 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_any_black.json
+
+[2026-10-15 02:05:29] [auto] Experiment finished: ddqn_majority_black
+    episodes=500  wall-clock=4.4 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_majority_black.json
+
+[2026-10-15 02:05:29] [auto] Experiment finished: ddqn_unanimous_black
+    episodes=500  wall-clock=4.4 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_unanimous_black.json
+
+[2026-10-15 02:05:30] [auto] Experiment finished: ddqn_weighted_black
+    episodes=500  wall-clock=4.4 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_weighted_black.json
+
+[2026-10-15 02:05:30] [auto] Experiment started: ddqn_any_white
+    timesteps=50000  seed=3  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 02:05:30] [auto] Experiment started: ddqn_xgboost_black
+    timesteps=50000  seed=3  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 02:05:31] [auto] Experiment started: ddqn_xgboost_white
+    timesteps=50000  seed=3  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 02:05:31] [auto] Experiment started: ddqn_rf_black
+    timesteps=50000  seed=3  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 02:05:31] [auto] Experiment started: ddqn_rf_white
+    timesteps=50000  seed=3  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 02:05:31] [auto] Experiment started: ddqn_cnn_black
+    timesteps=50000  seed=3  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 02:05:32] [auto] Experiment started: ddqn_cnn_white
+    timesteps=50000  seed=3  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 02:05:32] [auto] Experiment finished: ddqn_majority_black
+    episodes=500  wall-clock=4.4 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_majority_black.json
+
+[2026-10-15 02:05:33] [auto] Experiment finished: ddqn_weighted_black
+    episodes=500  wall-clock=4.4 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_weighted_black.json
+
+[2026-10-15 02:05:33] [auto] Experiment finished: ddqn_majority_white
+    episodes=500  wall-clock=4.4 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_majority_white.json
+
+[2026-10-15 02:05:33] [auto] Experiment finished: ddqn_weighted_white
+    episodes=500  wall-clock=4.4 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_weighted_white.json
+
+[2026-10-15 02:05:33] [auto] Experiment finished: ddqn_unanimous_white
+    episodes=500  wall-clock=4.4 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_unanimous_white.json
+
+[2026-10-15 02:05:33] [auto] Experiment finished: ddqn_any_black
+    episodes=500  wall-clock=4.4 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_any_black.json
+
+[2026-10-15 02:05:34] [auto] Experiment finished: ddqn_unanimous_black
+    episodes=500  wall-clock=4.4 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_unanimous_black.json
+
+[2026-10-15 02:05:34] [auto] Experiment started: ddqn_any_white
+    timesteps=50000  seed=3  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 02:05:35] [auto] Experiment started: ddqn_xgboost_black
+    timesteps=50000  seed=3  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 02:05:35] [auto] Experiment started: ddqn_xgboost_white
+    timesteps=50000  seed=3  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 02:05:35] [auto] Experiment started: ddqn_rf_black
+    timesteps=50000  seed=3  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 02:05:35] [auto] Experiment started: ddqn_rf_white
+    timesteps=50000  seed=3  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 02:05:36] [auto] Experiment started: ddqn_cnn_black
+    timesteps=50000  seed=3  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 02:05:36] [auto] Experiment started: ddqn_cnn_white
+    timesteps=50000  seed=3  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 02:06:53] [auto] Experiment finished: ddqn_cnn_black
+    episodes=500  wall-clock=1.3 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_cnn_black.json
+
+[2026-10-15 02:06:53] [auto] Experiment finished: ddqn_xgboost_black
+    episodes=500  wall-clock=1.4 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_xgboost_black.json
+
+[2026-10-15 02:06:54] [auto] Experiment finished: ddqn_xgboost_white
+    episodes=500  wall-clock=1.4 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_xgboost_white.json
+
+[2026-10-15 02:06:54] [auto] Experiment finished: ddqn_cnn_white
+    episodes=500  wall-clock=1.3 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_cnn_white.json
+
+[2026-10-15 02:06:57] [auto] Experiment finished: ddqn_cnn_black
+    episodes=500  wall-clock=1.3 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_cnn_black.json
+
+[2026-10-15 02:06:57] [auto] Experiment finished: ddqn_cnn_white
+    episodes=500  wall-clock=1.3 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_cnn_white.json
+
+[2026-10-15 02:06:57] [auto] Experiment finished: ddqn_xgboost_black
+    episodes=500  wall-clock=1.4 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_xgboost_black.json
+
+[2026-10-15 02:06:58] [auto] Experiment finished: ddqn_xgboost_white
+    episodes=500  wall-clock=1.4 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_xgboost_white.json
+
+[2026-10-15 02:08:18] [auto] Experiment finished: ddqn_rf_white
+    episodes=500  wall-clock=2.8 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_rf_white.json
+
+[2026-10-15 02:08:18] [auto] Experiment finished: ddqn_rf_black
+    episodes=500  wall-clock=2.8 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_rf_black.json
+
+[2026-10-15 02:08:21] [auto] Experiment finished: ddqn_rf_black
+    episodes=500  wall-clock=2.7 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_rf_black.json
+
+[2026-10-15 02:08:22] [auto] Experiment finished: ddqn_rf_white
+    episodes=500  wall-clock=2.7 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_rf_white.json
+
+[2026-10-15 02:09:06] [auto] Experiment finished: ddqn_any_white
+    episodes=500  wall-clock=3.6 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_any_white.json
+
+[2026-10-15 02:09:06] [auto] Training batch finished: 14 experiment(s)
+    seed=3  detector set=/Users/varunkaveti/Documents/thesis/code/models_cov2  output dir=/Users/varunkaveti/Documents/thesis/results_multiseed/cov2/seed_3
+
+[2026-10-15 02:09:08] [auto] Experiment finished: ddqn_any_white
+    episodes=500  wall-clock=3.5 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_any_white.json
+
+[2026-10-15 02:09:08] [auto] Training batch finished: 14 experiment(s)
+    seed=3  detector set=/Users/varunkaveti/Documents/thesis/code/models_adv  output dir=/Users/varunkaveti/Documents/thesis/results_multiseed/cov3/seed_3
+
+[2026-10-15 02:10:24] [auto] Agent evaluation (evaluate_agents.py)
+    detector set=/Users/varunkaveti/Documents/thesis/code/models_cov2  results dir=/Users/varunkaveti/Documents/thesis/results_multiseed/cov2/seed_3
+    untrained: 5000 random probes (paired across rules); trained: 20 greedy episodes each, eval seed 12345
+    defence     untrained  trained-black  trained-white
+    majority      0.0%       0.0%           0.0%
+    unanimous     0.0%       0.0%           0.0%
+    weighted      0.0%       0.0%           0.0%
+    any           0.0%       0.0%           0.0%
+    xgboost       0.0%       0.0%           0.0%
+    rf            0.0%       0.0%           0.0%
+    cnn           0.0%       0.0%           0.0%
+    output: eval_results.json
+
+[2026-10-15 02:10:25] [auto] Training batch started: 14 experiment(s)
+    rules=['majority', 'unanimous', 'weighted', 'any', 'xgboost', 'rf', 'cnn']  knowledge=['black', 'white']  timesteps=50000  seed=4
+    mode=parallel (max 7)
+    detector set=/Users/varunkaveti/Documents/thesis/code/models_cov2  output dir=/Users/varunkaveti/Documents/thesis/results_multiseed/cov2/seed_4
+
+[2026-10-15 02:10:26] [auto] Agent evaluation (evaluate_agents.py)
+    detector set=/Users/varunkaveti/Documents/thesis/code/models_adv  results dir=/Users/varunkaveti/Documents/thesis/results_multiseed/cov3/seed_3
+    untrained: 5000 random probes (paired across rules); trained: 20 greedy episodes each, eval seed 12345
+    defence     untrained  trained-black  trained-white
+    majority      0.0%       0.0%           0.0%
+    unanimous     0.0%       0.0%           0.0%
+    weighted      0.0%       0.0%           0.0%
+    any           0.0%       0.0%           0.0%
+    xgboost       0.0%       0.0%           0.0%
+    rf            0.0%       0.0%           0.0%
+    cnn           0.0%       0.0%           0.0%
+    output: eval_results.json
+
+[2026-10-15 02:10:26] [auto] Experiment started: ddqn_majority_black
+    timesteps=50000  seed=4  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 02:10:26] [auto] Experiment started: ddqn_majority_white
+    timesteps=50000  seed=4  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 02:10:26] [auto] Experiment started: ddqn_unanimous_black
+    timesteps=50000  seed=4  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 02:10:26] [auto] Experiment started: ddqn_unanimous_white
+    timesteps=50000  seed=4  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 02:10:26] [auto] Experiment started: ddqn_weighted_black
+    timesteps=50000  seed=4  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 02:10:26] [auto] Experiment started: ddqn_weighted_white
+    timesteps=50000  seed=4  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 02:10:26] [auto] Experiment started: ddqn_any_black
+    timesteps=50000  seed=4  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 02:10:27] [auto] Training batch started: 14 experiment(s)
+    rules=['majority', 'unanimous', 'weighted', 'any', 'xgboost', 'rf', 'cnn']  knowledge=['black', 'white']  timesteps=50000  seed=4
+    mode=parallel (max 7)
+    detector set=/Users/varunkaveti/Documents/thesis/code/models_adv  output dir=/Users/varunkaveti/Documents/thesis/results_multiseed/cov3/seed_4
+
+[2026-10-15 02:10:29] [auto] Experiment started: ddqn_majority_black
+    timesteps=50000  seed=4  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 02:10:29] [auto] Experiment started: ddqn_majority_white
+    timesteps=50000  seed=4  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 02:10:29] [auto] Experiment started: ddqn_unanimous_black
+    timesteps=50000  seed=4  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 02:10:29] [auto] Experiment started: ddqn_unanimous_white
+    timesteps=50000  seed=4  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 02:10:29] [auto] Experiment started: ddqn_weighted_black
+    timesteps=50000  seed=4  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 02:10:29] [auto] Experiment started: ddqn_weighted_white
+    timesteps=50000  seed=4  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 02:10:29] [auto] Experiment started: ddqn_any_black
+    timesteps=50000  seed=4  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 02:14:49] [auto] Experiment finished: ddqn_weighted_black
+    episodes=500  wall-clock=4.3 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_weighted_black.json
+
+[2026-10-15 02:14:49] [auto] Experiment finished: ddqn_majority_white
+    episodes=500  wall-clock=4.3 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_majority_white.json
+
+[2026-10-15 02:14:49] [auto] Experiment finished: ddqn_unanimous_black
+    episodes=500  wall-clock=4.4 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_unanimous_black.json
+
+[2026-10-15 02:14:50] [auto] Experiment finished: ddqn_weighted_white
+    episodes=500  wall-clock=4.4 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_weighted_white.json
+
+[2026-10-15 02:14:50] [auto] Experiment finished: ddqn_any_black
+    episodes=500  wall-clock=4.4 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_any_black.json
+
+[2026-10-15 02:14:50] [auto] Experiment finished: ddqn_unanimous_white
+    episodes=500  wall-clock=4.4 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_unanimous_white.json
+
+[2026-10-15 02:14:50] [auto] Experiment finished: ddqn_majority_black
+    episodes=500  wall-clock=4.4 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_majority_black.json
+
+[2026-10-15 02:14:50] [auto] Experiment finished: ddqn_weighted_black
+    episodes=500  wall-clock=4.3 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_weighted_black.json
+
+[2026-10-15 02:14:50] [auto] Experiment finished: ddqn_majority_black
+    episodes=500  wall-clock=4.3 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_majority_black.json
+
+[2026-10-15 02:14:50] [auto] Experiment finished: ddqn_unanimous_white
+    episodes=500  wall-clock=4.3 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_unanimous_white.json
+
+[2026-10-15 02:14:51] [auto] Experiment started: ddqn_any_white
+    timesteps=50000  seed=4  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 02:14:51] [auto] Experiment started: ddqn_xgboost_black
+    timesteps=50000  seed=4  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 02:14:51] [auto] Experiment finished: ddqn_any_black
+    episodes=500  wall-clock=4.3 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_any_black.json
+
+[2026-10-15 02:14:51] [auto] Experiment started: ddqn_xgboost_white
+    timesteps=50000  seed=4  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 02:14:52] [auto] Experiment started: ddqn_rf_black
+    timesteps=50000  seed=4  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 02:14:52] [auto] Experiment started: ddqn_rf_white
+    timesteps=50000  seed=4  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 02:14:52] [auto] Experiment started: ddqn_cnn_black
+    timesteps=50000  seed=4  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 02:14:52] [auto] Experiment started: ddqn_cnn_white
+    timesteps=50000  seed=4  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 02:14:52] [auto] Experiment started: ddqn_any_white
+    timesteps=50000  seed=4  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 02:14:52] [auto] Experiment started: ddqn_xgboost_black
+    timesteps=50000  seed=4  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 02:14:52] [auto] Experiment started: ddqn_xgboost_white
+    timesteps=50000  seed=4  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 02:14:53] [auto] Experiment finished: ddqn_majority_white
+    episodes=500  wall-clock=4.4 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_majority_white.json
+
+[2026-10-15 02:14:53] [auto] Experiment finished: ddqn_unanimous_black
+    episodes=500  wall-clock=4.4 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_unanimous_black.json
+
+[2026-10-15 02:14:54] [auto] Experiment started: ddqn_rf_black
+    timesteps=50000  seed=4  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 02:14:55] [auto] Experiment started: ddqn_rf_white
+    timesteps=50000  seed=4  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 02:14:55] [auto] Experiment started: ddqn_cnn_black
+    timesteps=50000  seed=4  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 02:14:55] [auto] Experiment finished: ddqn_weighted_white
+    episodes=500  wall-clock=4.4 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_weighted_white.json
+
+[2026-10-15 02:14:57] [auto] Experiment started: ddqn_cnn_white
+    timesteps=50000  seed=4  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-15 02:16:12] [auto] Experiment finished: ddqn_xgboost_black
+    episodes=500  wall-clock=1.3 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_xgboost_black.json
+
+[2026-10-15 02:16:13] [auto] Experiment finished: ddqn_cnn_black
+    episodes=500  wall-clock=1.3 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_cnn_black.json
+
+[2026-10-15 02:16:14] [auto] Experiment finished: ddqn_xgboost_white
+    episodes=500  wall-clock=1.3 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_xgboost_white.json
+
+[2026-10-15 02:16:14] [auto] Experiment finished: ddqn_cnn_white
+    episodes=500  wall-clock=1.3 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_cnn_white.json
+
+[2026-10-15 02:16:14] [auto] Experiment finished: ddqn_xgboost_black
+    episodes=500  wall-clock=1.3 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_xgboost_black.json
+
+[2026-10-15 02:16:14] [auto] Experiment finished: ddqn_xgboost_white
+    episodes=500  wall-clock=1.3 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_xgboost_white.json
+
+[2026-10-15 02:16:16] [auto] Experiment finished: ddqn_cnn_black
+    episodes=500  wall-clock=1.3 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_cnn_black.json
+
+[2026-10-15 02:16:18] [auto] Experiment finished: ddqn_cnn_white
+    episodes=500  wall-clock=1.3 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_cnn_white.json
+
+[2026-10-15 02:17:37] [auto] Experiment finished: ddqn_rf_black
+    episodes=500  wall-clock=2.7 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_rf_black.json
+
+[2026-10-15 02:17:38] [auto] Experiment finished: ddqn_rf_white
+    episodes=500  wall-clock=2.7 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_rf_white.json
+
+[2026-10-15 02:17:38] [auto] Experiment finished: ddqn_rf_black
+    episodes=500  wall-clock=2.7 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_rf_black.json
+
+[2026-10-15 02:17:40] [auto] Experiment finished: ddqn_rf_white
+    episodes=500  wall-clock=2.7 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_rf_white.json
+
+[2026-10-15 02:18:24] [auto] Experiment finished: ddqn_any_white
+    episodes=500  wall-clock=3.5 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_any_white.json
+
+[2026-10-15 02:18:24] [auto] Training batch finished: 14 experiment(s)
+    seed=4  detector set=/Users/varunkaveti/Documents/thesis/code/models_cov2  output dir=/Users/varunkaveti/Documents/thesis/results_multiseed/cov2/seed_4
+
+[2026-10-15 02:18:24] [auto] Experiment finished: ddqn_any_white
+    episodes=500  wall-clock=3.5 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.0%  mean 0.0%
+    convergence file: convergence_ddqn_any_white.json
+
+[2026-10-15 02:18:24] [auto] Training batch finished: 14 experiment(s)
+    seed=4  detector set=/Users/varunkaveti/Documents/thesis/code/models_adv  output dir=/Users/varunkaveti/Documents/thesis/results_multiseed/cov3/seed_4
+
+[2026-10-15 02:19:41] [auto] Agent evaluation (evaluate_agents.py)
+    detector set=/Users/varunkaveti/Documents/thesis/code/models_cov2  results dir=/Users/varunkaveti/Documents/thesis/results_multiseed/cov2/seed_4
+    untrained: 5000 random probes (paired across rules); trained: 20 greedy episodes each, eval seed 12345
+    defence     untrained  trained-black  trained-white
+    majority      0.0%       0.0%           0.0%
+    unanimous     0.0%       0.0%           0.0%
+    weighted      0.0%       0.0%           0.0%
+    any           0.0%       0.0%           0.0%
+    xgboost       0.0%       0.0%           0.0%
+    rf            0.0%       0.0%           0.0%
+    cnn           0.0%       0.0%           0.0%
+    output: eval_results.json
+
+[2026-10-15 02:19:41] [auto] Agent evaluation (evaluate_agents.py)
+    detector set=/Users/varunkaveti/Documents/thesis/code/models_adv  results dir=/Users/varunkaveti/Documents/thesis/results_multiseed/cov3/seed_4
+    untrained: 5000 random probes (paired across rules); trained: 20 greedy episodes each, eval seed 12345
+    defence     untrained  trained-black  trained-white
+    majority      0.0%       0.0%           0.0%
+    unanimous     0.0%       0.0%           0.0%
+    weighted      0.0%       0.0%           0.0%
+    any           0.0%       0.0%           0.0%
+    xgboost       0.0%       0.0%           0.0%
+    rf            0.0%       0.0%           0.0%
+    cnn           0.0%       0.0%           0.0%
+    output: eval_results.json
