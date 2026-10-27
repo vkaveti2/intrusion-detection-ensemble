@@ -31,6 +31,10 @@ trees stage also writes augmentation.json:
     python train_adversarial.py --design cov1 --stage trees
     python train_adversarial.py --design cov1 --stage cnn
 
+--mask-feature NAME [NAME ...] retrains with those columns removed: the scaler
+saved in <out>_nopsh/ is a masked_scaler.MaskedScaler that outputs 0 for them
+at training and at every later inference call (docs/09_psh_diagnostic_design.md).
+
 --model-seed S retrains the same design with a different training seed
 (RF/XGBoost random_state, CNN torch seed) into <out>_msS/. The training data,
 padded rows and splits stay identical, so only training randomness changes.
@@ -50,6 +54,7 @@ from sklearn.model_selection import train_test_split
 
 from build_probe_bank import DATA_PATH, MODEL_DIR, load_and_clean_data
 from flow_features import MAX_PAYLOAD, is_single_probe, set_forward_payload
+from masked_scaler import MaskedScaler
 from project_log import log_event
 
 CODE_DIR   = os.path.dirname(os.path.abspath(__file__))
@@ -91,7 +96,7 @@ def payload_plan(design, n):
 class AugmentedData:
     """Scaled original training split + per-detector padded PortScan rows."""
 
-    def __init__(self, design):
+    def __init__(self, design, mask_features=()):
         df = load_and_clean_data(DATA_PATH)
         self.le = joblib.load(os.path.join(MODEL_DIR, "label_encoder.pkl"))
         y = self.le.transform(df["Label"])
@@ -107,6 +112,8 @@ class AugmentedData:
         self.plan = payload_plan(design, len(self.base))
 
         self.scaler = joblib.load(os.path.join(MODEL_DIR, "scaler.pkl"))
+        if mask_features:
+            self.scaler = MaskedScaler.from_fitted(self.scaler, mask_features)
         # Scaling is per row, so scaling the split once and the padded rows per detector
         # gives exactly the same matrix as scaling their concatenation.
         self.X_train_s = self._scale(X_train)
@@ -123,6 +130,7 @@ class AugmentedData:
                                       for b in DESIGNS[design]["bands"][d]}}
                 for d, p in self.plan.items()},
             "aug_copies": AUG_COPIES, "aug_seed": AUG_SEED,
+            "masked_features": list(mask_features),
         }
 
     def _scale(self, A):
@@ -134,10 +142,13 @@ class AugmentedData:
                 np.concatenate([self.y_train, np.full(len(padded), self.ps_idx)]))
 
 
-def copy_shared_artifacts(out_dir):
+def copy_shared_artifacts(out_dir, mask_features=()):
     os.makedirs(out_dir, exist_ok=True)
     for name in ("scaler.pkl", "label_encoder.pkl", "cnn_arch.json"):
         shutil.copy2(os.path.join(MODEL_DIR, name), os.path.join(out_dir, name))
+    if mask_features:
+        scaler = joblib.load(os.path.join(MODEL_DIR, "scaler.pkl"))
+        joblib.dump(MaskedScaler.from_fitted(scaler, mask_features), os.path.join(out_dir, "scaler.pkl"))
 
 
 def train_trees(data, out_dir, design, model_seed):
@@ -244,13 +255,17 @@ if __name__ == "__main__":
     parser.add_argument("--stage", choices=["trees", "cnn"], required=True)
     parser.add_argument("--model-seed", type=int, default=None,
                         help=f"Training seed (default {MODEL_SEED}); writes to <out>_ms<seed>/")
+    parser.add_argument("--mask-feature", nargs="+", default=[], metavar="NAME",
+                        help="Feature column(s) to remove (scaler outputs 0); writes to <out>_nopsh[_msS]/")
     args = parser.parse_args()
 
     model_seed = MODEL_SEED if args.model_seed is None else args.model_seed
-    out_name = DESIGNS[args.design]["out"] + ("" if args.model_seed is None else f"_ms{args.model_seed}")
+    mask = tuple(args.mask_feature)
+    out_name = (DESIGNS[args.design]["out"] + ("_nopsh" if mask else "")
+                + ("" if args.model_seed is None else f"_ms{args.model_seed}"))
     out_dir = os.path.join(CODE_DIR, out_name)
-    copy_shared_artifacts(out_dir)
-    data = AugmentedData(args.design)
+    copy_shared_artifacts(out_dir, mask)
+    data = AugmentedData(args.design, mask)
     print(json.dumps(data.meta, indent=2), flush=True)
     log_event(f"Adversarial training ({args.design}, model seed {model_seed}) started "
               f"(train_adversarial.py --stage {args.stage})",

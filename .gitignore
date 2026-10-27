@@ -2,7 +2,6 @@ code/data/
 code/CICIOT23/
 *.csv
 !docs/*.csv
-code/models/rf_model.pkl
 ids_env/
 
 # DDQN checkpoints and trained agents (GBs; regenerate with code/train_ensemble.py, seeded)
@@ -11,7 +10,11 @@ models/ddqn_*.zip
 code/models/ddqn_*.zip
 results_*/**/checkpoints_ensemble/
 results_*/**/models/ddqn_*.zip
-code/models_adv/rf_model.pkl
-code/models_cov1/rf_model.pkl
-code/models_cov2/rf_model.pkl
-code/models_cov1_ms*/rf_model.pkl
+
+# Random-forest models are ~150 MB each (GitHub's limit is 100 MB); regenerate with train_adversarial.py,
+# verify against docs/model_manifest.csv
+code/models*/rf_model.pkl
+
+# macOS
+.DS_Store
+**/.DS_Store

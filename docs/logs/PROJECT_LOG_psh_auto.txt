@@ -1,0 +1,472 @@
+
+[2026-10-26 17:44:29] [auto] Adversarial training (cov1, model seed 42) started (train_adversarial.py --stage cnn)
+    bands per detector: {'xgboost': ['A'], 'rf': ['B'], 'cnn': ['C']}
+    71,381 padded PortScan rows per detector + 2,016,638 original train rows; same split, scaler, hyperparameters; output /Users/varunkaveti/Documents/code/thesis/code/models_cov1_nopsh
+
+[2026-10-26 17:44:29] [auto] Adversarial training (cov1, model seed 42) started (train_adversarial.py --stage trees)
+    bands per detector: {'xgboost': ['A'], 'rf': ['B'], 'cnn': ['C']}
+    71,381 padded PortScan rows per detector + 2,016,638 original train rows; same split, scaler, hyperparameters; output /Users/varunkaveti/Documents/code/thesis/code/models_cov1_nopsh
+
+[2026-10-26 17:45:46] [auto] Adversarial training (cov1, model seed 42): trees finished (train_adversarial.py)
+    bands per detector: {'xgboost': ['A'], 'rf': ['B'], 'cnn': ['C']}  ({'A': [1, 90], 'B': [91, 362], 'C': [363, 1460]} bytes)
+    padded PortScan rows per detector: 71,381 (seed 2026) added to 2,016,638 train rows
+    RF 0.7 min, XGBoost 0.6 min; saved to /Users/varunkaveti/Documents/code/thesis/code/models_cov1_nopsh
+
+[2026-10-26 17:46:01] [auto] Adversarial training (full, model seed 42) started (train_adversarial.py --stage trees)
+    bands per detector: {'xgboost': ['full'], 'rf': ['full'], 'cnn': ['full']}
+    71,381 padded PortScan rows per detector + 2,016,638 original train rows; same split, scaler, hyperparameters; output /Users/varunkaveti/Documents/code/thesis/code/models_adv_nopsh
+
+[2026-10-26 17:47:15] [auto] Adversarial training (full, model seed 42): trees finished (train_adversarial.py)
+    bands per detector: {'xgboost': ['full'], 'rf': ['full'], 'cnn': ['full']}  ({'full': [1, 1460]} bytes)
+    padded PortScan rows per detector: 71,381 (seed 2026) added to 2,016,638 train rows
+    RF 0.7 min, XGBoost 0.5 min; saved to /Users/varunkaveti/Documents/code/thesis/code/models_adv_nopsh
+
+[2026-10-26 17:59:28] [auto] Adversarial training (cov1, model seed 42): CNN finished (train_adversarial.py)
+    bands: ['C']; 30 epochs on mps, 14.9 min; best validation accuracy 0.9681 (5% slice of augmented train split)
+    saved /Users/varunkaveti/Documents/code/thesis/code/models_cov1_nopsh/cnn_model.pth
+
+[2026-10-26 17:59:40] [auto] Adversarial training (full, model seed 42) started (train_adversarial.py --stage cnn)
+    bands per detector: {'xgboost': ['full'], 'rf': ['full'], 'cnn': ['full']}
+    71,381 padded PortScan rows per detector + 2,016,638 original train rows; same split, scaler, hyperparameters; output /Users/varunkaveti/Documents/code/thesis/code/models_adv_nopsh
+
+[2026-10-26 18:13:10] [auto] Adversarial training (full, model seed 42): CNN finished (train_adversarial.py)
+    bands: ['full']; 30 epochs on mps, 13.5 min; best validation accuracy 0.9631 (5% slice of augmented train split)
+    saved /Users/varunkaveti/Documents/code/thesis/code/models_adv_nopsh/cnn_model.pth
+
+[2026-10-26 18:13:34] [auto] Detector evaluation (evaluate_detectors.py)
+    detector set: /Users/varunkaveti/Documents/code/thesis/code/models_cov1_nopsh
+    held-out test split: 504,160 rows
+    detector  accuracy  attack-recall  false-pos  PortScan-caught
+    xgboost    99.89%    99.86%       0.07%     99.98%
+    rf         99.82%    99.50%       0.07%     98.85%
+    cnn        96.70%    97.97%       3.54%     92.88%
+    weighted-vote weights: {'xgboost': 0.343657, 'rf': 0.343, 'cnn': 0.313344}
+    decision rules on the held-out test split (paired, same detector outputs):
+    rule       attack-recall  false-pos   F1
+    majority     99.86%       0.08%   0.9974
+    unanimous    97.48%       0.05%   0.9860
+    weighted     99.92%       0.09%   0.9973
+    any          99.99%       3.55%   0.9196
+    xgboost      99.86%       0.07%   0.9977
+    rf           99.50%       0.07%   0.9957
+    cnn          97.97%       3.54%   0.9097
+    padded held-out scan probes caught (17,834 flows per size, recorded destination ports):
+    rule            0B       64B      128B      256B      512B  random 1-1460B
+    majority    100.0%     66.6%    100.0%    100.0%    100.0%     98.3%
+    unanimous    99.3%      3.9%     40.9%     49.2%    100.0%     79.4%
+    weighted    100.0%     96.1%    100.0%    100.0%    100.0%     99.6%
+    any         100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+    xgboost     100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+    rf          100.0%     63.5%    100.0%    100.0%    100.0%     92.2%
+    cnn          99.4%      7.0%     40.9%     49.2%    100.0%     85.6%
+    padded held-out scan probes caught (17,834 flows per size, destination ports 1001-1100, as in the simulator):
+    rule            0B       64B      128B      256B      512B  random 1-1460B
+    majority    100.0%     62.2%    100.0%    100.0%    100.0%     98.2%
+    unanimous    99.3%      0.5%     50.1%     54.2%    100.0%     80.7%
+    weighted    100.0%     93.9%    100.0%    100.0%    100.0%     99.5%
+    any         100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+    xgboost     100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+    rf          100.0%     62.2%    100.0%    100.0%    100.0%     92.7%
+    cnn          99.3%      0.5%     50.1%     54.2%    100.0%     86.2%
+    detector pairs: disagreement / double-fault (test split | padded non-zero payload, sim ports)
+    xgboost-rf    0.09% /  0.07%   |    9.02% /  0.01%
+    xgboost-cnn   3.26% /  0.05%   |   41.83% /  0.00%
+    rf-cnn        3.31% /  0.06%   |   35.01% /  7.93%
+
+[2026-10-26 18:14:21] [auto] PSH sensitivity (psh_sensitivity.py)
+    detector set: /Users/varunkaveti/Documents/code/thesis/code/models_cov1_nopsh  (419,012 benign rows, 17,834 probes per size)
+    substantial = padded-probe detection drop > 5.0pp (non-zero payloads) or benign FP rise > 0.5pp
+    [PSH Flag Count]  rule       worst det. drop (pp)   benign FP ref -> PSH=1   substantial
+      majority       0.00              0.079% -> 0.079%      no
+      unanimous      0.00              0.052% -> 0.052%      no
+      weighted       0.00              0.091% -> 0.091%      no
+      any            0.00              3.551% -> 3.551%      no
+      xgboost        0.00              0.067% -> 0.067%      no
+      rf             0.00              0.071% -> 0.071%      no
+      cnn            0.00              3.543% -> 3.543%      no
+    [Fwd PSH Flags]  rule       worst det. drop (pp)   benign FP ref -> PSH=1   substantial
+      majority       0.00              0.079% -> 0.080%      no
+      unanimous      0.00              0.052% -> 0.047%      no
+      weighted       0.00              0.091% -> 0.091%      no
+      any            0.00              3.551% -> 2.253%      no
+      xgboost        0.00              0.067% -> 0.073%      no
+      rf             0.00              0.071% -> 0.070%      no
+      cnn            0.00              3.543% -> 2.236%      no
+    output: /Users/varunkaveti/Documents/code/thesis/code/models_cov1_nopsh/psh_sensitivity.json
+
+[2026-10-26 18:14:44] [auto] Detector evaluation (evaluate_detectors.py)
+    detector set: /Users/varunkaveti/Documents/code/thesis/code/models_adv_nopsh
+    held-out test split: 504,160 rows
+    detector  accuracy  attack-recall  false-pos  PortScan-caught
+    xgboost    99.89%    99.86%       0.07%     99.98%
+    rf         99.82%    99.51%       0.07%     98.85%
+    cnn        96.20%    94.86%       3.23%     98.03%
+    weighted-vote weights: {'xgboost': 0.344784, 'rf': 0.344137, 'cnn': 0.31108}
+    decision rules on the held-out test split (paired, same detector outputs):
+    rule       attack-recall  false-pos   F1
+    majority     99.80%       0.07%   0.9972
+    unanimous    94.43%       0.05%   0.9701
+    weighted     99.86%       0.09%   0.9972
+    any          99.99%       3.25%   0.9259
+    xgboost      99.86%       0.07%   0.9976
+    rf           99.51%       0.07%   0.9957
+    cnn          94.86%       3.23%   0.9001
+    padded held-out scan probes caught (17,834 flows per size, recorded destination ports):
+    rule            0B       64B      128B      256B      512B  random 1-1460B
+    majority    100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+    unanimous    99.3%     93.9%     99.9%     99.3%    100.0%     99.2%
+    weighted    100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+    any         100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+    xgboost     100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+    rf          100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+    cnn          99.3%     93.9%     99.9%     99.3%    100.0%     99.2%
+    padded held-out scan probes caught (17,834 flows per size, destination ports 1001-1100, as in the simulator):
+    rule            0B       64B      128B      256B      512B  random 1-1460B
+    majority    100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+    unanimous    99.9%     99.9%    100.0%    100.0%    100.0%    100.0%
+    weighted    100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+    any         100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+    xgboost     100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+    rf          100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+    cnn          99.9%     99.9%    100.0%    100.0%    100.0%    100.0%
+    detector pairs: disagreement / double-fault (test split | padded non-zero payload, sim ports)
+    xgboost-rf    0.09% /  0.06%   |    0.00% /  0.00%
+    xgboost-cnn   3.53% /  0.05%   |    0.03% /  0.00%
+    rf-cnn        3.56% /  0.07%   |    0.03% /  0.00%
+
+[2026-10-26 18:15:31] [auto] PSH sensitivity (psh_sensitivity.py)
+    detector set: /Users/varunkaveti/Documents/code/thesis/code/models_adv_nopsh  (419,012 benign rows, 17,834 probes per size)
+    substantial = padded-probe detection drop > 5.0pp (non-zero payloads) or benign FP rise > 0.5pp
+    [PSH Flag Count]  rule       worst det. drop (pp)   benign FP ref -> PSH=1   substantial
+      majority       0.00              0.073% -> 0.073%      no
+      unanimous      0.00              0.053% -> 0.053%      no
+      weighted       0.00              0.088% -> 0.088%      no
+      any            0.00              3.249% -> 3.249%      no
+      xgboost        0.00              0.068% -> 0.068%      no
+      rf             0.00              0.072% -> 0.072%      no
+      cnn            0.00              3.235% -> 3.235%      no
+    [Fwd PSH Flags]  rule       worst det. drop (pp)   benign FP ref -> PSH=1   substantial
+      majority       0.00              0.073% -> 0.067%      no
+      unanimous      0.00              0.053% -> 0.043%      no
+      weighted       0.00              0.088% -> 0.079%      no
+      any            0.00              3.249% -> 2.006%      no
+      xgboost        0.00              0.068% -> 0.063%      no
+      rf             0.00              0.072% -> 0.071%      no
+      cnn            0.00              3.235% -> 1.982%      no
+    output: /Users/varunkaveti/Documents/code/thesis/code/models_adv_nopsh/psh_sensitivity.json
+
+[2026-10-26 18:19:21] [auto] Adversarial training (cov1, model seed 1) started (train_adversarial.py --stage cnn)
+    bands per detector: {'xgboost': ['A'], 'rf': ['B'], 'cnn': ['C']}
+    71,381 padded PortScan rows per detector + 2,016,638 original train rows; same split, scaler, hyperparameters; output /Users/varunkaveti/Documents/code/thesis/code/models_cov1_nopsh_ms1
+
+[2026-10-26 18:27:16] [auto] Adversarial training (cov2, model seed 42) started (train_adversarial.py --stage trees)
+    bands per detector: {'xgboost': ['A', 'B'], 'rf': ['B', 'C'], 'cnn': ['C', 'A']}
+    71,381 padded PortScan rows per detector + 2,016,638 original train rows; same split, scaler, hyperparameters; output /Users/varunkaveti/Documents/code/thesis/code/models_cov2_nopsh
+
+[2026-10-26 18:27:17] [auto] Adversarial training (cov1, model seed 1) started (train_adversarial.py --stage cnn)
+    bands per detector: {'xgboost': ['A'], 'rf': ['B'], 'cnn': ['C']}
+    71,381 padded PortScan rows per detector + 2,016,638 original train rows; same split, scaler, hyperparameters; output /Users/varunkaveti/Documents/code/thesis/code/models_cov1_nopsh_ms1
+
+[2026-10-26 18:27:17] [auto] Adversarial training (cov2, model seed 42) started (train_adversarial.py --stage cnn)
+    bands per detector: {'xgboost': ['A', 'B'], 'rf': ['B', 'C'], 'cnn': ['C', 'A']}
+    71,381 padded PortScan rows per detector + 2,016,638 original train rows; same split, scaler, hyperparameters; output /Users/varunkaveti/Documents/code/thesis/code/models_cov2_nopsh
+
+[2026-10-26 18:28:43] [auto] Adversarial training (cov2, model seed 42): trees finished (train_adversarial.py)
+    bands per detector: {'xgboost': ['A', 'B'], 'rf': ['B', 'C'], 'cnn': ['C', 'A']}  ({'A': [1, 90], 'B': [91, 362], 'C': [363, 1460]} bytes)
+    padded PortScan rows per detector: 71,381 (seed 2026) added to 2,016,638 train rows
+    RF 0.8 min, XGBoost 0.6 min; saved to /Users/varunkaveti/Documents/code/thesis/code/models_cov2_nopsh
+
+[2026-10-26 18:28:58] [auto] Adversarial training (cov1, model seed 1) started (train_adversarial.py --stage trees)
+    bands per detector: {'xgboost': ['A'], 'rf': ['B'], 'cnn': ['C']}
+    71,381 padded PortScan rows per detector + 2,016,638 original train rows; same split, scaler, hyperparameters; output /Users/varunkaveti/Documents/code/thesis/code/models_cov1_nopsh_ms1
+
+[2026-10-26 18:30:24] [auto] Adversarial training (cov1, model seed 1): trees finished (train_adversarial.py)
+    bands per detector: {'xgboost': ['A'], 'rf': ['B'], 'cnn': ['C']}  ({'A': [1, 90], 'B': [91, 362], 'C': [363, 1460]} bytes)
+    padded PortScan rows per detector: 71,381 (seed 2026) added to 2,016,638 train rows
+    RF 0.8 min, XGBoost 0.6 min; saved to /Users/varunkaveti/Documents/code/thesis/code/models_cov1_nopsh_ms1
+
+[2026-10-26 18:30:39] [auto] Adversarial training (cov1, model seed 2) started (train_adversarial.py --stage trees)
+    bands per detector: {'xgboost': ['A'], 'rf': ['B'], 'cnn': ['C']}
+    71,381 padded PortScan rows per detector + 2,016,638 original train rows; same split, scaler, hyperparameters; output /Users/varunkaveti/Documents/code/thesis/code/models_cov1_nopsh_ms2
+
+[2026-10-26 18:32:04] [auto] Adversarial training (cov1, model seed 2): trees finished (train_adversarial.py)
+    bands per detector: {'xgboost': ['A'], 'rf': ['B'], 'cnn': ['C']}  ({'A': [1, 90], 'B': [91, 362], 'C': [363, 1460]} bytes)
+    padded PortScan rows per detector: 71,381 (seed 2026) added to 2,016,638 train rows
+    RF 0.8 min, XGBoost 0.6 min; saved to /Users/varunkaveti/Documents/code/thesis/code/models_cov1_nopsh_ms2
+
+[2026-10-26 18:32:19] [auto] Adversarial training (cov1, model seed 3) started (train_adversarial.py --stage trees)
+    bands per detector: {'xgboost': ['A'], 'rf': ['B'], 'cnn': ['C']}
+    71,381 padded PortScan rows per detector + 2,016,638 original train rows; same split, scaler, hyperparameters; output /Users/varunkaveti/Documents/code/thesis/code/models_cov1_nopsh_ms3
+
+[2026-10-26 18:33:46] [auto] Adversarial training (cov1, model seed 3): trees finished (train_adversarial.py)
+    bands per detector: {'xgboost': ['A'], 'rf': ['B'], 'cnn': ['C']}  ({'A': [1, 90], 'B': [91, 362], 'C': [363, 1460]} bytes)
+    padded PortScan rows per detector: 71,381 (seed 2026) added to 2,016,638 train rows
+    RF 0.8 min, XGBoost 0.7 min; saved to /Users/varunkaveti/Documents/code/thesis/code/models_cov1_nopsh_ms3
+
+[2026-10-26 18:48:44] [auto] Adversarial training (cov2, model seed 42): CNN finished (train_adversarial.py)
+    bands: ['C', 'A']; 30 epochs on mps, 21.4 min; best validation accuracy 0.9656 (5% slice of augmented train split)
+    saved /Users/varunkaveti/Documents/code/thesis/code/models_cov2_nopsh/cnn_model.pth
+
+[2026-10-26 18:48:47] [auto] Adversarial training (cov1, model seed 1): CNN finished (train_adversarial.py)
+    bands: ['C']; 30 epochs on mps, 21.4 min; best validation accuracy 0.9625 (5% slice of augmented train split)
+    saved /Users/varunkaveti/Documents/code/thesis/code/models_cov1_nopsh_ms1/cnn_model.pth
+
+[2026-10-26 18:48:57] [auto] Adversarial training (cov1, model seed 2) started (train_adversarial.py --stage cnn)
+    bands per detector: {'xgboost': ['A'], 'rf': ['B'], 'cnn': ['C']}
+    71,381 padded PortScan rows per detector + 2,016,638 original train rows; same split, scaler, hyperparameters; output /Users/varunkaveti/Documents/code/thesis/code/models_cov1_nopsh_ms2
+
+[2026-10-26 18:49:00] [auto] Adversarial training (cov1, model seed 3) started (train_adversarial.py --stage cnn)
+    bands per detector: {'xgboost': ['A'], 'rf': ['B'], 'cnn': ['C']}
+    71,381 padded PortScan rows per detector + 2,016,638 original train rows; same split, scaler, hyperparameters; output /Users/varunkaveti/Documents/code/thesis/code/models_cov1_nopsh_ms3
+
+[2026-10-26 19:08:00] [auto] Adversarial training (cov1, model seed 2): CNN finished (train_adversarial.py)
+    bands: ['C']; 30 epochs on mps, 19.0 min; best validation accuracy 0.9551 (5% slice of augmented train split)
+    saved /Users/varunkaveti/Documents/code/thesis/code/models_cov1_nopsh_ms2/cnn_model.pth
+
+[2026-10-26 19:08:01] [auto] Adversarial training (cov1, model seed 3): CNN finished (train_adversarial.py)
+    bands: ['C']; 30 epochs on mps, 19.0 min; best validation accuracy 0.9676 (5% slice of augmented train split)
+    saved /Users/varunkaveti/Documents/code/thesis/code/models_cov1_nopsh_ms3/cnn_model.pth
+
+[2026-10-26 19:08:25] [auto] Detector evaluation (evaluate_detectors.py)
+    detector set: /Users/varunkaveti/Documents/code/thesis/code/models_cov2_nopsh
+    held-out test split: 504,160 rows
+    detector  accuracy  attack-recall  false-pos  PortScan-caught
+    xgboost    99.89%    99.86%       0.07%     99.98%
+    rf         99.83%    99.51%       0.07%     98.84%
+    cnn        96.46%    99.47%       4.07%     99.53%
+    weighted-vote weights: {'xgboost': 0.344052, 'rf': 0.343411, 'cnn': 0.312537}
+    decision rules on the held-out test split (paired, same detector outputs):
+    rule       attack-recall  false-pos   F1
+    majority     99.90%       0.08%   0.9975
+    unanimous    98.95%       0.06%   0.9933
+    weighted     99.94%       0.09%   0.9974
+    any         100.00%       4.08%   0.9088
+    xgboost      99.86%       0.07%   0.9976
+    rf           99.51%       0.07%   0.9958
+    cnn          99.47%       4.07%   0.9063
+    padded held-out scan probes caught (17,834 flows per size, recorded destination ports):
+    rule            0B       64B      128B      256B      512B  random 1-1460B
+    majority    100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+    unanimous    99.7%     92.5%     90.8%     70.3%    100.0%     95.5%
+    weighted    100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+    any         100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+    xgboost     100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+    rf          100.0%     92.5%    100.0%    100.0%    100.0%     98.5%
+    cnn          99.7%    100.0%     90.8%     70.4%    100.0%     97.0%
+    padded held-out scan probes caught (17,834 flows per size, destination ports 1001-1100, as in the simulator):
+    rule            0B       64B      128B      256B      512B  random 1-1460B
+    majority    100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+    unanimous   100.0%     92.9%     99.8%     58.3%    100.0%     95.0%
+    weighted    100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+    any         100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+    xgboost     100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+    rf          100.0%     92.9%    100.0%    100.0%    100.0%     98.4%
+    cnn         100.0%    100.0%     99.8%     58.3%    100.0%     96.6%
+    detector pairs: disagreement / double-fault (test split | padded non-zero payload, sim ports)
+    xgboost-rf    0.09% /  0.06%   |    1.74% /  0.01%
+    xgboost-cnn   3.44% /  0.06%   |    9.05% /  0.00%
+    rf-cnn        3.50% /  0.06%   |   10.79% /  0.00%
+
+[2026-10-26 19:09:12] [auto] PSH sensitivity (psh_sensitivity.py)
+    detector set: /Users/varunkaveti/Documents/code/thesis/code/models_cov2_nopsh  (419,012 benign rows, 17,834 probes per size)
+    substantial = padded-probe detection drop > 5.0pp (non-zero payloads) or benign FP rise > 0.5pp
+    [PSH Flag Count]  rule       worst det. drop (pp)   benign FP ref -> PSH=1   substantial
+      majority       0.00              0.082% -> 0.082%      no
+      unanimous      0.00              0.058% -> 0.058%      no
+      weighted       0.00              0.094% -> 0.094%      no
+      any            0.00              4.076% -> 4.076%      no
+      xgboost        0.00              0.068% -> 0.068%      no
+      rf             0.00              0.072% -> 0.072%      no
+      cnn            0.00              4.074% -> 4.074%      no
+    [Fwd PSH Flags]  rule       worst det. drop (pp)   benign FP ref -> PSH=1   substantial
+      majority       0.00              0.082% -> 0.080%      no
+      unanimous      0.00              0.058% -> 0.058%      no
+      weighted       0.00              0.094% -> 0.096%      no
+      any            0.00              4.076% -> 4.725%      YES
+      xgboost        0.00              0.068% -> 0.068%      no
+      rf             0.00              0.072% -> 0.070%      no
+      cnn            0.00              4.074% -> 4.724%      YES
+    output: /Users/varunkaveti/Documents/code/thesis/code/models_cov2_nopsh/psh_sensitivity.json
+
+[2026-10-26 19:09:35] [auto] Detector evaluation (evaluate_detectors.py)
+    detector set: /Users/varunkaveti/Documents/code/thesis/code/models_cov1_nopsh_ms1
+    held-out test split: 504,160 rows
+    detector  accuracy  attack-recall  false-pos  PortScan-caught
+    xgboost    99.89%    99.86%       0.07%     99.98%
+    rf         99.82%    99.51%       0.07%     98.89%
+    cnn        96.14%    96.44%       3.45%     96.58%
+    weighted-vote weights: {'xgboost': 0.34436, 'rf': 0.343709, 'cnn': 0.311931}
+    decision rules on the held-out test split (paired, same detector outputs):
+    rule       attack-recall  false-pos   F1
+    majority     99.80%       0.07%   0.9972
+    unanimous    96.02%       0.05%   0.9784
+    weighted     99.86%       0.09%   0.9971
+    any          99.99%       3.47%   0.9214
+    xgboost      99.86%       0.07%   0.9977
+    rf           99.51%       0.07%   0.9958
+    cnn          96.44%       3.45%   0.9037
+    padded held-out scan probes caught (17,834 flows per size, recorded destination ports):
+    rule            0B       64B      128B      256B      512B  random 1-1460B
+    majority    100.0%    100.0%    100.0%    100.0%    100.0%     99.4%
+    unanimous    97.9%     48.7%     47.1%     62.9%    100.0%     83.7%
+    weighted    100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+    any         100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+    xgboost     100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+    rf          100.0%     99.9%    100.0%    100.0%    100.0%     92.3%
+    cnn          97.9%     48.7%     47.1%     62.9%    100.0%     90.8%
+    padded held-out scan probes caught (17,834 flows per size, destination ports 1001-1100, as in the simulator):
+    rule            0B       64B      128B      256B      512B  random 1-1460B
+    majority    100.0%    100.0%    100.0%    100.0%    100.0%     99.1%
+    unanimous    99.9%      0.8%     50.0%     68.8%    100.0%     82.6%
+    weighted    100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+    any         100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+    xgboost     100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+    rf          100.0%    100.0%    100.0%    100.0%    100.0%     93.3%
+    cnn          99.9%      0.8%     50.0%     68.8%    100.0%     88.4%
+    detector pairs: disagreement / double-fault (test split | padded non-zero payload, sim ports)
+    xgboost-rf    0.09% /  0.07%   |    1.35% /  0.01%
+    xgboost-cnn   3.45% /  0.05%   |   38.39% /  0.00%
+    rf-cnn        3.48% /  0.07%   |   39.38% /  0.19%
+
+[2026-10-26 19:10:20] [auto] PSH sensitivity (psh_sensitivity.py)
+    detector set: /Users/varunkaveti/Documents/code/thesis/code/models_cov1_nopsh_ms1  (419,012 benign rows, 17,834 probes per size)
+    substantial = padded-probe detection drop > 5.0pp (non-zero payloads) or benign FP rise > 0.5pp
+    [PSH Flag Count]  rule       worst det. drop (pp)   benign FP ref -> PSH=1   substantial
+      majority       0.00              0.075% -> 0.075%      no
+      unanimous      0.00              0.051% -> 0.051%      no
+      weighted       0.00              0.088% -> 0.088%      no
+      any            0.00              3.466% -> 3.466%      no
+      xgboost        0.00              0.067% -> 0.067%      no
+      rf             0.00              0.072% -> 0.072%      no
+      cnn            0.00              3.452% -> 3.452%      no
+    [Fwd PSH Flags]  rule       worst det. drop (pp)   benign FP ref -> PSH=1   substantial
+      majority       0.00              0.075% -> 0.061%      no
+      unanimous      0.00              0.051% -> 0.038%      no
+      weighted       0.00              0.088% -> 0.059%      no
+      any            0.00              3.466% -> 1.172%      no
+      xgboost        0.00              0.067% -> 0.073%      no
+      rf             0.00              0.072% -> 0.070%      no
+      cnn            0.00              3.452% -> 1.128%      no
+    output: /Users/varunkaveti/Documents/code/thesis/code/models_cov1_nopsh_ms1/psh_sensitivity.json
+
+[2026-10-26 19:10:44] [auto] Detector evaluation (evaluate_detectors.py)
+    detector set: /Users/varunkaveti/Documents/code/thesis/code/models_cov1_nopsh_ms2
+    held-out test split: 504,160 rows
+    detector  accuracy  attack-recall  false-pos  PortScan-caught
+    xgboost    99.89%    99.86%       0.07%     99.98%
+    rf         99.82%    99.51%       0.07%     98.88%
+    cnn        95.35%    94.85%       4.60%     94.06%
+    weighted-vote weights: {'xgboost': 0.348146, 'rf': 0.347476, 'cnn': 0.304377}
+    decision rules on the held-out test split (paired, same detector outputs):
+    rule       attack-recall  false-pos   F1
+    majority     99.76%       0.07%   0.9970
+    unanimous    94.46%       0.05%   0.9703
+    weighted     99.87%       0.09%   0.9972
+    any          99.99%       4.62%   0.8979
+    xgboost      99.86%       0.07%   0.9977
+    rf           99.51%       0.07%   0.9957
+    cnn          94.85%       4.60%   0.8722
+    padded held-out scan probes caught (17,834 flows per size, recorded destination ports):
+    rule            0B       64B      128B      256B      512B  random 1-1460B
+    majority    100.0%     71.2%    100.0%    100.0%    100.0%     98.7%
+    unanimous   100.0%     14.7%     17.2%     98.5%    100.0%     74.0%
+    weighted    100.0%     99.6%    100.0%    100.0%    100.0%     99.8%
+    any         100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+    xgboost     100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+    rf          100.0%     62.0%    100.0%    100.0%    100.0%     82.4%
+    cnn         100.0%     23.9%     17.2%     98.5%    100.0%     90.3%
+    padded held-out scan probes caught (17,834 flows per size, destination ports 1001-1100, as in the simulator):
+    rule            0B       64B      128B      256B      512B  random 1-1460B
+    majority    100.0%     61.2%    100.0%    100.0%    100.0%     98.0%
+    unanimous   100.0%      1.1%      8.0%     99.7%    100.0%     71.8%
+    weighted    100.0%     99.3%    100.0%    100.0%    100.0%     99.7%
+    any         100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+    xgboost     100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+    rf          100.0%     60.8%    100.0%    100.0%    100.0%     82.2%
+    cnn         100.0%      1.5%      8.0%     99.7%    100.0%     87.6%
+    detector pairs: disagreement / double-fault (test split | padded non-zero payload, sim ports)
+    xgboost-rf    0.09% /  0.07%   |   11.40% /  0.01%
+    xgboost-cnn   4.68% /  0.04%   |   40.64% /  0.00%
+    rf-cnn        4.70% /  0.07%   |   35.73% /  8.16%
+
+[2026-10-26 19:11:30] [auto] PSH sensitivity (psh_sensitivity.py)
+    detector set: /Users/varunkaveti/Documents/code/thesis/code/models_cov1_nopsh_ms2  (419,012 benign rows, 17,834 probes per size)
+    substantial = padded-probe detection drop > 5.0pp (non-zero payloads) or benign FP rise > 0.5pp
+    [PSH Flag Count]  rule       worst det. drop (pp)   benign FP ref -> PSH=1   substantial
+      majority       0.00              0.072% -> 0.072%      no
+      unanimous      0.00              0.047% -> 0.047%      no
+      weighted       0.00              0.088% -> 0.088%      no
+      any            0.00              4.621% -> 4.621%      no
+      xgboost        0.00              0.067% -> 0.067%      no
+      rf             0.00              0.073% -> 0.073%      no
+      cnn            0.00              4.600% -> 4.600%      no
+    [Fwd PSH Flags]  rule       worst det. drop (pp)   benign FP ref -> PSH=1   substantial
+      majority       0.00              0.072% -> 0.084%      no
+      unanimous      0.00              0.047% -> 0.054%      no
+      weighted       0.00              0.088% -> 0.097%      no
+      any            0.00              4.621% -> 3.810%      no
+      xgboost        0.00              0.067% -> 0.073%      no
+      rf             0.00              0.073% -> 0.071%      no
+      cnn            0.00              4.600% -> 3.803%      no
+    output: /Users/varunkaveti/Documents/code/thesis/code/models_cov1_nopsh_ms2/psh_sensitivity.json
+
+[2026-10-26 19:11:52] [auto] Detector evaluation (evaluate_detectors.py)
+    detector set: /Users/varunkaveti/Documents/code/thesis/code/models_cov1_nopsh_ms3
+    held-out test split: 504,160 rows
+    detector  accuracy  attack-recall  false-pos  PortScan-caught
+    xgboost    99.89%    99.86%       0.07%     99.98%
+    rf         99.82%    99.51%       0.07%     98.88%
+    cnn        96.64%    94.98%       2.96%     93.33%
+    weighted-vote weights: {'xgboost': 0.344012, 'rf': 0.343366, 'cnn': 0.312622}
+    decision rules on the held-out test split (paired, same detector outputs):
+    rule       attack-recall  false-pos   F1
+    majority     99.74%       0.07%   0.9969
+    unanimous    94.62%       0.05%   0.9712
+    weighted     99.83%       0.09%   0.9971
+    any          99.99%       2.98%   0.9317
+    xgboost      99.86%       0.07%   0.9977
+    rf           99.51%       0.07%   0.9958
+    cnn          94.98%       2.96%   0.9066
+    padded held-out scan probes caught (17,834 flows per size, recorded destination ports):
+    rule            0B       64B      128B      256B      512B  random 1-1460B
+    majority    100.0%     70.5%    100.0%    100.0%    100.0%     98.2%
+    unanimous    99.6%      0.1%      2.3%     36.8%    100.0%     66.7%
+    weighted    100.0%     98.8%    100.0%    100.0%    100.0%     99.1%
+    any         100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+    xgboost     100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+    rf           99.9%     69.7%    100.0%    100.0%    100.0%     82.3%
+    cnn          99.8%      0.8%      2.3%     36.8%    100.0%     82.6%
+    padded held-out scan probes caught (17,834 flows per size, destination ports 1001-1100, as in the simulator):
+    rule            0B       64B      128B      256B      512B  random 1-1460B
+    majority    100.0%     83.8%    100.0%    100.0%    100.0%     98.2%
+    unanimous    99.9%      0.0%      0.7%     46.5%    100.0%     68.6%
+    weighted    100.0%     98.9%    100.0%    100.0%    100.0%     98.8%
+    any         100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+    xgboost     100.0%    100.0%    100.0%    100.0%    100.0%    100.0%
+    rf           99.9%     83.8%    100.0%    100.0%    100.0%     84.2%
+    cnn         100.0%      0.0%      0.7%     46.5%    100.0%     82.6%
+    detector pairs: disagreement / double-fault (test split | padded non-zero payload, sim ports)
+    xgboost-rf    0.09% /  0.07%   |    6.40% /  0.01%
+    xgboost-cnn   3.30% /  0.04%   |   54.03% /  0.00%
+    rf-cnn        3.30% /  0.07%   |   53.22% /  3.61%
+
+[2026-10-26 19:12:39] [auto] PSH sensitivity (psh_sensitivity.py)
+    detector set: /Users/varunkaveti/Documents/code/thesis/code/models_cov1_nopsh_ms3  (419,012 benign rows, 17,834 probes per size)
+    substantial = padded-probe detection drop > 5.0pp (non-zero payloads) or benign FP rise > 0.5pp
+    [PSH Flag Count]  rule       worst det. drop (pp)   benign FP ref -> PSH=1   substantial
+      majority       0.00              0.072% -> 0.072%      no
+      unanimous      0.00              0.045% -> 0.045%      no
+      weighted       0.00              0.085% -> 0.085%      no
+      any            0.00              2.978% -> 2.978%      no
+      xgboost        0.00              0.067% -> 0.067%      no
+      rf             0.00              0.073% -> 0.073%      no
+      cnn            0.00              2.955% -> 2.955%      no
+    [Fwd PSH Flags]  rule       worst det. drop (pp)   benign FP ref -> PSH=1   substantial
+      majority       0.00              0.072% -> 0.080%      no
+      unanimous      0.00              0.045% -> 0.053%      no
+      weighted       0.00              0.085% -> 0.091%      no
+      any            0.00              2.978% -> 2.696%      no
+      xgboost        0.00              0.067% -> 0.073%      no
+      rf             0.00              0.073% -> 0.069%      no
+      cnn            0.00              2.955% -> 2.686%      no
+    output: /Users/varunkaveti/Documents/code/thesis/code/models_cov1_nopsh_ms3/psh_sensitivity.json

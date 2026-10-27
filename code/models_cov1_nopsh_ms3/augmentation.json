@@ -1,0 +1,63 @@
+{
+  "design": "cov1",
+  "bands_bytes": {
+    "A": [
+      1,
+      90
+    ],
+    "B": [
+      91,
+      362
+    ],
+    "C": [
+      363,
+      1460
+    ]
+  },
+  "detector_bands": {
+    "xgboost": [
+      "A"
+    ],
+    "rf": [
+      "B"
+    ],
+    "cnn": [
+      "C"
+    ]
+  },
+  "train_rows_original": 2016638,
+  "portscan_train_rows_single_probe": 71381,
+  "padded_rows_added_per_detector": 71381,
+  "payload_bytes_per_detector": {
+    "xgboost": {
+      "min": 1,
+      "max": 90,
+      "mean": 45.4,
+      "rows_per_band": {
+        "A": 71381
+      }
+    },
+    "rf": {
+      "min": 91,
+      "max": 362,
+      "mean": 226.7,
+      "rows_per_band": {
+        "B": 71381
+      }
+    },
+    "cnn": {
+      "min": 363,
+      "max": 1460,
+      "mean": 910.3,
+      "rows_per_band": {
+        "C": 71381
+      }
+    }
+  },
+  "aug_copies": 1,
+  "aug_seed": 2026,
+  "masked_features": [
+    "PSH Flag Count"
+  ],
+  "model_seed": 3
+}

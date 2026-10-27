@@ -213,6 +213,10 @@ class IDSEvasionEnv(gym.Env):
         if scaler is None:
             return np.asarray(features, dtype=np.float32)
         z = (np.asarray(features, dtype=np.float64) - scaler.mean_) / scaler.scale_
+        # Feature-masked detector sets (masked_scaler.MaskedScaler): hide those columns here too
+        masked = list(getattr(scaler, "masked_idx", ()))
+        if masked:
+            z[masked] = 0.0
         return np.clip(z, -OBS_CLIP, OBS_CLIP).astype(np.float32)
 
     def _connect_socket(self):

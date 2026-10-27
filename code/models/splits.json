@@ -1,0 +1,82 @@
+{
+  "seed": 2026,
+  "heldout_rows": 504160,
+  "validation_side_rows": 252183,
+  "final_test_side_rows": 251977,
+  "bank_flows": 17834,
+  "bank_groups": 333,
+  "largest_group": 228,
+  "singleton_groups": 66,
+  "bank_partition_flows": {
+    "agent_train": 6632,
+    "dev": 2388,
+    "final_test": 8814
+  },
+  "bank_partition_groups": {
+    "agent_train": 116,
+    "dev": 50,
+    "final_test": 167
+  },
+  "per_class_rows": {
+    "BENIGN": {
+      "validation": 209506,
+      "final_test": 209506
+    },
+    "Bot": {
+      "validation": 195,
+      "final_test": 195
+    },
+    "DDoS": {
+      "validation": 12801,
+      "final_test": 12802
+    },
+    "DoS GoldenEye": {
+      "validation": 1028,
+      "final_test": 1029
+    },
+    "DoS Hulk": {
+      "validation": 17284,
+      "final_test": 17285
+    },
+    "DoS Slowhttptest": {
+      "validation": 523,
+      "final_test": 523
+    },
+    "DoS slowloris": {
+      "validation": 539,
+      "final_test": 538
+    },
+    "FTP-Patator": {
+      "validation": 593,
+      "final_test": 593
+    },
+    "Heartbleed": {
+      "validation": 1,
+      "final_test": 1
+    },
+    "Infiltration": {
+      "validation": 4,
+      "final_test": 3
+    },
+    "PortScan": {
+      "validation": 9173,
+      "final_test": 8966
+    },
+    "SSH-Patator": {
+      "validation": 322,
+      "final_test": 322
+    },
+    "Web Attack \ufffd Brute Force": {
+      "validation": 147,
+      "final_test": 147
+    },
+    "Web Attack \ufffd Sql Injection": {
+      "validation": 2,
+      "final_test": 2
+    },
+    "Web Attack \ufffd XSS": {
+      "validation": 65,
+      "final_test": 65
+    }
+  }
+}

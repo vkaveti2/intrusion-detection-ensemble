@@ -1,0 +1,98 @@
+{
+  "design": "cov2",
+  "bands_bytes": {
+    "A": [
+      1,
+      90
+    ],
+    "B": [
+      91,
+      362
+    ],
+    "C": [
+      363,
+      1460
+    ]
+  },
+  "detector_bands": {
+    "xgboost": [
+      "A",
+      "B"
+    ],
+    "rf": [
+      "B",
+      "C"
+    ],
+    "cnn": [
+      "C",
+      "A"
+    ]
+  },
+  "train_rows_original": 2016638,
+  "portscan_train_rows_single_probe": 71381,
+  "padded_rows_added_per_detector": 71381,
+  "payload_bytes_per_detector": {
+    "xgboost": {
+      "min": 1,
+      "max": 362,
+      "mean": 135.9,
+      "rows_per_band": {
+        "A": 35691,
+        "B": 35690
+      }
+    },
+    "rf": {
+      "min": 91,
+      "max": 1460,
+      "mean": 569.0,
+      "rows_per_band": {
+        "B": 35691,
+        "C": 35690
+      }
+    },
+    "cnn": {
+      "min": 1,
+      "max": 1460,
+      "mean": 478.3,
+      "rows_per_band": {
+        "C": 35691,
+        "A": 35690
+      }
+    }
+  },
+  "aug_copies": 1,
+  "aug_seed": 2026,
+  "masked_features": [
+    "PSH Flag Count"
+  ]
+}
+Epoch  1/30  loss=0.3869  val_acc=0.8657  (1.1 min)  <- best
+Epoch  2/30  loss=0.1973  val_acc=0.8246  (2.1 min)
+Epoch  3/30  loss=0.1805  val_acc=0.8834  (3.1 min)  <- best
+Epoch  4/30  loss=0.1616  val_acc=0.9132  (4.1 min)  <- best
+Epoch  5/30  loss=0.1558  val_acc=0.9054  (5.0 min)
+Epoch  6/30  loss=0.1509  val_acc=0.9379  (6.1 min)  <- best
+Epoch  7/30  loss=0.1449  val_acc=0.9024  (6.8 min)
+Epoch  8/30  loss=0.1448  val_acc=0.8723  (7.5 min)
+Epoch  9/30  loss=0.1395  val_acc=0.9273  (8.1 min)
+Epoch 10/30  loss=0.1481  val_acc=0.9466  (8.7 min)  <- best
+Epoch 11/30  loss=0.1441  val_acc=0.9225  (9.4 min)
+Epoch 12/30  loss=0.1380  val_acc=0.8882  (10.0 min)
+Epoch 13/30  loss=0.1357  val_acc=0.9388  (10.7 min)
+Epoch 14/30  loss=0.1336  val_acc=0.9502  (11.3 min)  <- best
+Epoch 15/30  loss=0.1347  val_acc=0.9376  (11.9 min)
+Epoch 16/30  loss=0.1318  val_acc=0.9383  (12.6 min)
+Epoch 17/30  loss=0.1329  val_acc=0.9429  (13.2 min)
+Epoch 18/30  loss=0.1318  val_acc=0.9180  (13.8 min)
+Epoch 19/30  loss=0.1270  val_acc=0.9208  (14.5 min)
+Epoch 20/30  loss=0.1239  val_acc=0.9546  (15.1 min)  <- best
+Epoch 21/30  loss=0.1199  val_acc=0.9656  (15.7 min)  <- best
+Epoch 22/30  loss=0.1195  val_acc=0.9572  (16.4 min)
+Epoch 23/30  loss=0.1198  val_acc=0.9131  (17.0 min)
+Epoch 24/30  loss=0.1190  val_acc=0.9424  (17.6 min)
+Epoch 25/30  loss=0.1178  val_acc=0.9325  (18.3 min)
+Epoch 26/30  loss=0.1176  val_acc=0.9520  (18.9 min)
+Epoch 27/30  loss=0.1151  val_acc=0.9364  (19.5 min)
+Epoch 28/30  loss=0.1123  val_acc=0.9599  (20.2 min)
+Epoch 29/30  loss=0.1145  val_acc=0.9482  (20.8 min)
+Epoch 30/30  loss=0.1118  val_acc=0.9558  (21.4 min)

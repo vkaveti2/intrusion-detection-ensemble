@@ -1,0 +1,56 @@
+{
+  "design": "full",
+  "bands_bytes": {
+    "full": [
+      1,
+      1460
+    ]
+  },
+  "detector_bands": {
+    "xgboost": [
+      "full"
+    ],
+    "rf": [
+      "full"
+    ],
+    "cnn": [
+      "full"
+    ]
+  },
+  "train_rows_original": 2016638,
+  "portscan_train_rows_single_probe": 71381,
+  "padded_rows_added_per_detector": 71381,
+  "payload_bytes_per_detector": {
+    "xgboost": {
+      "min": 1,
+      "max": 1460,
+      "mean": 729.2,
+      "rows_per_band": {
+        "full": 71381
+      }
+    },
+    "rf": {
+      "min": 1,
+      "max": 1460,
+      "mean": 729.2,
+      "rows_per_band": {
+        "full": 71381
+      }
+    },
+    "cnn": {
+      "min": 1,
+      "max": 1460,
+      "mean": 729.2,
+      "rows_per_band": {
+        "full": 71381
+      }
+    }
+  },
+  "aug_copies": 1,
+  "aug_seed": 2026,
+  "masked_features": [
+    "PSH Flag Count"
+  ]
+}
+RF trained in 0.7 min
+XGBoost trained in 0.5 min

@@ -1,0 +1,18 @@
+detector set: /Users/varunkaveti/Documents/code/thesis/code/models_adv_nopsh  (419,012 benign rows, 17,834 probes per size)
+substantial = padded-probe detection drop > 5.0pp (non-zero payloads) or benign FP rise > 0.5pp
+[PSH Flag Count]  rule       worst det. drop (pp)   benign FP ref -> PSH=1   substantial
+  majority       0.00              0.073% -> 0.073%      no
+  unanimous      0.00              0.053% -> 0.053%      no
+  weighted       0.00              0.088% -> 0.088%      no
+  any            0.00              3.249% -> 3.249%      no
+  xgboost        0.00              0.068% -> 0.068%      no
+  rf             0.00              0.072% -> 0.072%      no
+  cnn            0.00              3.235% -> 3.235%      no
+[Fwd PSH Flags]  rule       worst det. drop (pp)   benign FP ref -> PSH=1   substantial
+  majority       0.00              0.073% -> 0.067%      no
+  unanimous      0.00              0.053% -> 0.043%      no
+  weighted       0.00              0.088% -> 0.079%      no
+  any            0.00              3.249% -> 2.006%      no
+  xgboost        0.00              0.068% -> 0.063%      no
+  rf             0.00              0.072% -> 0.071%      no
+  cnn            0.00              3.235% -> 1.982%      no
