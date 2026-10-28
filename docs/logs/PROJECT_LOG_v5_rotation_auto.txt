@@ -1,0 +1,336 @@
+
+[2026-10-28 10:35:28] [auto] v5 CNN finished (cov1_cnnB_ms2, model seed 2) (train_v5.py)
+    best epoch 26, inner-validation accuracy 0.9625; 30 epochs on mps, 28.2 min; saved /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov1_cnnB_ms2/cnn_model.pth
+
+[2026-10-28 10:35:33] [auto] v5 CNN finished (cov1_cnnA_ms1, model seed 1) (train_v5.py)
+    best epoch 28, inner-validation accuracy 0.9607; 30 epochs on mps, 28.3 min; saved /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov1_cnnA_ms1/cnn_model.pth
+
+[2026-10-28 10:35:35] [auto] v5 CNN finished (cov1_cnnA_ms2, model seed 2) (train_v5.py)
+    best epoch 22, inner-validation accuracy 0.9601; 30 epochs on mps, 28.3 min; saved /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov1_cnnA_ms2/cnn_model.pth
+
+[2026-10-28 10:35:38] [auto] v5 CNN finished (cov1_cnnB_ms1, model seed 1) (train_v5.py)
+    best epoch 25, inner-validation accuracy 0.9617; 30 epochs on mps, 28.3 min; saved /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov1_cnnB_ms1/cnn_model.pth
+
+[2026-10-28 10:59:15] [auto] v5 evaluation (weights) (evaluate_v5.py)
+    detector set: /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov1_cnnA_ms1
+    validation partition + dev bank: 377,863 rows, 3,816 probe flows
+    weights (validation F1): {'xgboost': 0.3456421632568389, 'rf': 0.3453175449777273, 'cnn': 0.3090402917654338}
+    rule       attack-recall  false-pos     F1    | padded probes caught at 64 B / 128 B / 256 B / 512 B
+    majority     99.77%      0.061%  0.9973  | 3816/3816  3816/3816  3816/3816  3816/3816
+    unanimous    96.57%      0.046%  0.9814  | 3524/3816  3813/3816  0/3816  0/3816
+    weighted     99.82%      0.074%  0.9973  | 3816/3816  3816/3816  3816/3816  3816/3816
+    any          99.98%      4.108%  0.9078  | 3816/3816  3816/3816  3816/3816  3816/3816
+    xgboost      99.86%      0.062%  0.9978  | 3816/3816  3816/3816  3816/3816  3816/3816
+    rf           99.68%      0.065%  0.9968  | 3524/3816  3816/3816  3816/3816  3816/3816
+    cnn          96.78%      4.088%  0.8921  | 3816/3816  3813/3816  0/3816  0/3816
+    output: /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov1_cnnA_ms1/validation_eval.json
+
+[2026-10-28 10:59:24] [auto] v5 evaluation (final) (evaluate_v5.py)
+    detector set: /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov1_cnnA_ms1
+    FINAL-TEST partition + final-test bank: 378,337 rows, 13,569 probe flows
+    weights (validation F1): {'xgboost': 0.345642, 'rf': 0.345318, 'cnn': 0.30904}
+    rule       attack-recall  false-pos     F1    | padded probes caught at 64 B / 128 B / 256 B / 512 B
+    majority     99.74%      0.078%  0.9968  | 13569/13569  13569/13569  13569/13569  13569/13569
+    unanimous    96.17%      0.058%  0.9791  | 13025/13569  11793/13569  0/13569  0/13569
+    weighted     99.81%      0.092%  0.9968  | 13569/13569  13569/13569  13569/13569  13569/13569
+    any          99.98%      4.202%  0.9064  | 13569/13569  13569/13569  13569/13569  13569/13569
+    xgboost      99.82%      0.079%  0.9972  | 13569/13569  13569/13569  13569/13569  13569/13569
+    rf           99.63%      0.079%  0.9962  | 13029/13569  13569/13569  13569/13569  13569/13569
+    cnn          96.44%      4.179%  0.8891  | 13565/13569  11793/13569  0/13569  0/13569
+    output: /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov1_cnnA_ms1/final_eval.json
+
+[2026-10-28 10:59:39] [auto] v5 evaluation (weights) (evaluate_v5.py)
+    detector set: /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov1_cnnB_ms1
+    validation partition + dev bank: 377,863 rows, 3,816 probe flows
+    weights (validation F1): {'xgboost': 0.34505605967849484, 'rf': 0.344731991852873, 'cnn': 0.31021194846863226}
+    rule       attack-recall  false-pos     F1    | padded probes caught at 64 B / 128 B / 256 B / 512 B
+    majority     99.82%      0.066%  0.9975  | 3814/3816  3816/3816  3816/3816  3816/3816
+    unanimous    99.17%      0.048%  0.9946  | 3523/3816  3816/3816  3816/3816  3813/3816
+    weighted     99.86%      0.079%  0.9974  | 3814/3816  3816/3816  3816/3816  3816/3816
+    any          99.98%      4.518%  0.8995  | 3816/3816  3816/3816  3816/3816  3816/3816
+    xgboost      99.86%      0.062%  0.9978  | 3816/3816  3816/3816  3816/3816  3816/3816
+    rf           99.68%      0.065%  0.9968  | 3524/3816  3816/3816  3816/3816  3816/3816
+    cnn          99.42%      4.505%  0.8970  | 3813/3816  3816/3816  3816/3816  3813/3816
+    output: /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov1_cnnB_ms1/validation_eval.json
+
+[2026-10-28 10:59:49] [auto] v5 evaluation (final) (evaluate_v5.py)
+    detector set: /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov1_cnnB_ms1
+    FINAL-TEST partition + final-test bank: 378,337 rows, 13,569 probe flows
+    weights (validation F1): {'xgboost': 0.345056, 'rf': 0.344732, 'cnn': 0.310212}
+    rule       attack-recall  false-pos     F1    | padded probes caught at 64 B / 128 B / 256 B / 512 B
+    majority     99.79%      0.083%  0.9969  | 13563/13569  13569/13569  13569/13569  13569/13569
+    unanimous    99.04%      0.061%  0.9937  | 12162/13569  13569/13569  13569/13569  13563/13569
+    weighted     99.85%      0.095%  0.9969  | 13569/13569  13569/13569  13569/13569  13569/13569
+    any          99.98%      4.605%  0.8984  | 13569/13569  13569/13569  13569/13569  13569/13569
+    xgboost      99.82%      0.079%  0.9972  | 13569/13569  13569/13569  13569/13569  13569/13569
+    rf           99.63%      0.079%  0.9962  | 13029/13569  13569/13569  13569/13569  13569/13569
+    cnn          99.36%      4.591%  0.8956  | 12696/13569  13569/13569  13569/13569  13563/13569
+    output: /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov1_cnnB_ms1/final_eval.json
+
+[2026-10-28 11:00:05] [auto] v5 evaluation (weights) (evaluate_v5.py)
+    detector set: /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov1_cnnA_ms2
+    validation partition + dev bank: 377,863 rows, 3,816 probe flows
+    weights (validation F1): {'xgboost': 0.345560831644599, 'rf': 0.3452008787053202, 'cnn': 0.30923828965008093}
+    rule       attack-recall  false-pos     F1    | padded probes caught at 64 B / 128 B / 256 B / 512 B
+    majority     99.83%      0.068%  0.9975  | 3816/3816  3816/3816  3816/3816  3816/3816
+    unanimous    99.07%      0.050%  0.9941  | 3708/3816  3816/3816  0/3816  0/3816
+    weighted     99.87%      0.081%  0.9974  | 3816/3816  3816/3816  3816/3816  3816/3816
+    any          99.98%      4.703%  0.8958  | 3816/3816  3816/3816  3816/3816  3816/3816
+    xgboost      99.86%      0.062%  0.9978  | 3816/3816  3816/3816  3816/3816  3816/3816
+    rf           99.67%      0.066%  0.9967  | 3708/3816  3816/3816  3816/3816  3816/3816
+    cnn          99.34%      4.693%  0.8929  | 3816/3816  3816/3816  0/3816  0/3816
+    output: /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov1_cnnA_ms2/validation_eval.json
+
+[2026-10-28 11:00:14] [auto] v5 evaluation (final) (evaluate_v5.py)
+    detector set: /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov1_cnnA_ms2
+    FINAL-TEST partition + final-test bank: 378,337 rows, 13,569 probe flows
+    weights (validation F1): {'xgboost': 0.345561, 'rf': 0.345201, 'cnn': 0.309238}
+    rule       attack-recall  false-pos     F1    | padded probes caught at 64 B / 128 B / 256 B / 512 B
+    majority     99.82%      0.085%  0.9970  | 13569/13569  13569/13569  13569/13569  13569/13569
+    unanimous    98.91%      0.062%  0.9930  | 12810/13569  13566/13569  0/13569  0/13569
+    weighted     99.86%      0.096%  0.9969  | 13569/13569  13569/13569  13569/13569  13569/13569
+    any          99.98%      4.778%  0.8950  | 13569/13569  13569/13569  13569/13569  13569/13569
+    xgboost      99.82%      0.079%  0.9972  | 13569/13569  13569/13569  13569/13569  13569/13569
+    rf           99.62%      0.080%  0.9961  | 12810/13569  13569/13569  13569/13569  13569/13569
+    cnn          99.27%      4.766%  0.8917  | 13569/13569  13566/13569  0/13569  0/13569
+    output: /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov1_cnnA_ms2/final_eval.json
+
+[2026-10-28 11:00:29] [auto] v5 evaluation (weights) (evaluate_v5.py)
+    detector set: /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov1_cnnB_ms2
+    validation partition + dev bank: 377,863 rows, 3,816 probe flows
+    weights (validation F1): {'xgboost': 0.34500183892505226, 'rf': 0.34464246825972933, 'cnn': 0.3103556928152186}
+    rule       attack-recall  false-pos     F1    | padded probes caught at 64 B / 128 B / 256 B / 512 B
+    majority     99.84%      0.068%  0.9975  | 3814/3816  3816/3816  3816/3816  3816/3816
+    unanimous    98.64%      0.051%  0.9919  | 3707/3816  3816/3816  3816/3816  3815/3816
+    weighted     99.89%      0.082%  0.9974  | 3816/3816  3816/3816  3816/3816  3816/3816
+    any          99.98%      4.366%  0.9026  | 3816/3816  3816/3816  3816/3816  3816/3816
+    xgboost      99.86%      0.062%  0.9978  | 3816/3816  3816/3816  3816/3816  3816/3816
+    rf           99.67%      0.066%  0.9967  | 3708/3816  3816/3816  3816/3816  3816/3816
+    cnn          98.94%      4.357%  0.8976  | 3813/3816  3816/3816  3816/3816  3815/3816
+    output: /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov1_cnnB_ms2/validation_eval.json
+
+[2026-10-28 11:00:39] [auto] v5 evaluation (final) (evaluate_v5.py)
+    detector set: /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov1_cnnB_ms2
+    FINAL-TEST partition + final-test bank: 378,337 rows, 13,569 probe flows
+    weights (validation F1): {'xgboost': 0.345002, 'rf': 0.344642, 'cnn': 0.310356}
+    rule       attack-recall  false-pos     F1    | padded probes caught at 64 B / 128 B / 256 B / 512 B
+    majority     99.84%      0.086%  0.9971  | 13546/13569  13569/13569  13569/13569  13569/13569
+    unanimous    98.48%      0.063%  0.9908  | 12796/13569  13569/13569  13569/13569  13564/13569
+    weighted     99.88%      0.097%  0.9970  | 13569/13569  13569/13569  13569/13569  13569/13569
+    any          99.98%      4.432%  0.9018  | 13569/13569  13569/13569  13569/13569  13569/13569
+    xgboost      99.82%      0.079%  0.9972  | 13569/13569  13569/13569  13569/13569  13569/13569
+    rf           99.62%      0.080%  0.9961  | 12810/13569  13569/13569  13569/13569  13569/13569
+    cnn          98.85%      4.421%  0.8964  | 13532/13569  13569/13569  13569/13569  13564/13569
+    output: /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov1_cnnB_ms2/final_eval.json
+
+[2026-10-28 11:03:02] [auto] Training batch started: 4 experiment(s)
+    rules=['cnn', 'unanimous']  knowledge=['black', 'white']  timesteps=50000  seed=0
+    mode=parallel (max 4)
+    detector set=/Users/varunkaveti/Documents/code/thesis/code/models_v5/cov1_cnnB_ms2  output dir=/Users/varunkaveti/Documents/code/thesis/results_v5/rotation/agents/cov1_cnnB_ms2
+
+[2026-10-28 11:03:02] [auto] Training batch started: 4 experiment(s)
+    rules=['cnn', 'unanimous']  knowledge=['black', 'white']  timesteps=50000  seed=0
+    mode=parallel (max 4)
+    detector set=/Users/varunkaveti/Documents/code/thesis/code/models_v5/cov1_cnnA_ms2  output dir=/Users/varunkaveti/Documents/code/thesis/results_v5/rotation/agents/cov1_cnnA_ms2
+
+[2026-10-28 11:03:02] [auto] Training batch started: 4 experiment(s)
+    rules=['cnn', 'unanimous']  knowledge=['black', 'white']  timesteps=50000  seed=0
+    mode=parallel (max 4)
+    detector set=/Users/varunkaveti/Documents/code/thesis/code/models_v5/cov1_cnnA_ms1  output dir=/Users/varunkaveti/Documents/code/thesis/results_v5/rotation/agents/cov1_cnnA_ms1
+
+[2026-10-28 11:03:02] [auto] Training batch started: 4 experiment(s)
+    rules=['cnn', 'unanimous']  knowledge=['black', 'white']  timesteps=50000  seed=0
+    mode=parallel (max 4)
+    detector set=/Users/varunkaveti/Documents/code/thesis/code/models_v5/cov1_cnnB_ms1  output dir=/Users/varunkaveti/Documents/code/thesis/results_v5/rotation/agents/cov1_cnnB_ms1
+
+[2026-10-28 11:03:04] [auto] Experiment started: ddqn_cnn_black
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-28 11:03:04] [auto] Experiment started: ddqn_cnn_black
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-28 11:03:05] [auto] Experiment started: ddqn_cnn_white
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-28 11:03:05] [auto] Experiment started: ddqn_cnn_white
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-28 11:03:05] [auto] Experiment started: ddqn_unanimous_black
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-28 11:03:05] [auto] Experiment started: ddqn_cnn_black
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-28 11:03:05] [auto] Experiment started: ddqn_cnn_black
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-28 11:03:05] [auto] Experiment started: ddqn_unanimous_black
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-28 11:03:05] [auto] Experiment started: ddqn_cnn_white
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-28 11:03:05] [auto] Experiment started: ddqn_unanimous_white
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-28 11:03:05] [auto] Experiment started: ddqn_cnn_white
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-28 11:03:05] [auto] Experiment started: ddqn_unanimous_black
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-28 11:03:05] [auto] Experiment started: ddqn_unanimous_white
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-28 11:03:05] [auto] Experiment started: ddqn_unanimous_white
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-28 11:03:05] [auto] Experiment started: ddqn_unanimous_black
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-28 11:03:05] [auto] Experiment started: ddqn_unanimous_white
+    timesteps=50000  seed=0  agent=DoubleDQN  simulator=real-flow probe bank
+
+[2026-10-28 11:04:50] [auto] Experiment finished: ddqn_cnn_black
+    episodes=500  wall-clock=1.7 min
+    evasion: first 10 eps 0.2%  last 50 eps 1.3%  mean 1.3%
+    convergence file: convergence_ddqn_cnn_black.json
+
+[2026-10-28 11:04:50] [auto] Experiment finished: ddqn_cnn_black
+    episodes=500  wall-clock=1.7 min
+    evasion: first 10 eps 44.3%  last 50 eps 92.3%  mean 90.2%
+    convergence file: convergence_ddqn_cnn_black.json
+
+[2026-10-28 11:04:51] [auto] Experiment finished: ddqn_cnn_white
+    episodes=500  wall-clock=1.7 min
+    evasion: first 10 eps 0.2%  last 50 eps 1.0%  mean 1.2%
+    convergence file: convergence_ddqn_cnn_white.json
+
+[2026-10-28 11:04:51] [auto] Experiment finished: ddqn_cnn_black
+    episodes=500  wall-clock=1.7 min
+    evasion: first 10 eps 40.5%  last 50 eps 96.9%  mean 91.2%
+    convergence file: convergence_ddqn_cnn_black.json
+
+[2026-10-28 11:04:51] [auto] Experiment finished: ddqn_cnn_white
+    episodes=500  wall-clock=1.7 min
+    evasion: first 10 eps 40.5%  last 50 eps 83.4%  mean 87.7%
+    convergence file: convergence_ddqn_cnn_white.json
+
+[2026-10-28 11:04:51] [auto] Experiment finished: ddqn_cnn_black
+    episodes=500  wall-clock=1.7 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.1%  mean 0.1%
+    convergence file: convergence_ddqn_cnn_black.json
+
+[2026-10-28 11:04:51] [auto] Experiment finished: ddqn_cnn_white
+    episodes=500  wall-clock=1.7 min
+    evasion: first 10 eps 44.3%  last 50 eps 77.6%  mean 85.8%
+    convergence file: convergence_ddqn_cnn_white.json
+
+[2026-10-28 11:04:51] [auto] Experiment finished: ddqn_cnn_white
+    episodes=500  wall-clock=1.7 min
+    evasion: first 10 eps 0.0%  last 50 eps 0.1%  mean 0.1%
+    convergence file: convergence_ddqn_cnn_white.json
+
+[2026-10-28 11:07:37] [auto] Experiment finished: ddqn_unanimous_white
+    episodes=500  wall-clock=4.5 min
+    evasion: first 10 eps 44.9%  last 50 eps 81.5%  mean 85.9%
+    convergence file: convergence_ddqn_unanimous_white.json
+
+[2026-10-28 11:07:38] [auto] Experiment finished: ddqn_unanimous_black
+    episodes=500  wall-clock=4.5 min
+    evasion: first 10 eps 44.9%  last 50 eps 89.8%  mean 90.3%
+    convergence file: convergence_ddqn_unanimous_black.json
+
+[2026-10-28 11:07:38] [auto] Training batch finished: 4 experiment(s)
+    seed=0  detector set=/Users/varunkaveti/Documents/code/thesis/code/models_v5/cov1_cnnA_ms1  output dir=/Users/varunkaveti/Documents/code/thesis/results_v5/rotation/agents/cov1_cnnA_ms1
+
+[2026-10-28 11:07:38] [auto] Experiment finished: ddqn_unanimous_black
+    episodes=500  wall-clock=4.5 min
+    evasion: first 10 eps 41.4%  last 50 eps 95.5%  mean 91.1%
+    convergence file: convergence_ddqn_unanimous_black.json
+
+[2026-10-28 11:07:39] [auto] Experiment finished: ddqn_unanimous_black
+    episodes=500  wall-clock=4.5 min
+    evasion: first 10 eps 0.9%  last 50 eps 1.5%  mean 1.4%
+    convergence file: convergence_ddqn_unanimous_black.json
+
+[2026-10-28 11:07:39] [auto] Experiment finished: ddqn_unanimous_white
+    episodes=500  wall-clock=4.5 min
+    evasion: first 10 eps 0.8%  last 50 eps 1.8%  mean 2.9%
+    convergence file: convergence_ddqn_unanimous_white.json
+
+[2026-10-28 11:07:40] [auto] Experiment finished: ddqn_unanimous_black
+    episodes=500  wall-clock=4.5 min
+    evasion: first 10 eps 0.8%  last 50 eps 2.8%  mean 3.8%
+    convergence file: convergence_ddqn_unanimous_black.json
+
+[2026-10-28 11:07:40] [auto] Training batch finished: 4 experiment(s)
+    seed=0  detector set=/Users/varunkaveti/Documents/code/thesis/code/models_v5/cov1_cnnB_ms1  output dir=/Users/varunkaveti/Documents/code/thesis/results_v5/rotation/agents/cov1_cnnB_ms1
+
+[2026-10-28 11:07:41] [auto] Experiment finished: ddqn_unanimous_white
+    episodes=500  wall-clock=4.5 min
+    evasion: first 10 eps 0.9%  last 50 eps 1.4%  mean 1.3%
+    convergence file: convergence_ddqn_unanimous_white.json
+
+[2026-10-28 11:07:41] [auto] Training batch finished: 4 experiment(s)
+    seed=0  detector set=/Users/varunkaveti/Documents/code/thesis/code/models_v5/cov1_cnnB_ms2  output dir=/Users/varunkaveti/Documents/code/thesis/results_v5/rotation/agents/cov1_cnnB_ms2
+
+[2026-10-28 11:07:41] [auto] Experiment finished: ddqn_unanimous_white
+    episodes=500  wall-clock=4.5 min
+    evasion: first 10 eps 41.4%  last 50 eps 87.6%  mean 87.4%
+    convergence file: convergence_ddqn_unanimous_white.json
+
+[2026-10-28 11:07:41] [auto] Training batch finished: 4 experiment(s)
+    seed=0  detector set=/Users/varunkaveti/Documents/code/thesis/code/models_v5/cov1_cnnA_ms2  output dir=/Users/varunkaveti/Documents/code/thesis/results_v5/rotation/agents/cov1_cnnA_ms2
+
+[2026-10-28 11:08:14] [auto] Agent evaluation (evaluate_agents.py)
+    detector set=/Users/varunkaveti/Documents/code/thesis/code/models_v5/cov1_cnnA_ms1  results dir=/Users/varunkaveti/Documents/code/thesis/results_v5/rotation/agents/cov1_cnnA_ms1
+    untrained: 5000 random probes (paired across rules); trained: 20 greedy episodes each, eval seed 12345
+    defence     untrained  trained-reward-only  trained-feature-observing
+    majority      0.0%       —             —  
+    unanimous    43.0%     100.0%         100.0%
+    weighted      0.0%       —             —  
+    any           0.0%       —             —  
+    xgboost       0.0%       —             —  
+    rf            1.0%       —             —  
+    cnn          42.0%     100.0%         100.0%
+    output: eval_results.json
+
+[2026-10-28 11:08:16] [auto] Agent evaluation (evaluate_agents.py)
+    detector set=/Users/varunkaveti/Documents/code/thesis/code/models_v5/cov1_cnnB_ms1  results dir=/Users/varunkaveti/Documents/code/thesis/results_v5/rotation/agents/cov1_cnnB_ms1
+    untrained: 5000 random probes (paired across rules); trained: 20 greedy episodes each, eval seed 12345
+    defence     untrained  trained-reward-only  trained-feature-observing
+    majority      0.0%       —             —  
+    unanimous     2.9%       0.0%           0.1%
+    weighted      0.0%       —             —  
+    any           0.0%       —             —  
+    xgboost       0.0%       —             —  
+    rf            1.0%       —             —  
+    cnn           1.9%       0.0%           0.1%
+    output: eval_results.json
+
+[2026-10-28 11:08:17] [auto] Agent evaluation (evaluate_agents.py)
+    detector set=/Users/varunkaveti/Documents/code/thesis/code/models_v5/cov1_cnnB_ms2  results dir=/Users/varunkaveti/Documents/code/thesis/results_v5/rotation/agents/cov1_cnnB_ms2
+    untrained: 5000 random probes (paired across rules); trained: 20 greedy episodes each, eval seed 12345
+    defence     untrained  trained-reward-only  trained-feature-observing
+    majority      0.0%       —             —  
+    unanimous     1.6%       5.4%           5.1%
+    weighted      0.0%       —             —  
+    any           0.0%       —             —  
+    xgboost       0.0%       —             —  
+    rf            1.5%       —             —  
+    cnn           0.1%       0.2%           0.0%
+    output: eval_results.json
+
+[2026-10-28 11:08:17] [auto] Agent evaluation (evaluate_agents.py)
+    detector set=/Users/varunkaveti/Documents/code/thesis/code/models_v5/cov1_cnnA_ms2  results dir=/Users/varunkaveti/Documents/code/thesis/results_v5/rotation/agents/cov1_cnnA_ms2
+    untrained: 5000 random probes (paired across rules); trained: 20 greedy episodes each, eval seed 12345
+    defence     untrained  trained-reward-only  trained-feature-observing
+    majority      0.0%       —             —  
+    unanimous    41.3%     100.0%          66.6%
+    weighted      0.0%       —             —  
+    any           0.0%       —             —  
+    xgboost       0.0%       —             —  
+    rf            1.5%       —             —  
+    cnn          39.7%     100.0%           1.0%
+    output: eval_results.json

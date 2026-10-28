@@ -1,0 +1,11 @@
+detector set: /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov1_cnnA_ms2
+validation partition + dev bank: 377,863 rows, 3,816 probe flows
+weights (validation F1): {'xgboost': 0.345560831644599, 'rf': 0.3452008787053202, 'cnn': 0.30923828965008093}
+rule       attack-recall  false-pos     F1    | padded probes caught at 64 B / 128 B / 256 B / 512 B
+majority     99.83%      0.068%  0.9975  | 3816/3816  3816/3816  3816/3816  3816/3816
+unanimous    99.07%      0.050%  0.9941  | 3708/3816  3816/3816  0/3816  0/3816
+weighted     99.87%      0.081%  0.9974  | 3816/3816  3816/3816  3816/3816  3816/3816
+any          99.98%      4.703%  0.8958  | 3816/3816  3816/3816  3816/3816  3816/3816
+xgboost      99.86%      0.062%  0.9978  | 3816/3816  3816/3816  3816/3816  3816/3816
+rf           99.67%      0.066%  0.9967  | 3708/3816  3816/3816  3816/3816  3816/3816
+cnn          99.34%      4.693%  0.8929  | 3816/3816  3816/3816  0/3816  0/3816
