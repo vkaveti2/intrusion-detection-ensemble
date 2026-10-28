@@ -61,3 +61,29 @@ Tables: `band_rotation_summary.md` / `.csv`, generated from the final-test evalu
 5. **Main findings.** Not contradicted. XGBoost is unchanged (it is the same model in every set) and no rule beats it.
 
 Limits: two model seeds per band and one dataset; the mechanism (why the CNN generalises across payload size less than the trees do) is not studied here and stays in future work.
+
+---
+
+# Results: trained agents (agent seed 0)
+
+Run with `run_v5_rotation_agents.sh`: CNN and unanimous only, both agent types, one agent seed, on each of the four rotated sets. The band C rows are the cov1 detector-seed runs from the main sweep. Table: `band_rotation_summary.md`, `band_rotation_agents.csv`. Evasion rate, a different quantity from the detection rates above. Probes labelled benign out of 2,000, final-test bank.
+
+| Model seed | CNN band | CNN: reward-only / feature-observing | Unanimous: reward-only / feature-observing | Payload chosen, reward-only agent |
+|---|---|---|---|---|
+| 1 | C (baseline) | 2,000 / 45 | 2,000 / 282 | 64 B |
+| 1 | A | 2,000 / 2,000 | 2,000 / 2,000 | 256 B |
+| 1 | B | 0 / 1 | 0 / 2 | 0 B (CNN), 128 B (unanimous) |
+| 2 | C (baseline) | 2,000 / 2,000 | 2,000 / 1,123 | 64 B |
+| 2 | A | 2,000 / 20 | 2,000 / 1,332 | 256 B (CNN), 512 B (unanimous) |
+| 2 | B | 5 / 0 | 108 / 103 | 64 B |
+
+## Reading
+
+1. **The detection gaps are exploitable, and the reward-only agent finds them.** Against a CNN hardened on A, it evades all 2,000 probes in both seeds by choosing 256 B or 512 B, the sizes where that CNN flags 0 of 13,569 (detection table above). Against band C it chooses 64 B in both seeds, again the blind size. Against band B, which has the smallest detection gaps, it evades 0 and 5 probes with the CNN alone and 0 and 108 with unanimous.
+2. **Unanimous inherits the CNN's weakness.** Wherever the reward-only agent evades the CNN on all 2,000 probes, it evades unanimous on all 2,000 as well.
+3. **Feature observation is inconsistent.** The feature-observing agent reaches the same gap in some runs (2,000 of 2,000 for band A, seed 1) and falls far short in others (45 of 2,000 for band C, seed 1; 20 of 2,000 for band A, seed 2). With one agent seed per cell, these differences show how much a single run varies and are not evidence of a pattern. The reward-only agent is the cleaner measure of what the detector leaves open.
+4. **The majority, weighted and `any` rules** are not part of this agent experiment, because it was pre-stated for the CNN and unanimous rules only. Their robustness here rests on the detection table.
+
+## Conclusion of the diagnostic
+
+The CNN's blind sizes follow the band it was hardened on, in both seeds, and a trained agent finds them. This confirms that the cov1 gap was a property of the band assignment as well as of the CNN's training run. The mechanism is not investigated and stays in limitations and future work. The main findings are not contradicted: XGBoost, identical in every set, is never evaded, and no rule beats it.

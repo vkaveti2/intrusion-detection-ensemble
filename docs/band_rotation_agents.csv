@@ -1,0 +1,7 @@
+model_seed,cnn_band,n_probes,cnn_reward_only_evaded,cnn_feature_observing_evaded,unanimous_reward_only_evaded,unanimous_feature_observing_evaded
+1,C,2000,2000,45,2000,282
+1,A,2000,2000,2000,2000,2000
+1,B,2000,0,1,0,2
+2,C,2000,2000,2000,2000,1123
+2,A,2000,2000,20,2000,1332
+2,B,2000,5,0,108,103

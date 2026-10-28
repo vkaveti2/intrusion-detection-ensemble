@@ -86,3 +86,16 @@ Clean final-test traffic, CNN alone: 14,979 false positives (4.766%), 468 missed
 
 Clean final-test traffic, CNN alone: 13,896 false positives (4.421%), 734 missed attacks.
 
+## Trained-agent evasion (agent seed 0)
+
+Probes labelled benign out of 2,000 (greedy, final-test bank). Band C rows are the cov1 detector-seed runs from the main sweep; bands A and B come from `run_v5_rotation_agents.sh`. This is an evasion rate, a different quantity from the detection rates above. One agent seed per cell.
+
+| Model seed | CNN band | CNN reward-only | CNN feature-observing | Unanimous reward-only | Unanimous feature-observing | Payload chosen, reward-only agent (CNN / unanimous) |
+|---|---|---|---|---|---|---|
+| 1 | C (baseline) | 2,000 | 45 | 2,000 | 282 | 64 B (100%) / 64 B (100%) |
+| 1 | A | 2,000 | 2,000 | 2,000 | 2,000 | 256 B (100%) / 256 B (100%) |
+| 1 | B | 0 | 1 | 0 | 2 | 0 B (100%) / 128 B (100%) |
+| 2 | C (baseline) | 2,000 | 2,000 | 2,000 | 1,123 | 64 B (100%) / 64 B (100%) |
+| 2 | A | 2,000 | 20 | 2,000 | 1,332 | 256 B (100%) / 512 B (100%) |
+| 2 | B | 5 | 0 | 108 | 103 | 64 B (100%) / 64 B (100%) |
+

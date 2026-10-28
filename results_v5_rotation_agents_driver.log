@@ -1,0 +1,10 @@
+rotation agents started 11:03:00
+[run ] 11:03:00 cov1_cnnA_ms1
+[run ] 11:03:00 cov1_cnnB_ms1
+[run ] 11:03:00 cov1_cnnB_ms2
+[run ] 11:03:00 cov1_cnnA_ms2
+[done] 11:08:15 cov1_cnnA_ms1
+[done] 11:08:16 cov1_cnnB_ms1
+[done] 11:08:17 cov1_cnnB_ms2
+[done] 11:08:17 cov1_cnnA_ms2
+rotation agents finished 11:08:18
