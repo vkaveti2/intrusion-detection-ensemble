@@ -1,0 +1,159 @@
+{
+  "passed": true,
+  "failures": [],
+  "checks": [
+    {
+      "check": "every row has exactly one partition",
+      "passed": true,
+      "detail": "2,520,798 rows; counts train=1,764,598, validation=377,863, final_test=378,337"
+    },
+    {
+      "check": "counts match splits.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "grouped rows: train \u2229 validation signatures",
+      "passed": true,
+      "detail": "0 shared"
+    },
+    {
+      "check": "grouped rows: train \u2229 final_test signatures",
+      "passed": true,
+      "detail": "0 shared"
+    },
+    {
+      "check": "grouped rows: validation \u2229 final_test signatures",
+      "passed": true,
+      "detail": "0 shared"
+    },
+    {
+      "check": "agent-train bank \u2229 detector-train signatures",
+      "passed": true,
+      "detail": "0 shared"
+    },
+    {
+      "check": "agent-train bank \u2229 final-test bank signatures",
+      "passed": true,
+      "detail": "0 shared"
+    },
+    {
+      "check": "agent-train bank \u2229 dev bank signatures",
+      "passed": true,
+      "detail": "0 shared"
+    },
+    {
+      "check": "dev bank \u2229 final-test bank signatures",
+      "passed": true,
+      "detail": "0 shared"
+    },
+    {
+      "check": "final-test bank \u2229 detector-train signatures",
+      "passed": true,
+      "detail": "0 shared"
+    },
+    {
+      "check": "padded copies keep their source signature (bands A, B, C)",
+      "passed": true,
+      "detail": "0 rows changed"
+    },
+    {
+      "check": "augmented rows \u2229 final-test signatures",
+      "passed": true,
+      "detail": "0 shared"
+    },
+    {
+      "check": "augmented rows \u2229 agent-train/dev signatures",
+      "passed": true,
+      "detail": "0 shared"
+    },
+    {
+      "check": "inner validation \u2282 train",
+      "passed": true,
+      "detail": "88,121 rows"
+    },
+    {
+      "check": "inner-validation groups \u2229 inner-train groups",
+      "passed": true,
+      "detail": "0 shared"
+    },
+    {
+      "check": "scaler mean reproduces from train rows only",
+      "passed": true,
+      "detail": "1,764,598 train rows"
+    }
+  ],
+  "informational": {
+    "loose_rows_signature_overlap": {
+      "train \u2229 final_test": 25588,
+      "train \u2229 validation": 25501,
+      "final_test_rows_sharing_train_signature": 47339,
+      "final_test_loose_rows": 364593
+    }
+  },
+  "partitions": {
+    "train": {
+      "rows": 1764598,
+      "grouped_rows": 63167,
+      "groups": 339,
+      "probe_flows": 62505,
+      "inner_validation_rows": 88121,
+      "inner_validation_groups": 11
+    },
+    "validation": {
+      "rows": 377863,
+      "grouped_rows": 13271,
+      "groups": 69,
+      "probe_flows": 13141
+    },
+    "final_test": {
+      "rows": 378337,
+      "grouped_rows": 13744,
+      "groups": 72,
+      "probe_flows": 13569
+    }
+  },
+  "bank": {
+    "detector_train": {
+      "flows": 62505,
+      "groups": 339
+    },
+    "agent_train": {
+      "flows": 9325,
+      "groups": 55
+    },
+    "dev": {
+      "flows": 3816,
+      "groups": 14
+    },
+    "final_test": {
+      "flows": 13569,
+      "groups": 72
+    }
+  },
+  "groups_total": 480,
+  "largest_group_flows": 991,
+  "singleton_groups": 135,
+  "fingerprint": "deb78d125a24c9c865b1b46f8286fc3a69f9de1b6fb155407373405fbdd6c47a",
+  "seed": 2026,
+  "signature_features": 60,
+  "excluded_from_signature": [
+    "Average Packet Size",
+    "Avg Fwd Segment Size",
+    "Destination Port",
+    "Flow Bytes/s",
+    "Fwd Packet Length Max",
+    "Fwd Packet Length Mean",
+    "Fwd Packet Length Min",
+    "Fwd Packet Length Std",
+    "Max Packet Length",
+    "Min Packet Length",
+    "PSH Flag Count",
+    "Packet Length Mean",
+    "Packet Length Std",
+    "Packet Length Variance",
+    "Subflow Fwd Bytes",
+    "Total Length of Fwd Packets",
+    "act_data_pkt_fwd"
+  ]
+}

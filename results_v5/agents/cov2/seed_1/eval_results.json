@@ -1,0 +1,224 @@
+{
+  "untrained": {
+    "majority": {
+      "evasion": 0.0,
+      "evaded": 0,
+      "n_probes": 5000,
+      "by_payload": {
+        "0": 0.0,
+        "64": 0.0,
+        "128": 0.0,
+        "256": 0.0,
+        "512": 0.0
+      }
+    },
+    "unanimous": {
+      "evasion": 0.0112,
+      "evaded": 56,
+      "n_probes": 5000,
+      "by_payload": {
+        "0": 0.0,
+        "64": 0.04902867715078631,
+        "128": 0.001040582726326743,
+        "256": 0.0020325203252032522,
+        "512": 0.0
+      }
+    },
+    "weighted": {
+      "evasion": 0.0,
+      "evaded": 0,
+      "n_probes": 5000,
+      "by_payload": {
+        "0": 0.0,
+        "64": 0.0,
+        "128": 0.0,
+        "256": 0.0,
+        "512": 0.0
+      }
+    },
+    "any": {
+      "evasion": 0.0,
+      "evaded": 0,
+      "n_probes": 5000,
+      "by_payload": {
+        "0": 0.0,
+        "64": 0.0,
+        "128": 0.0,
+        "256": 0.0,
+        "512": 0.0
+      }
+    },
+    "xgboost": {
+      "evasion": 0.0,
+      "evaded": 0,
+      "n_probes": 5000,
+      "by_payload": {
+        "0": 0.0,
+        "64": 0.0,
+        "128": 0.0,
+        "256": 0.0,
+        "512": 0.0
+      }
+    },
+    "rf": {
+      "evasion": 0.0106,
+      "evaded": 53,
+      "n_probes": 5000,
+      "by_payload": {
+        "0": 0.0,
+        "64": 0.04902867715078631,
+        "128": 0.0,
+        "256": 0.0,
+        "512": 0.0
+      }
+    },
+    "cnn": {
+      "evasion": 0.0006,
+      "evaded": 3,
+      "n_probes": 5000,
+      "by_payload": {
+        "0": 0.0,
+        "64": 0.0,
+        "128": 0.001040582726326743,
+        "256": 0.0020325203252032522,
+        "512": 0.0
+      }
+    }
+  },
+  "trained": {
+    "majority_black": {
+      "evasion": 0.0,
+      "evaded": 0,
+      "n_probes": 2000,
+      "payload_choice": {
+        "256": 1.0
+      },
+      "median_delay_s": 0.8286427728546845
+    },
+    "unanimous_black": {
+      "evasion": 0.0,
+      "evaded": 0,
+      "n_probes": 2000,
+      "payload_choice": {
+        "128": 1.0
+      },
+      "median_delay_s": 56.89866029018293
+    },
+    "weighted_black": {
+      "evasion": 0.0,
+      "evaded": 0,
+      "n_probes": 2000,
+      "payload_choice": {
+        "256": 1.0
+      },
+      "median_delay_s": 0.8286427728546845
+    },
+    "any_black": {
+      "evasion": 0.0,
+      "evaded": 0,
+      "n_probes": 2000,
+      "payload_choice": {
+        "256": 1.0
+      },
+      "median_delay_s": 0.15264179671752334
+    },
+    "xgboost_black": {
+      "evasion": 0.0,
+      "evaded": 0,
+      "n_probes": 2000,
+      "payload_choice": {
+        "0": 1.0
+      },
+      "median_delay_s": 15.998587196060573
+    },
+    "rf_black": {
+      "evasion": 0.0,
+      "evaded": 0,
+      "n_probes": 2000,
+      "payload_choice": {
+        "256": 1.0
+      },
+      "median_delay_s": 18.420699693267164
+    },
+    "cnn_black": {
+      "evasion": 0.0,
+      "evaded": 0,
+      "n_probes": 2000,
+      "payload_choice": {
+        "64": 1.0
+      },
+      "median_delay_s": 32.374575428176435
+    },
+    "majority_white": {
+      "evasion": 0.0,
+      "evaded": 0,
+      "n_probes": 2000,
+      "payload_choice": {
+        "0": 0.0105,
+        "64": 0.9895
+      },
+      "median_delay_s": 37.27593720314938
+    },
+    "unanimous_white": {
+      "evasion": 0.014,
+      "evaded": 28,
+      "n_probes": 2000,
+      "payload_choice": {
+        "0": 0.57,
+        "64": 0.42,
+        "128": 0.01
+      },
+      "median_delay_s": 2.9470517025518097
+    },
+    "weighted_white": {
+      "evasion": 0.0,
+      "evaded": 0,
+      "n_probes": 2000,
+      "payload_choice": {
+        "0": 0.0105,
+        "64": 0.9895
+      },
+      "median_delay_s": 37.27593720314938
+    },
+    "any_white": {
+      "evasion": 0.0,
+      "evaded": 0,
+      "n_probes": 2000,
+      "payload_choice": {
+        "64": 0.01,
+        "256": 0.99
+      },
+      "median_delay_s": 6.8664884500430015
+    },
+    "xgboost_white": {
+      "evasion": 0.0,
+      "evaded": 0,
+      "n_probes": 2000,
+      "payload_choice": {
+        "128": 1.0
+      },
+      "median_delay_s": 75.43120063354615
+    },
+    "rf_white": {
+      "evasion": 0.0,
+      "evaded": 0,
+      "n_probes": 2000,
+      "payload_choice": {
+        "0": 0.9775,
+        "128": 0.0225
+      },
+      "median_delay_s": 4.498432668969446
+    },
+    "cnn_white": {
+      "evasion": 0.0,
+      "evaded": 0,
+      "n_probes": 2000,
+      "payload_choice": {
+        "64": 0.0155,
+        "128": 0.9745,
+        "256": 0.01
+      },
+      "median_delay_s": 86.85113737513521
+    }
+  }
+}

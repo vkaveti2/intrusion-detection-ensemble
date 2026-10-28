@@ -10,10 +10,10 @@ Figures in `docs/figures/` (listed in section 7).
 - **Every hardened defence held in every run.** All 190 agents trained
   against a hardened defence ended at exactly 0.0% evasion.
 - **Every defence that was evadable at seed 0 stayed evadable**, and the
-  black-box agent found its best option in all 45 such runs.
+  reward-only agent found its best option in all 45 such runs.
 - **The learning-speed differences are consistent** across seeds (ranges
   don't overlap, p = 0.008).
-- **White-box knowledge did not help the agent.** It was detected more
+- **Feature observation did not help the agent.** It was detected more
   often in every configuration and fell short of the best option in 6 of
   45 runs (3 distinct cases; collapsed pairs train identically, so each
   case appears twice).
@@ -26,6 +26,11 @@ did.
 ---
 
 ## 1. What ran
+
+The two parts below are **separate experiments, not a fully crossed design**.
+Part A varies the agent seed with the detectors fixed. Part B varies the
+detector training seed with the agent seed fixed at 0. No combination of
+several agent seeds with several detector seeds was run.
 
 | Part | Runs | Status |
 |---|---|---|
@@ -60,7 +65,7 @@ cov2 and cov3: **0.0% for every defence, agent type and seed**.
 - **Every hardened defence held in all 190 runs**: cov1 XGBoost, RF,
   majority, weighted and any, plus all of cov2 and cov3. Its robustness
   does not depend on the agent's luck.
-- **Every evadable defence stayed evadable.** The black-box agent reached
+- **Every evadable defence stayed evadable.** The reward-only agent reached
   the best available outcome in **all 45** such runs (A2 in the summary).
   Its final evasion varied by at most 2.5 points between seeds.
 
@@ -68,9 +73,9 @@ cov2 and cov3: **0.0% for every defence, agent type and seed**.
 
 The pre-specified comparisons C1–C3 were consistent across all seeds:
 the groups' ranges did not overlap, and p = 0.008 for each, the smallest
-value possible with 5 vs 5 runs. C4 is a count: 6 of the 45 white-box runs
+value possible with 5 vs 5 runs. C4 is a count: 6 of the 45 feature-observing runs
 against evadable defences ended below the best available outcome (3
-distinct cases, each duplicated by a collapsed pair), and no black-box run
+distinct cases, each duplicated by a collapsed pair), and no reward-only run
 did. The numbers are in `multiseed_summary.md`, sections A2–A4,
 and `figures/multiseed_learning_speed.png`.
 
@@ -79,11 +84,11 @@ and `figures/multiseed_learning_speed.png`.
 - **Majority and weighted** behaved exactly like RF in every seed and for
   both agent types (identical training in all 500 episodes).
 - **Any ≡ CNN and unanimous ≡ XGBoost** were identical in most runs. In
-  seed 3 (and one white-box run of seed 0), a single probe was decided
+  seed 3 (and one feature-observing run of seed 0), a single probe was decided
   differently by the pair. That is a rare exception to the nested
   detections (nesting statistics in `02_voting_rule_metrics.md`), and
   training diverged from that point (episode 66 and 368). Final results
-  still matched in every run but one (any vs CNN, white-box, seed 3:
+  still matched in every run but one (any vs CNN, feature-observing, seed 3:
   97.1% vs 98.9%).
 
 The collapse finding stands. It is near-exact rather than exact, which is
@@ -106,8 +111,8 @@ differs (`docs/figures/detector_seed_coverage.png`).
 | Weighted | **0.0% in every run** | 0.084–0.097% |
 | Any | **0.0% in every run** | 3.56–4.71% |
 | XGBoost, RF | 0.0% in every run | 0.068% / 0.070–0.073% |
-| CNN | evaded in every run (black-box 79.3–98.7%) | 3.55–4.71% |
-| Unanimous | evaded in every run (black-box 79.3–98.7%) | 0.050–0.058% |
+| CNN | evaded in every run (reward-only 79.3–98.7%) | 3.55–4.71% |
+| Unanimous | evaded in every run (reward-only 79.3–98.7%) | 0.050–0.058% |
 
 Conclusions from Part B:
 1. **Trees.** Their robustness transferring to every payload size is
@@ -123,8 +128,8 @@ Conclusions from Part B:
 
 | # | Prediction | Verdict |
 |---|---|---|
-| 1 | Black-box final evasion stable across seeds (± 2 points) | **Held.** Largest spread 2.5 points (cov0 CNN/any, one seed at 97.5%) |
-| 2 | White-box sometimes falls short of the best option | **Held.** 6 of 45 runs (3 distinct cases) |
+| 1 | Reward-only final evasion stable across seeds (± 2 points) | **Held.** Largest spread 2.5 points (cov0 CNN/any, one seed at 97.5%) |
+| 2 | Feature-observing sometimes falls short of the best option | **Held.** 6 of 45 runs (3 distinct cases) |
 | 3 | Collapse exact in every seed | **Mostly.** Exact for majority/weighted; any/unanimous diverged after a rare differing probe in 1 of 5 seeds, with final results matching (section 2.3) |
 | 4 | C1, C2 consistent | **Held** (p = 0.008) |
 | 5 | C3 consistent | **Held** in all 9 configurations (p = 0.008) |

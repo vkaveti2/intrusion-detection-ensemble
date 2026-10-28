@@ -18,3 +18,7 @@ code/models*/rf_model.pkl
 # macOS
 .DS_Store
 **/.DS_Store
+
+# v5 split: cached cleaned dataset (~780 MB) and trained v5 detector sets
+code/splits_v5/dataset_cache.npz
+code/models_v5/**/rf_model.pkl

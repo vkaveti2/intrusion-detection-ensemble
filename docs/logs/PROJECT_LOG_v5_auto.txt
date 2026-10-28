@@ -1,0 +1,238 @@
+
+[2026-10-27 13:04:47] [auto] v5 trees finished (cov0, model seed 42) (train_v5.py)
+    1,764,598 train rows + 0 padded; RF 0.7 min, XGBoost 0.6 min; saved to /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov0
+
+[2026-10-27 13:06:14] [auto] v5 trees finished (cov1, model seed 42) (train_v5.py)
+    1,764,598 train rows + 62,505 padded; RF 0.7 min, XGBoost 0.7 min; saved to /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov1
+
+[2026-10-27 13:07:41] [auto] v5 trees finished (cov2, model seed 42) (train_v5.py)
+    1,764,598 train rows + 62,505 padded; RF 0.8 min, XGBoost 0.6 min; saved to /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov2
+
+[2026-10-27 13:09:08] [auto] v5 trees finished (cov3, model seed 42) (train_v5.py)
+    1,764,598 train rows + 62,505 padded; RF 0.8 min, XGBoost 0.6 min; saved to /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov3
+
+[2026-10-27 13:10:35] [auto] v5 trees finished (cov1_ms1, model seed 1) (train_v5.py)
+    1,764,598 train rows + 62,505 padded; RF 0.8 min, XGBoost 0.6 min; saved to /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov1_ms1
+
+[2026-10-27 13:12:04] [auto] v5 trees finished (cov1_ms2, model seed 2) (train_v5.py)
+    1,764,598 train rows + 62,505 padded; RF 0.8 min, XGBoost 0.6 min; saved to /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov1_ms2
+
+[2026-10-27 13:13:33] [auto] v5 trees finished (cov1_ms3, model seed 3) (train_v5.py)
+    1,764,598 train rows + 62,505 padded; RF 0.8 min, XGBoost 0.7 min; saved to /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov1_ms3
+
+[2026-10-27 13:27:06] [auto] v5 CNN finished (cov0, model seed 42) (train_v5.py)
+    best epoch 29, inner-validation accuracy 0.9551; 30 epochs on mps, 23.5 min; saved /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov0/cnn_model.pth
+
+[2026-10-27 13:28:10] [auto] v5 CNN finished (cov3, model seed 42) (train_v5.py)
+    best epoch 28, inner-validation accuracy 0.9603; 30 epochs on mps, 24.6 min; saved /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov3/cnn_model.pth
+
+[2026-10-27 13:28:28] [auto] v5 CNN finished (cov1, model seed 42) (train_v5.py)
+    best epoch 29, inner-validation accuracy 0.9711; 30 epochs on mps, 24.9 min; saved /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov1/cnn_model.pth
+
+[2026-10-27 13:48:14] [auto] v5 CNN finished (cov1_ms1, model seed 1) (train_v5.py)
+    best epoch 26, inner-validation accuracy 0.9594; 30 epochs on mps, 21.1 min; saved /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov1_ms1/cnn_model.pth
+
+[2026-10-27 13:49:39] [auto] v5 CNN finished (cov1_ms2, model seed 2) (train_v5.py)
+    best epoch 28, inner-validation accuracy 0.9647; 30 epochs on mps, 21.4 min; saved /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov1_ms2/cnn_model.pth
+
+[2026-10-27 13:50:01] [auto] v5 CNN finished (cov2, model seed 42) (train_v5.py)
+    best epoch 29, inner-validation accuracy 0.9624; 30 epochs on mps, 21.5 min; saved /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov2/cnn_model.pth
+
+[2026-10-27 14:00:17] [auto] v5 CNN finished (cov1_ms3, model seed 3) (train_v5.py)
+    best epoch 30, inner-validation accuracy 0.9674; 30 epochs on mps, 12.0 min; saved /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov1_ms3/cnn_model.pth
+
+[2026-10-27 14:01:35] [auto] v5 evaluation (weights) (evaluate_v5.py)
+    detector set: /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov0
+    validation partition + dev bank: 377,863 rows, 3,816 probe flows
+    weights (validation F1): {'xgboost': 0.3465471554492145, 'rf': 0.346207912758279, 'cnn': 0.30724493179250656}
+    rule       attack-recall  false-pos     F1    | padded probes caught at 64 B / 128 B / 256 B / 512 B
+    majority     99.76%      0.061%  0.9973  | 0/3816  0/3816  0/3816  0/3816
+    unanimous    96.71%      0.046%  0.9821  | 0/3816  0/3816  0/3816  0/3816
+    weighted     99.81%      0.075%  0.9972  | 0/3816  0/3816  0/3816  0/3816
+    any          99.98%      4.523%  0.8994  | 1808/3816  2046/3816  0/3816  1794/3816
+    xgboost      99.84%      0.062%  0.9977  | 0/3816  0/3816  0/3816  0/3816
+    rf           99.66%      0.064%  0.9967  | 0/3816  0/3816  0/3816  0/3816
+    cnn          96.94%      4.504%  0.8845  | 1808/3816  2046/3816  0/3816  1794/3816
+    output: /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov0/validation_eval.json
+
+[2026-10-27 14:01:50] [auto] v5 evaluation (weights) (evaluate_v5.py)
+    detector set: /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov1
+    validation partition + dev bank: 377,863 rows, 3,816 probe flows
+    weights (validation F1): {'xgboost': 0.3421958548616024, 'rf': 0.34188795853495646, 'cnn': 0.3159161866034411}
+    rule       attack-recall  false-pos     F1    | padded probes caught at 64 B / 128 B / 256 B / 512 B
+    majority     99.73%      0.057%  0.9972  | 1795/3816  3816/3816  3816/3816  3816/3816
+    unanimous    96.41%      0.035%  0.9808  | 1794/3816  1794/3816  2683/3816  3816/3816
+    weighted     99.77%      0.057%  0.9974  | 2187/3816  3816/3816  3816/3816  3816/3816
+    any          99.90%      2.670%  0.9377  | 3816/3816  3816/3816  3816/3816  3816/3816
+    xgboost      99.86%      0.062%  0.9978  | 3816/3816  3816/3816  3816/3816  3816/3816
+    rf           99.69%      0.064%  0.9969  | 1795/3816  3816/3816  3816/3816  3816/3816
+    cnn          96.50%      2.636%  0.9211  | 1794/3816  1794/3816  2683/3816  3816/3816
+    output: /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov1/validation_eval.json
+
+[2026-10-27 14:02:04] [auto] v5 evaluation (weights) (evaluate_v5.py)
+    detector set: /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov2
+    validation partition + dev bank: 377,863 rows, 3,816 probe flows
+    weights (validation F1): {'xgboost': 0.3453632903208577, 'rf': 0.3450525875693272, 'cnn': 0.30958412210981506}
+    rule       attack-recall  false-pos     F1    | padded probes caught at 64 B / 128 B / 256 B / 512 B
+    majority     99.76%      0.061%  0.9973  | 3816/3816  3816/3816  3816/3816  3816/3816
+    unanimous    94.87%      0.046%  0.9725  | 3414/3816  3816/3816  3815/3816  3816/3816
+    weighted     99.80%      0.075%  0.9971  | 3816/3816  3816/3816  3816/3816  3816/3816
+    any          99.97%      3.568%  0.9189  | 3816/3816  3816/3816  3816/3816  3816/3816
+    xgboost      99.84%      0.061%  0.9977  | 3816/3816  3816/3816  3816/3816  3816/3816
+    rf           99.68%      0.064%  0.9968  | 3414/3816  3816/3816  3816/3816  3816/3816
+    cnn          95.07%      3.550%  0.8944  | 3816/3816  3816/3816  3815/3816  3816/3816
+    output: /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov2/validation_eval.json
+
+[2026-10-27 14:02:20] [auto] v5 evaluation (weights) (evaluate_v5.py)
+    detector set: /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov3
+    validation partition + dev bank: 377,863 rows, 3,816 probe flows
+    weights (validation F1): {'xgboost': 0.3460896098249137, 'rf': 0.34579461687428875, 'cnn': 0.30811577330079754}
+    rule       attack-recall  false-pos     F1    | padded probes caught at 64 B / 128 B / 256 B / 512 B
+    majority     99.77%      0.060%  0.9973  | 3816/3816  3816/3816  3816/3816  3816/3816
+    unanimous    93.88%      0.038%  0.9675  | 3816/3816  3816/3816  3816/3816  3816/3816
+    weighted     99.81%      0.074%  0.9972  | 3816/3816  3816/3816  3816/3816  3816/3816
+    any          99.97%      3.614%  0.9179  | 3816/3816  3816/3816  3816/3816  3816/3816
+    xgboost      99.85%      0.061%  0.9978  | 3816/3816  3816/3816  3816/3816  3816/3816
+    rf           99.69%      0.063%  0.9969  | 3816/3816  3816/3816  3816/3816  3816/3816
+    cnn          94.07%      3.589%  0.8883  | 3816/3816  3816/3816  3816/3816  3816/3816
+    output: /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov3/validation_eval.json
+
+[2026-10-27 14:02:35] [auto] v5 evaluation (weights) (evaluate_v5.py)
+    detector set: /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov1_ms1
+    validation partition + dev bank: 377,863 rows, 3,816 probe flows
+    weights (validation F1): {'xgboost': 0.34608810343397883, 'rf': 0.34576306633925885, 'cnn': 0.30814883022676237}
+    rule       attack-recall  false-pos     F1    | padded probes caught at 64 B / 128 B / 256 B / 512 B
+    majority     99.76%      0.061%  0.9973  | 3524/3816  3816/3816  3816/3816  3816/3816
+    unanimous    95.11%      0.046%  0.9738  | 0/3816  2670/3816  3815/3816  3816/3816
+    weighted     99.81%      0.073%  0.9973  | 3814/3816  3816/3816  3816/3816  3816/3816
+    any          99.97%      3.916%  0.9117  | 3816/3816  3816/3816  3816/3816  3816/3816
+    xgboost      99.86%      0.062%  0.9978  | 3816/3816  3816/3816  3816/3816  3816/3816
+    rf           99.68%      0.065%  0.9968  | 3524/3816  3816/3816  3816/3816  3816/3816
+    cnn          95.30%      3.897%  0.8884  | 0/3816  2670/3816  3815/3816  3816/3816
+    output: /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov1_ms1/validation_eval.json
+
+[2026-10-27 14:02:51] [auto] v5 evaluation (weights) (evaluate_v5.py)
+    detector set: /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov1_ms2
+    validation partition + dev bank: 377,863 rows, 3,816 probe flows
+    weights (validation F1): {'xgboost': 0.34445699384384026, 'rf': 0.34409819071560627, 'cnn': 0.3114448154405536}
+    rule       attack-recall  false-pos     F1    | padded probes caught at 64 B / 128 B / 256 B / 512 B
+    majority     99.76%      0.063%  0.9973  | 3708/3816  3816/3816  3816/3816  3816/3816
+    unanimous    96.65%      0.046%  0.9818  | 0/3816  977/3816  3815/3816  3816/3816
+    weighted     99.81%      0.075%  0.9972  | 3814/3816  3816/3816  3816/3816  3816/3816
+    any          99.98%      3.638%  0.9175  | 3816/3816  3816/3816  3816/3816  3816/3816
+    xgboost      99.86%      0.062%  0.9978  | 3816/3816  3816/3816  3816/3816  3816/3816
+    rf           99.67%      0.066%  0.9967  | 3708/3816  3816/3816  3816/3816  3816/3816
+    cnn          96.86%      3.618%  0.9021  | 0/3816  977/3816  3815/3816  3816/3816
+    output: /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov1_ms2/validation_eval.json
+
+[2026-10-27 14:03:06] [auto] v5 evaluation (weights) (evaluate_v5.py)
+    detector set: /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov1_ms3
+    validation partition + dev bank: 377,863 rows, 3,816 probe flows
+    weights (validation F1): {'xgboost': 0.3437316560764581, 'rf': 0.3433980369808414, 'cnn': 0.31287030694270046}
+    rule       attack-recall  false-pos     F1    | padded probes caught at 64 B / 128 B / 256 B / 512 B
+    majority     99.75%      0.061%  0.9972  | 3770/3816  3816/3816  3816/3816  3816/3816
+    unanimous    93.81%      0.033%  0.9673  | 0/3816  0/3816  0/3816  3816/3816
+    weighted     99.80%      0.073%  0.9972  | 3814/3816  3816/3816  3816/3816  3816/3816
+    any          99.97%      2.666%  0.9381  | 3816/3816  3816/3816  3816/3816  3816/3816
+    xgboost      99.86%      0.062%  0.9978  | 3816/3816  3816/3816  3816/3816  3816/3816
+    rf           99.68%      0.066%  0.9968  | 3770/3816  3816/3816  3816/3816  3816/3816
+    cnn          94.00%      2.632%  0.9082  | 0/3816  0/3816  0/3816  3816/3816
+    output: /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov1_ms3/validation_eval.json
+
+[2026-10-28 08:34:32] [auto] v5 evaluation (final) (evaluate_v5.py)
+    detector set: /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov0
+    FINAL-TEST partition + final-test bank: 378,337 rows, 13,569 probe flows
+    weights (validation F1): {'xgboost': 0.346547, 'rf': 0.346208, 'cnn': 0.307245}
+    rule       attack-recall  false-pos     F1    | padded probes caught at 64 B / 128 B / 256 B / 512 B
+    majority     99.75%      0.078%  0.9968  | 0/13569  0/13569  0/13569  0/13569
+    unanimous    96.52%      0.059%  0.9808  | 0/13569  0/13569  0/13569  0/13569
+    weighted     99.81%      0.093%  0.9968  | 0/13569  0/13569  0/13569  0/13569
+    any          99.97%      4.581%  0.8988  | 7836/13569  7307/13569  0/13569  6486/13569
+    xgboost      99.83%      0.077%  0.9972  | 0/13569  0/13569  0/13569  0/13569
+    rf           99.63%      0.080%  0.9962  | 0/13569  0/13569  0/13569  0/13569
+    cnn          96.79%      4.560%  0.8833  | 7836/13569  7307/13569  0/13569  6486/13569
+    output: /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov0/final_eval.json
+
+[2026-10-28 08:34:42] [auto] v5 evaluation (final) (evaluate_v5.py)
+    detector set: /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov1
+    FINAL-TEST partition + final-test bank: 378,337 rows, 13,569 probe flows
+    weights (validation F1): {'xgboost': 0.342196, 'rf': 0.341888, 'cnn': 0.315916}
+    rule       attack-recall  false-pos     F1    | padded probes caught at 64 B / 128 B / 256 B / 512 B
+    majority     99.70%      0.071%  0.9968  | 7258/13569  13569/13569  13569/13569  13569/13569
+    unanimous    96.34%      0.055%  0.9800  | 7246/13569  7333/13569  11254/13569  13569/13569
+    weighted     99.75%      0.070%  0.9970  | 8556/13569  13569/13569  13569/13569  13569/13569
+    any          99.88%      2.754%  0.9361  | 13569/13569  13569/13569  13569/13569  13569/13569
+    xgboost      99.82%      0.079%  0.9972  | 13569/13569  13569/13569  13569/13569  13569/13569
+    rf           99.63%      0.078%  0.9963  | 7258/13569  13569/13569  13569/13569  13569/13569
+    cnn          96.47%      2.724%  0.9195  | 7246/13569  7333/13569  11254/13569  13569/13569
+    output: /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov1/final_eval.json
+
+[2026-10-28 08:34:51] [auto] v5 evaluation (final) (evaluate_v5.py)
+    detector set: /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov2
+    FINAL-TEST partition + final-test bank: 378,337 rows, 13,569 probe flows
+    weights (validation F1): {'xgboost': 0.345363, 'rf': 0.345053, 'cnn': 0.309584}
+    rule       attack-recall  false-pos     F1    | padded probes caught at 64 B / 128 B / 256 B / 512 B
+    majority     99.73%      0.077%  0.9968  | 13569/13569  13569/13569  13569/13569  13569/13569
+    unanimous    94.74%      0.058%  0.9716  | 13016/13569  13564/13569  13564/13569  13569/13569
+    weighted     99.78%      0.091%  0.9967  | 13569/13569  13569/13569  13569/13569  13569/13569
+    any          99.96%      3.630%  0.9180  | 13569/13569  13569/13569  13569/13569  13569/13569
+    xgboost      99.82%      0.075%  0.9972  | 13569/13569  13569/13569  13569/13569  13569/13569
+    rf           99.64%      0.079%  0.9963  | 13016/13569  13569/13569  13569/13569  13569/13569
+    cnn          94.98%      3.611%  0.8931  | 13569/13569  13564/13569  13564/13569  13569/13569
+    output: /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov2/final_eval.json
+
+[2026-10-28 08:35:01] [auto] v5 evaluation (final) (evaluate_v5.py)
+    detector set: /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov3
+    FINAL-TEST partition + final-test bank: 378,337 rows, 13,569 probe flows
+    weights (validation F1): {'xgboost': 0.34609, 'rf': 0.345795, 'cnn': 0.308116}
+    rule       attack-recall  false-pos     F1    | padded probes caught at 64 B / 128 B / 256 B / 512 B
+    majority     99.73%      0.078%  0.9967  | 13569/13569  13569/13569  13569/13569  13569/13569
+    unanimous    93.59%      0.054%  0.9655  | 13569/13569  13569/13569  13569/13569  13569/13569
+    weighted     99.79%      0.092%  0.9967  | 13569/13569  13569/13569  13569/13569  13569/13569
+    any          99.97%      3.712%  0.9164  | 13569/13569  13569/13569  13569/13569  13569/13569
+    xgboost      99.82%      0.077%  0.9972  | 13569/13569  13569/13569  13569/13569  13569/13569
+    rf           99.64%      0.081%  0.9962  | 13569/13569  13569/13569  13569/13569  13569/13569
+    cnn          93.83%      3.686%  0.8855  | 13569/13569  13569/13569  13569/13569  13569/13569
+    output: /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov3/final_eval.json
+
+[2026-10-28 08:35:10] [auto] v5 evaluation (final) (evaluate_v5.py)
+    detector set: /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov1_ms1
+    FINAL-TEST partition + final-test bank: 378,337 rows, 13,569 probe flows
+    weights (validation F1): {'xgboost': 0.346088, 'rf': 0.345763, 'cnn': 0.308149}
+    rule       attack-recall  false-pos     F1    | padded probes caught at 64 B / 128 B / 256 B / 512 B
+    majority     99.74%      0.077%  0.9968  | 13029/13569  13569/13569  13569/13569  13569/13569
+    unanimous    94.96%      0.059%  0.9727  | 0/13569  11174/13569  13563/13569  13569/13569
+    weighted     99.81%      0.091%  0.9968  | 13543/13569  13569/13569  13569/13569  13569/13569
+    any          99.96%      3.965%  0.9112  | 13569/13569  13569/13569  13569/13569  13569/13569
+    xgboost      99.82%      0.079%  0.9972  | 13569/13569  13569/13569  13569/13569  13569/13569
+    rf           99.63%      0.079%  0.9962  | 13029/13569  13569/13569  13569/13569  13569/13569
+    cnn          95.21%      3.943%  0.8875  | 0/13569  11174/13569  13563/13569  13569/13569
+    output: /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov1_ms1/final_eval.json
+
+[2026-10-28 08:35:20] [auto] v5 evaluation (final) (evaluate_v5.py)
+    detector set: /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov1_ms2
+    FINAL-TEST partition + final-test bank: 378,337 rows, 13,569 probe flows
+    weights (validation F1): {'xgboost': 0.344457, 'rf': 0.344098, 'cnn': 0.311445}
+    rule       attack-recall  false-pos     F1    | padded probes caught at 64 B / 128 B / 256 B / 512 B
+    majority     99.74%      0.079%  0.9968  | 12810/13569  13569/13569  13569/13569  13569/13569
+    unanimous    96.45%      0.059%  0.9805  | 0/13569  6041/13569  13563/13569  13569/13569
+    weighted     99.80%      0.091%  0.9968  | 13483/13569  13569/13569  13569/13569  13569/13569
+    any          99.97%      3.695%  0.9167  | 13569/13569  13569/13569  13569/13569  13569/13569
+    xgboost      99.82%      0.079%  0.9972  | 13569/13569  13569/13569  13569/13569  13569/13569
+    rf           99.62%      0.080%  0.9961  | 12810/13569  13569/13569  13569/13569  13569/13569
+    cnn          96.72%      3.673%  0.9008  | 0/13569  6041/13569  13563/13569  13569/13569
+    output: /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov1_ms2/final_eval.json
+
+[2026-10-28 08:35:30] [auto] v5 evaluation (final) (evaluate_v5.py)
+    detector set: /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov1_ms3
+    FINAL-TEST partition + final-test bank: 378,337 rows, 13,569 probe flows
+    weights (validation F1): {'xgboost': 0.343732, 'rf': 0.343398, 'cnn': 0.31287}
+    rule       attack-recall  false-pos     F1    | padded probes caught at 64 B / 128 B / 256 B / 512 B
+    majority     99.72%      0.078%  0.9967  | 13460/13569  13569/13569  13569/13569  13569/13569
+    unanimous    93.61%      0.052%  0.9657  | 0/13569  197/13569  1828/13569  13569/13569
+    weighted     99.81%      0.090%  0.9968  | 13566/13569  13569/13569  13569/13569  13569/13569
+    any          99.97%      2.741%  0.9368  | 13569/13569  13569/13569  13569/13569  13569/13569
+    xgboost      99.82%      0.079%  0.9972  | 13569/13569  13569/13569  13569/13569  13569/13569
+    rf           99.61%      0.079%  0.9961  | 13460/13569  13569/13569  13569/13569  13569/13569
+    cnn          93.85%      2.713%  0.9061  | 0/13569  197/13569  1828/13569  13569/13569
+    output: /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov1_ms3/final_eval.json

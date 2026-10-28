@@ -4,7 +4,7 @@ plot_comparison.py — Original vs adversarially trained detectors.
 Reads eval_results.json (v2, original detectors) and
 results_v3_adversarial/eval_results.json (v3, adversarially trained) and
 plots evasion per defence for: random probes (no learning), the trained
-black-box agent and the trained white-box agent.
+reward-only agent and the trained feature-observing agent.
 
 Output: thesis_defence_comparison.png
 """
@@ -23,8 +23,8 @@ DEFENCES = [("xgboost", "XGBoost"), ("rf", "RF"), ("cnn", "CNN"), ("unanimous", 
 SETS = [("eval_results.json", "Original detectors", "#7a7974"),
         ("results_v3_adversarial/eval_results.json", "Adversarially trained detectors", "#1baf7a")]
 PANELS = [("untrained", None, "Random probes (no learning)"),
-          ("trained", "black", "Trained black-box agent"),
-          ("trained", "white", "Trained white-box agent")]
+          ("trained", "black", "Trained reward-only agent"),
+          ("trained", "white", "Trained feature-observing agent")]
 INK = "#3a3a38"
 
 results = []

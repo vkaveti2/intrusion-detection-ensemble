@@ -243,16 +243,30 @@ class ConvergenceCallback(BaseCallback):
 
 
 # ── Single experiment runner (runs in its own process) ────────────────────────
-def run_experiment(voting_rule, knowledge_level, total_timesteps=TIMESTEPS, seed=DEFAULT_SEED):
+def run_experiment(voting_rule, knowledge_level, total_timesteps=TIMESTEPS, seed=DEFAULT_SEED,
+                   fresh_incomplete=False):
     """
     Trains one DDQN agent against ensemble_{voting_rule} with {knowledge_level}
     knowledge. Handles fresh start and checkpoint resume transparently.
     Output files carry no seed in their names: run each seed in its own directory.
+
+    fresh_incomplete (v5 sweep): keep agents that already finished, and discard the partial
+    checkpoints and curve of any that did not, so the experiment reruns from scratch. A run
+    resumed from a checkpoint restarts with an empty replay buffer and is therefore not identical
+    to an uninterrupted run; restarting keeps every reported agent reproducible from its seed.
     """
     os.makedirs(CHECKPOINT_DIR, exist_ok=True)
     os.makedirs(MODELS_DIR, exist_ok=True)
 
     exp_name = f"ddqn_{voting_rule}_{knowledge_level}"
+    if fresh_incomplete:
+        if os.path.exists(os.path.join(MODELS_DIR, exp_name + ".zip")):
+            print(f"[{exp_name}] Already complete (final agent present). Skipping.")
+            return
+        for stale in Path(CHECKPOINT_DIR).glob(f"{exp_name}_*_steps.zip"):
+            stale.unlink()
+        if os.path.exists(f"convergence_{exp_name}.json"):
+            os.remove(f"convergence_{exp_name}.json")
     print(f"\n{'='*60}")
     print(f" Experiment: {exp_name}")
     print(f" Timesteps : {total_timesteps}  |  Episode length: {EPISODE_LENGTH}")
@@ -265,6 +279,7 @@ def run_experiment(voting_rule, knowledge_level, total_timesteps=TIMESTEPS, seed
         knowledge=knowledge_level,
         ensemble_rule=voting_rule,
         use_pi=False,           # Local simulation (Mac Pro speed)
+        probe_split="agent_train",   # v5: agents never sample dev or final-test flows
     )
 
     # ── Load existing convergence data if resuming ────────────────────────────
@@ -379,6 +394,10 @@ if __name__ == "__main__":
         "--seed", type=int, default=DEFAULT_SEED,
         help=f"Agent/environment seed (default: {DEFAULT_SEED}); use a separate directory per seed",
     )
+    parser.add_argument(
+        "--fresh-incomplete", action="store_true",
+        help="Skip agents that already finished; delete partial checkpoints and rerun the rest from scratch",
+    )
     args = parser.parse_args()
 
     # Build experiment list from CLI args
@@ -402,12 +421,12 @@ if __name__ == "__main__":
 
     if args.sequential:
         for voting_rule, knowledge_level in experiments:
-            run_experiment(voting_rule, knowledge_level, args.timesteps, args.seed)
+            run_experiment(voting_rule, knowledge_level, args.timesteps, args.seed, args.fresh_incomplete)
     else:
         with multiprocessing.Pool(processes=args.max_parallel, maxtasksperchild=1) as pool:
             pool.starmap(
                 run_experiment,
-                [(v, k, args.timesteps, args.seed) for v, k in experiments],
+                [(v, k, args.timesteps, args.seed, args.fresh_incomplete) for v, k in experiments],
                 chunksize=1,
             )
 

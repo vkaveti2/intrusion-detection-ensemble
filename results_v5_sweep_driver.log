@@ -1,0 +1,48 @@
+v5 sweep started 22:53:37
+[skip] 22:53:37 cov1 seed 0 (done)
+[run ] 22:53:37 cov3 seed 0
+[run ] 22:53:37 cov1 seed 1
+[done] 23:03:07 cov1 seed 1
+[run ] 23:03:07 cov3 seed 1
+[done] 23:03:08 cov3 seed 0
+[run ] 23:03:08 cov1 seed 2
+[done] 23:13:14 cov3 seed 1
+[run ] 23:13:14 cov3 seed 2
+[done] 23:13:15 cov1 seed 2
+[run ] 23:13:15 cov1 seed 3
+[done] 23:23:38 cov3 seed 2
+[run ] 23:23:38 cov3 seed 3
+[done] 23:23:38 cov1 seed 3
+[run ] 23:23:38 cov1 seed 4
+[done] 23:33:56 cov3 seed 3
+[run ] 23:33:56 cov3 seed 4
+[done] 23:33:57 cov1 seed 4
+[run ] 23:33:57 cov1_ms1 seed 0
+[done] 23:44:16 cov3 seed 4
+[run ] 23:44:16 cov1_ms2 seed 0
+[done] 23:44:18 cov1_ms1 seed 0
+[run ] 23:44:18 cov1_ms3 seed 0
+[done] 23:54:31 cov1_ms2 seed 0
+[run ] 23:54:31 cov0 seed 0
+[done] 23:54:32 cov1_ms3 seed 0
+[run ] 23:54:32 cov2 seed 0
+[done] 00:04:47 cov0 seed 0
+[run ] 00:04:47 cov0 seed 1
+[done] 00:04:49 cov2 seed 0
+[run ] 00:04:49 cov2 seed 1
+[done] 00:14:30 cov2 seed 1
+[run ] 00:14:30 cov0 seed 2
+[done] 00:14:30 cov0 seed 1
+[run ] 00:14:30 cov2 seed 2
+[done] 00:24:11 cov0 seed 2
+[run ] 00:24:11 cov0 seed 3
+[done] 00:24:12 cov2 seed 2
+[run ] 00:24:12 cov2 seed 3
+[done] 00:33:52 cov0 seed 3
+[run ] 00:33:52 cov0 seed 4
+[done] 00:33:52 cov2 seed 3
+[run ] 00:33:52 cov2 seed 4
+[done] 00:43:35 cov2 seed 4
+[done] 00:43:36 cov0 seed 4
+v5 sweep finished 00:43:36
+batches complete: 23 of 23

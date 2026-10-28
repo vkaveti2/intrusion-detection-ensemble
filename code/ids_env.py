@@ -22,8 +22,23 @@ _MODEL_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "models")
 _PROBE_BANK_PATH = os.path.join(_MODEL_DIR, "probe_bank.npz")
 _PROBE_BANK = None
 
-def get_probe_bank():
+def get_probe_bank(split=None):
+    """
+    Probe flows for the simulator.
+
+    split=None  -> the legacy all-flows bank (models/probe_bank.npz). Kept only so the
+                   pre-v5 scripts and archived results still run; never used for v5 numbers.
+    split=name  -> a partition of the group-aware v5 protocol (splits.py): "agent_train"
+                   (the only bank an agent may train on), "dev", or "final_test"
+                   (refused until the protocol is frozen).
+    """
     global _PROBE_BANK
+    if split is not None:
+        import splits
+        try:
+            return splits.load_bank(split)
+        except FileNotFoundError:
+            raise FileNotFoundError(f"{splits.SPLIT_DIR} missing. Run `python splits.py build` first.")
     if _PROBE_BANK is None:
         if not os.path.exists(_PROBE_BANK_PATH):
             # No silent fallback: a synthetic probe would make evasion rates meaningless.
@@ -72,9 +87,13 @@ def decode_action(action_idx):
 # ── Environment ────────────────────────────────────────────────────────────────
 class IDSEvasionEnv(gym.Env):
     def __init__(self, pi_ip=DEFAULT_PI_IP, pi_port=DEFAULT_REWARD_PORT, 
-                 knowledge="white", ensemble_rule="majority", use_pi=False):
+                 knowledge="white", ensemble_rule="majority", use_pi=False,
+                 probe_split="agent_train"):
         super().__init__()
 
+        # Which partition of the v5 probe bank this environment samples (see get_probe_bank).
+        # Agents train on "agent_train"; evaluate_agents.py switches to "final_test".
+        self.probe_split = probe_split
         self.pi_ip = pi_ip
         self.pi_port = pi_port
         self.use_pi = use_pi # Toggle between Hardware and Simulation
@@ -86,7 +105,7 @@ class IDSEvasionEnv(gym.Env):
         from ensemble import EnsembleIDS
         self.ensemble = EnsembleIDS(voting=ensemble_rule)
         if not use_pi:
-            get_probe_bank()  # fail fast before training starts
+            get_probe_bank(self.probe_split)  # fail fast before training starts
 
         # Gym Spaces
         self.action_space = gym.spaces.Discrete(N_ACTIONS)
@@ -161,7 +180,7 @@ class IDSEvasionEnv(gym.Env):
         return result["label"], f
 
     def _probe_features(self, port, pkt_size):
-        bank = get_probe_bank()
+        bank = get_probe_bank(self.probe_split)
         f = bank[self.np_random.integers(len(bank))].copy()
         f[F_DST_PORT] = float(port)
         return set_forward_payload(f, pkt_size)[0]

@@ -21,7 +21,7 @@ The existing claims fall into three groups:
 |---|---|---|
 | Final evasion rate of a defence (e.g. cov1 CNN 94.5%, everything hardened 0%) | Only if the agent fails to find the best payload option. The ceiling is set by the detectors | Yes. It is a property of the trained models |
 | Learning speed: episodes to 90% evasion, probes detected during training (H4) | **Yes, directly** | Indirectly |
-| White-box vs black-box differences (e.g. the v2 white-box "local optimum") | **Yes** | Indirectly |
+| Feature-observing vs reward-only differences (e.g. the v2 feature-observing "local optimum") | **Yes** | Indirectly |
 | Ensemble collapse (rule ≡ one member) | No. It follows from the detectors' decisions | Yes |
 | The single evadable v4 result (cov1 CNN's 64 B gap) | No | **Yes. It rests on one CNN training run** |
 
@@ -38,14 +38,14 @@ seeds** for cov1 (Part B).
 ## 3. Determinism check (done before launching)
 
 Seed 0 of the existing runs was re-run with the modified script (XGBoost,
-black-box, original detectors). The result was **identical to the original
+reward-only, original detectors). The result was **identical to the original
 in all 500 episodes**. Runs are deterministic given the seed, so the
 existing seed-0 results are reused and only seeds 1–4 are new.
 
 ## 4. Design
 
 **Part A — agent seeds.** 4 detector sets × 5 agent seeds (0–4) × 14
-experiments (7 defences × black/white-box) = 280 runs, 224 of them new.
+experiments (7 defences × reward-only / feature-observing) = 280 runs, 224 of them new.
 Everything else is unchanged: 50,000 steps, same hyperparameters, same
 evaluation.
 
@@ -78,12 +78,12 @@ seed 0.
 
 ## 6. Pre-specified comparisons
 
-| # | Question | Measure | Groups (black-box unless stated) |
+| # | Question | Measure | Groups (reward-only unless stated) |
 |---|---|---|---|
 | C1 | Does the agent learn more slowly when fewer payload options evade? (H4) | Episodes to 90% evasion | cov1 CNN (1 option) vs cov0 CNN (3) and vs cov0 RF (4) |
 | C2 | Is it detected more often on the way? (H4) | Probes detected during training | same groups as C1 |
-| C3 | Does white-box knowledge help? | Probes detected during training, black vs white | every configuration where evasion is possible |
-| C4 | How often does the white-box agent settle below the best option? | Count of seeds with white-box final evasion > 5 points below the best option | every configuration where evasion is possible |
+| C3 | Does feature observation help? | Probes detected during training, reward-only vs feature-observing | every configuration where evasion is possible |
+| C4 | How often does the feature-observing agent settle below the best option? | Count of seeds with feature-observing final evasion > 5 points below the best option | every configuration where evasion is possible |
 
 **Decision rule.** Report mean ± SD and min–max. Call a difference
 *consistent* only if the two groups' min–max ranges do not overlap. Also
@@ -94,16 +94,16 @@ corrections are applied.
 
 ## 7. Predictions
 
-1. **Black-box final evasion** is identical across seeds (± 2 points):
+1. **Reward-only final evasion** is identical across seeds (± 2 points):
    cov0 all 100%; cov1 CNN and unanimous ≈ 94.5%, all others 0%;
    cov2 and cov3 all 0%.
-2. **White-box** final evasion sometimes falls short of the best option, as
+2. **Feature-observing** final evasion sometimes falls short of the best option, as
    in v2 seed 0 (CNN/any 58.5%). How often is unknown.
-3. **Collapse** is exact in every seed for black-box agents. Each pair sees
+3. **Collapse** is exact in every seed for reward-only agents. Each pair sees
    identical decisions, so its training is identical.
 4. **C1, C2:** the cov1 CNN takes longer and is detected more often than
    cov0 CNN and RF in every seed (non-overlapping ranges).
-5. **C3:** the white-box agent is detected more often than the black-box
+5. **C3:** the feature-observing agent is detected more often than the reward-only
    agent. This held in every evadable configuration in seed 0, but the
    effect may be small relative to seed noise.
 6. **Part B:** no confident prediction. Either outcome is informative:
@@ -116,7 +116,7 @@ corrections are applied.
 
 ## 8. What would change the conclusions
 
-- Large variation in black-box final evasion across agent seeds would mean
+- Large variation in reward-only final evasion across agent seeds would mean
   the RQ answers must be stated as distributions, not single numbers.
 - If Part B shows the 64 B gap is not reproducible, RQ2's "unanimous is
   worst" stays true by construction (a 3-of-3 rule can never be more robust

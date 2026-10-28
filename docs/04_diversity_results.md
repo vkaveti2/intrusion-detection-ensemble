@@ -43,7 +43,7 @@ simulator uses (`docs/figures/coverage_matrix.png`):
 | cov1 | XGBoost (A only) | **100%** | **100%** | **100%** | **100%** | 100% |
 | cov1 | RF (B only) | **100%** | 100% | 100% | **100%** | 99.8% |
 | cov1 | CNN (C only) | **5.5%** | **99.0%** | **99.9%** | 100% | 95.4% |
-| cov2 | all three | 100% | 100% | 100% | 100% | 99.9–100% |
+| cov2 | XGBoost / RF / CNN | 100% | 100% | 100% | 100% | 17,833 / 17,810 / 17,834 of 17,834 |
 
 Bold = outside the detector's designed band.
 
@@ -108,7 +108,7 @@ Evasion rate of the trained agent (greedy, 2,000 probes)
 | Weighted | 100 / 100% | 0 / 0% | 0 / 0% | 0 / 0% |
 | Any | 100 / 58.5% | 0 / 0% | 0 / 0% | 0 / 0% |
 
-- In cov1 both the black-box and white-box agents found the gap. Against
+- In cov1 both the reward-only and feature-observing agents found the gap. Against
   the CNN and unanimous rules they converged on **64 B in 100% of greedy
   probes**, and 94.5% evasion matches the 94.5% of 64 B probes the CNN
   misses. With random probes, evasion was 20.7%, so learning added
@@ -128,7 +128,7 @@ Evasion rate of the trained agent (greedy, 2,000 probes)
 When only one payload option evades, the agent took about twice as many
 episodes to reach 90% evasion. It was also detected 2–8× more often before
 it succeeded. In every configuration where evasion was possible, the
-white-box agent was detected *more* often than the black-box agent. In
+feature-observing agent was detected *more* often than the reward-only agent. In
 cov1 its training curve became unstable after about episode 230
 (`results_v4_cov1/thesis_convergence_results.png`). The feature
 observations did not help it.
@@ -156,11 +156,11 @@ CNN in cov1) had a blind spot. *Unanimous* did the opposite and turned
 that member's blind spot into the ensemble's.
 
 **RQ2: which rule resists best.** Under attack: any ≥ majority = weighted
-≥ unanimous. Against the trained black-box agent the only strict
+≥ unanimous. Against the trained reward-only agent the only strict
 difference was in cov1, where unanimous was evaded and the others were
 not. *any*'s only advantage over majority came in cov0. There it caught
-some probes majority missed (41% at 128 B), and the white-box agent stalled
-at 58.5% against it. But the black-box agent fully evaded both. In cov1–cov3
+some probes majority missed (41% at 128 B), and the feature-observing agent stalled
+at 58.5% against it. But the reward-only agent fully evaded both. In cov1–cov3
 *any* bought no robustness over majority and cost roughly 50× more false
 alarms (3.6–4.0% vs 0.07%). Majority and
 F1-weighted voting behaved identically under attack. Weighted differed only

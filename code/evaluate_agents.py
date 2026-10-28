@@ -24,6 +24,7 @@ from ensemble import MODEL_DIR, VOTING_RULES, EnsembleIDS
 from ids_env import (EPISODE_LENGTH, N_ACTIONS, PKTSIZE_OPTIONS, IDSEvasionEnv,
                      decode_action)
 from project_log import log_event
+from terminology import label
 
 EVAL_SEED = 12345  # distinct from the training seed
 
@@ -51,6 +52,7 @@ def untrained_baseline(env, rules, n_probes):
         e = np.array(evaded[r])
         out[r] = {
             "evasion": float(e.mean()),
+            "evaded": int(e.sum()), "n_probes": int(len(e)),
             "by_payload": {str(s): float(e[sizes == s].mean()) for s in PKTSIZE_OPTIONS},
         }
     return out
@@ -72,6 +74,7 @@ def evaluate_policy(env, model, episodes):
     n = sum(sizes.values())
     return {
         "evasion": evasions / n,
+        "evaded": int(evasions), "n_probes": int(n),     # exact counts alongside the rate
         "payload_choice": {str(k): v / n for k, v in sorted(sizes.items())},
         "median_delay_s": float(np.median(delays)),
     }
@@ -85,7 +88,8 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     rules = list(VOTING_RULES)
-    env = IDSEvasionEnv(knowledge="black", ensemble_rule="majority")
+    # v5: everything reported is measured on the final-test probe bank (needs the frozen protocol)
+    env = IDSEvasionEnv(knowledge="black", ensemble_rule="majority", probe_split="final_test")
     shared = env.ensemble.detectors
 
     print(f"Untrained baseline ({args.probes} random probes, paired across rules)...")
@@ -105,7 +109,7 @@ if __name__ == "__main__":
     with open("eval_results.json", "w") as f:
         json.dump(results, f, indent=2)
 
-    print("\n| Defence | Untrained | Trained black-box | Trained white-box |")
+    print(f"\n| Defence | Untrained | Trained {label('black', None)} | Trained {label('white', None)} |")
     print("|---|---|---|---|")
     for r in rules:
         b = results["trained"].get(f"{r}_black", {}).get("evasion")
@@ -121,7 +125,7 @@ if __name__ == "__main__":
     lines = [f"detector set={MODEL_DIR}  results dir={os.getcwd()}",
              f"untrained: {args.probes} random probes (paired across rules); "
              f"trained: {args.episodes} greedy episodes each, eval seed {EVAL_SEED}",
-             "defence     untrained  trained-black  trained-white"]
+             "defence     untrained  trained-reward-only  trained-feature-observing"]
     for r in rules:
         lines.append(f"{r:10s}  {pct(results['untrained'][r]['evasion'])}     "
                      f"{pct(results['trained'].get(f'{r}_black', {}).get('evasion'))}         "

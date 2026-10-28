@@ -1,0 +1,531 @@
+{
+  "frozen": true,
+  "protocol": "v5",
+  "frozen_at": "2026-10-27T14:23:39-04:00",
+  "meaning": "Detectors, voting weights, thresholds and the split are fixed. Final-test data may be read only by frozen models and policies. Changing any of them requires un-freezing and a new tag.",
+  "separation": "invariant-feature groups; does not establish independence by host, capture session or time",
+  "split": {
+    "seed": 2026,
+    "shares": [
+      0.7,
+      0.15,
+      0.15
+    ],
+    "agent_share": 0.7,
+    "inner_val_share": 0.05,
+    "fingerprint": "deb78d125a24c9c865b1b46f8286fc3a69f9de1b6fb155407373405fbdd6c47a",
+    "rows": 2520798,
+    "groups_total": 480,
+    "largest_group_flows": 991,
+    "singleton_groups": 135,
+    "partitions": {
+      "train": {
+        "rows": 1764598,
+        "grouped_rows": 63167,
+        "groups": 339,
+        "probe_flows": 62505,
+        "inner_validation_rows": 88121,
+        "inner_validation_groups": 11
+      },
+      "validation": {
+        "rows": 377863,
+        "grouped_rows": 13271,
+        "groups": 69,
+        "probe_flows": 13141
+      },
+      "final_test": {
+        "rows": 378337,
+        "grouped_rows": 13744,
+        "groups": 72,
+        "probe_flows": 13569
+      }
+    },
+    "bank": {
+      "detector_train": {
+        "flows": 62505,
+        "groups": 339
+      },
+      "agent_train": {
+        "flows": 9325,
+        "groups": 55
+      },
+      "dev": {
+        "flows": 3816,
+        "groups": 14
+      },
+      "final_test": {
+        "flows": 13569,
+        "groups": 72
+      }
+    },
+    "signature_columns": 60,
+    "excluded_from_signature": [
+      "Average Packet Size",
+      "Avg Fwd Segment Size",
+      "Destination Port",
+      "Flow Bytes/s",
+      "Fwd Packet Length Max",
+      "Fwd Packet Length Mean",
+      "Fwd Packet Length Min",
+      "Fwd Packet Length Std",
+      "Max Packet Length",
+      "Min Packet Length",
+      "PSH Flag Count",
+      "Packet Length Mean",
+      "Packet Length Std",
+      "Packet Length Variance",
+      "Subflow Fwd Bytes",
+      "Total Length of Fwd Packets",
+      "act_data_pkt_fwd"
+    ]
+  },
+  "masked_features": [
+    "PSH Flag Count"
+  ],
+  "decision_threshold": 0.5,
+  "thresholds_tuned": "none",
+  "voting_weights_source": "validation partition, binary F1 (evaluate_v5.py --stage weights)",
+  "detector_hyperparameters": {
+    "xgboost": "tree_method=hist, library defaults, random_state=model_seed",
+    "rf": "100 trees, random_state=model_seed",
+    "cnn": "3 Conv1d blocks (64/128/128), FC 128-64, dropout 0.3, Adam lr 1e-3 wd 1e-5, batch 512, 30 epochs, class-balanced sampler, ReduceLROnPlateau(max, patience 4, factor 0.5) on inner validation",
+    "augmentation": "1 padded copy per train-partition probe flow, payload uniform in the detector's band(s); bands A 1-90, B 91-362, C 363-1460 B; aug seed 2026"
+  },
+  "detector_sets": {
+    "cov0": {
+      "weights": {
+        "xgboost": 0.346547,
+        "rf": 0.346208,
+        "cnn": 0.307245
+      },
+      "cnn_training": {
+        "best_epoch": 29,
+        "best_inner_val_acc": 0.9551071821699708,
+        "epochs": 30,
+        "model_seed": 42,
+        "inner_validation_rows": 88121,
+        "train_rows": 1676477
+      },
+      "files": {
+        "xgboost_model.pkl": {
+          "sha256": "555bfcd0fe51b1a0a610e961e17ec7507384a35142af9290d3f740f923397f60",
+          "bytes": 2347115
+        },
+        "rf_model.pkl": {
+          "sha256": "d9ed2dd34b3d1c3959859827db31df8cd36c8ca158426b0ff80f1a3ed707ccdf",
+          "bytes": 132720369
+        },
+        "cnn_model.pth": {
+          "sha256": "eb9c1e312f5ab056fa897303ff7d6a36a0f90073e7a4512cecdce4c0428a7b1b",
+          "bytes": 411863
+        },
+        "scaler.pkl": {
+          "sha256": "1999517f7f44bda2d0e878bb0471f0a1952371e992c101d5a75b43975f9f04a6",
+          "bytes": 4151
+        },
+        "cnn_arch.json": {
+          "sha256": "ef44e8b3b95a050f1d3d039a8bc2085b72d19cee1cbb1c45201ddc69e947c492",
+          "bytes": 144
+        },
+        "ensemble_weights.json": {
+          "sha256": "a3be624ed2e7d5b2e2553769f1880c054cf97efa4b730b6b0cb01dad9161f123",
+          "bytes": 62
+        },
+        "augmentation.json": {
+          "sha256": "2eebba19e59aeaa62d45da7bd6ee8d6092768967569711c34dd7d3567f76ac0e",
+          "bytes": 416
+        },
+        "cnn_training.json": {
+          "sha256": "0a3aaf23b922b4293c224918b6e1d4e9910eae858c2fc67422ede9657e4245ab",
+          "bytes": 161
+        }
+      }
+    },
+    "cov1": {
+      "weights": {
+        "xgboost": 0.342196,
+        "rf": 0.341888,
+        "cnn": 0.315916
+      },
+      "cnn_training": {
+        "best_epoch": 29,
+        "best_inner_val_acc": 0.9710542485955056,
+        "epochs": 30,
+        "model_seed": 42,
+        "inner_validation_rows": 91136,
+        "train_rows": 1735967
+      },
+      "files": {
+        "xgboost_model.pkl": {
+          "sha256": "8db9ceeeb05b142a8d194c2b650d2257d2e4d4b563893d5642c653a6143dd785",
+          "bytes": 2417297
+        },
+        "rf_model.pkl": {
+          "sha256": "f0d5ea0ba522c7ab34ecfbaa8cc8c50ca7f085715a68e257c5b20f040b966bfa",
+          "bytes": 133763281
+        },
+        "cnn_model.pth": {
+          "sha256": "5154d36218fb56d2a4b2198b4b5de69083be574113b89c6f4fbc7eae8442102e",
+          "bytes": 411863
+        },
+        "scaler.pkl": {
+          "sha256": "1999517f7f44bda2d0e878bb0471f0a1952371e992c101d5a75b43975f9f04a6",
+          "bytes": 4151
+        },
+        "cnn_arch.json": {
+          "sha256": "ef44e8b3b95a050f1d3d039a8bc2085b72d19cee1cbb1c45201ddc69e947c492",
+          "bytes": 144
+        },
+        "ensemble_weights.json": {
+          "sha256": "18231cbbef0b287db7612eaad345b2192a5a81ffebe9a64b4838445f3190d2f5",
+          "bytes": 62
+        },
+        "augmentation.json": {
+          "sha256": "841a6b5dd9e6fec1d56cd5d4ca2a224624d60ea180f83a6222c577766e681972",
+          "bytes": 781
+        },
+        "cnn_training.json": {
+          "sha256": "5f960cdf57b0b52595ee5228d38079f574702480956f7c92e25e25636eaaefcf",
+          "bytes": 161
+        }
+      }
+    },
+    "cov2": {
+      "weights": {
+        "xgboost": 0.345363,
+        "rf": 0.345053,
+        "cnn": 0.309584
+      },
+      "cnn_training": {
+        "best_epoch": 29,
+        "best_inner_val_acc": 0.9624297752808989,
+        "epochs": 30,
+        "model_seed": 42,
+        "inner_validation_rows": 91136,
+        "train_rows": 1735967
+      },
+      "files": {
+        "xgboost_model.pkl": {
+          "sha256": "bca7416eab3e5c52e7ca66f39beead872711112fe96e9cd58e52a996a03e9bd0",
+          "bytes": 2414440
+        },
+        "rf_model.pkl": {
+          "sha256": "2c3dd1b968e385dcdee9d71bbc3a60ab2116e4a77c3a3e97b0e34aede51e7746",
+          "bytes": 133119649
+        },
+        "cnn_model.pth": {
+          "sha256": "7270bcbd144c2ed82d39f528505e51920700470307b08b53dcc5500404982dc5",
+          "bytes": 411863
+        },
+        "scaler.pkl": {
+          "sha256": "1999517f7f44bda2d0e878bb0471f0a1952371e992c101d5a75b43975f9f04a6",
+          "bytes": 4151
+        },
+        "cnn_arch.json": {
+          "sha256": "ef44e8b3b95a050f1d3d039a8bc2085b72d19cee1cbb1c45201ddc69e947c492",
+          "bytes": 144
+        },
+        "ensemble_weights.json": {
+          "sha256": "b73a6cd571401b0636c7165016869efd92269b68a88c39598c35e16bfeb8c760",
+          "bytes": 62
+        },
+        "augmentation.json": {
+          "sha256": "77617f7521f67fc0051675f7a4718a94fe7baa238a94a2e497bbe87a73d84989",
+          "bytes": 815
+        },
+        "cnn_training.json": {
+          "sha256": "cb234737d20b5ec1be6180a1d0b601bb8c99123d149ce4fb6ef928f31908b250",
+          "bytes": 161
+        }
+      }
+    },
+    "cov3": {
+      "weights": {
+        "xgboost": 0.34609,
+        "rf": 0.345795,
+        "cnn": 0.308116
+      },
+      "cnn_training": {
+        "best_epoch": 28,
+        "best_inner_val_acc": 0.9602571980337079,
+        "epochs": 30,
+        "model_seed": 42,
+        "inner_validation_rows": 91136,
+        "train_rows": 1735967
+      },
+      "files": {
+        "xgboost_model.pkl": {
+          "sha256": "b9622f01d9d9ce110cafd8f53df0d8e2828d1468b78be6125ddc52f2acc766db",
+          "bytes": 2414449
+        },
+        "rf_model.pkl": {
+          "sha256": "b6d623d9cc7505d13f05aa5683a72b0674c43159c9d4626fad3c6772df6ad576",
+          "bytes": 134508481
+        },
+        "cnn_model.pth": {
+          "sha256": "9b21c2062c4d99d885799ccadcb1d2fa2a38bb28de637d05f84401fcab184a9e",
+          "bytes": 411863
+        },
+        "scaler.pkl": {
+          "sha256": "1999517f7f44bda2d0e878bb0471f0a1952371e992c101d5a75b43975f9f04a6",
+          "bytes": 4151
+        },
+        "cnn_arch.json": {
+          "sha256": "ef44e8b3b95a050f1d3d039a8bc2085b72d19cee1cbb1c45201ddc69e947c492",
+          "bytes": 144
+        },
+        "ensemble_weights.json": {
+          "sha256": "3909efbfae1034fddf528f8a85bdf777c62b3133c4288ffde38f875287067260",
+          "bytes": 61
+        },
+        "augmentation.json": {
+          "sha256": "cf29c27d96921de732f6305b893cc836e1a7af80caf223f28d12be097f1feef3",
+          "bytes": 791
+        },
+        "cnn_training.json": {
+          "sha256": "be1a9eb7a1ff1704f46ee28784caa360f86e6e9c3247029f58aabfcc76cd9990",
+          "bytes": 161
+        }
+      }
+    },
+    "cov1_ms1": {
+      "weights": {
+        "xgboost": 0.346088,
+        "rf": 0.345763,
+        "cnn": 0.308149
+      },
+      "cnn_training": {
+        "best_epoch": 26,
+        "best_inner_val_acc": 0.9593684164325843,
+        "epochs": 30,
+        "model_seed": 1,
+        "inner_validation_rows": 91136,
+        "train_rows": 1735967
+      },
+      "files": {
+        "xgboost_model.pkl": {
+          "sha256": "db8623516b68ba68dbcdceed17000a6b74cd635c9c4da659f6be21854a6d03e1",
+          "bytes": 2417295
+        },
+        "rf_model.pkl": {
+          "sha256": "845e100dc2ac280d4a1325f87a8a6cf379f578b669efccdf853da4d7c40df235",
+          "bytes": 133695201
+        },
+        "cnn_model.pth": {
+          "sha256": "bf6b401f1f0628db721c4f5f076a3456bb19286d7cd276ed54e5fd2016167e10",
+          "bytes": 411863
+        },
+        "scaler.pkl": {
+          "sha256": "1999517f7f44bda2d0e878bb0471f0a1952371e992c101d5a75b43975f9f04a6",
+          "bytes": 4151
+        },
+        "cnn_arch.json": {
+          "sha256": "ef44e8b3b95a050f1d3d039a8bc2085b72d19cee1cbb1c45201ddc69e947c492",
+          "bytes": 144
+        },
+        "ensemble_weights.json": {
+          "sha256": "0e6198332677b1cff8bf21a370abd7cf1af64bcecac7734a3765c307b2909bb5",
+          "bytes": 62
+        },
+        "augmentation.json": {
+          "sha256": "04eba25461c09ff0e021938c4bcb9299ab0706b4bd2d5451307d2a295ea7dc0d",
+          "bytes": 780
+        },
+        "cnn_training.json": {
+          "sha256": "6afd27cf5a700dbd94c745d47b39e81c184c0478eba35b6700658794d9f6c5a2",
+          "bytes": 160
+        }
+      }
+    },
+    "cov1_ms2": {
+      "weights": {
+        "xgboost": 0.344457,
+        "rf": 0.344098,
+        "cnn": 0.311445
+      },
+      "cnn_training": {
+        "best_epoch": 28,
+        "best_inner_val_acc": 0.9646572155898876,
+        "epochs": 30,
+        "model_seed": 2,
+        "inner_validation_rows": 91136,
+        "train_rows": 1735967
+      },
+      "files": {
+        "xgboost_model.pkl": {
+          "sha256": "7ba37bc6e852e2250db123caacdbae229f85523969757fb0ea2f39b9b265b49a",
+          "bytes": 2417295
+        },
+        "rf_model.pkl": {
+          "sha256": "4d367094b63856b56ea27e02cb317c5db83674706d3eaf2d30b123bf2caaba45",
+          "bytes": 132965825
+        },
+        "cnn_model.pth": {
+          "sha256": "00ac217a736ab8c53e84eebe012c3724a28b0624a2efa3d94a0c65033f544971",
+          "bytes": 411863
+        },
+        "scaler.pkl": {
+          "sha256": "1999517f7f44bda2d0e878bb0471f0a1952371e992c101d5a75b43975f9f04a6",
+          "bytes": 4151
+        },
+        "cnn_arch.json": {
+          "sha256": "ef44e8b3b95a050f1d3d039a8bc2085b72d19cee1cbb1c45201ddc69e947c492",
+          "bytes": 144
+        },
+        "ensemble_weights.json": {
+          "sha256": "5fca5cb3bf78f153b60174c3c3ecdba81ca0ceeac9d5c02e574d642828c6efc4",
+          "bytes": 62
+        },
+        "augmentation.json": {
+          "sha256": "e2438ef98250cb6a9b96178bad8268c8510c6089b4a962c4e6d5f3357958383c",
+          "bytes": 780
+        },
+        "cnn_training.json": {
+          "sha256": "43542018c315f518cedce98582dc70d4fb57f0f8c84af4c1c27d3284113c808b",
+          "bytes": 160
+        }
+      }
+    },
+    "cov1_ms3": {
+      "weights": {
+        "xgboost": 0.343732,
+        "rf": 0.343398,
+        "cnn": 0.31287
+      },
+      "cnn_training": {
+        "best_epoch": 30,
+        "best_inner_val_acc": 0.9673893960674157,
+        "epochs": 30,
+        "model_seed": 3,
+        "inner_validation_rows": 91136,
+        "train_rows": 1735967
+      },
+      "files": {
+        "xgboost_model.pkl": {
+          "sha256": "e04d2ba1c824fc2c68e0c1180886984a178895dedfc6cc5ec5b4c03dd8f3460c",
+          "bytes": 2417295
+        },
+        "rf_model.pkl": {
+          "sha256": "8656d107795c7a36258168ec4cf83f2b70bf34091ac2e2cb53c43cf31a845c87",
+          "bytes": 132471969
+        },
+        "cnn_model.pth": {
+          "sha256": "7099873c2203a6bbf98d68c93c0f6c8533832fd7f2d942076440ad016c331388",
+          "bytes": 411863
+        },
+        "scaler.pkl": {
+          "sha256": "1999517f7f44bda2d0e878bb0471f0a1952371e992c101d5a75b43975f9f04a6",
+          "bytes": 4151
+        },
+        "cnn_arch.json": {
+          "sha256": "ef44e8b3b95a050f1d3d039a8bc2085b72d19cee1cbb1c45201ddc69e947c492",
+          "bytes": 144
+        },
+        "ensemble_weights.json": {
+          "sha256": "857cfbce0511977797d7601ea752770c371622dc85d875a90a4bcde1d10a40fa",
+          "bytes": 61
+        },
+        "augmentation.json": {
+          "sha256": "a86fa265c2d9d712359a67dba38dc45206835aca3aa0e54086b124ee426590c9",
+          "bytes": 780
+        },
+        "cnn_training.json": {
+          "sha256": "25a65f71018108319367c9fcd361f3218cc5bfbe3b75a3f1c8e6711cd679ae91",
+          "bytes": 160
+        }
+      }
+    }
+  },
+  "agent": {
+    "algorithm": "Double DQN (Stable-Baselines3 DQN subclass)",
+    "timesteps": 50000,
+    "episode_length": 100,
+    "network": "MLP [256, 256]",
+    "learning_rate": 0.0001,
+    "buffer": 100000,
+    "learning_starts": 2000,
+    "batch": 128,
+    "gamma": 0.99,
+    "train_freq": 4,
+    "target_update": 1000,
+    "exploration": "epsilon 1.0 -> 0.05 over first 20% of training",
+    "trains_on": "agent_train bank",
+    "evaluated_on": "final_test bank (greedy, 20 episodes)",
+    "knowledge_levels": {
+      "black": "reward-only",
+      "white": "feature-observing"
+    }
+  },
+  "experiments": {
+    "part_A_agent_seeds": {
+      "detector_sets": [
+        "cov0",
+        "cov1",
+        "cov2",
+        "cov3"
+      ],
+      "agent_seeds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "experiments_per_batch": 14,
+      "runs": 280
+    },
+    "part_B_detector_seeds": {
+      "detector_sets": [
+        "cov1_ms1",
+        "cov1_ms2",
+        "cov1_ms3"
+      ],
+      "agent_seeds": [
+        0
+      ],
+      "experiments_per_batch": 14,
+      "runs": 42,
+      "note": "cov1 (model seed 42) is shared with part A"
+    },
+    "total_runs": 322,
+    "crossed_design": false,
+    "analyses": [
+      "fixed-payload comparison (best payload chosen on validation-side probe flows)",
+      "hardening comparison (cov3 reference, cov1/cov2 sensitivity)",
+      "CNN band rotation (bounded)",
+      "local inference benchmark"
+    ]
+  },
+  "code_sha256": {
+    "splits.py": "e27ec15ad55bbc369172a6c7a37aa372d5174c713417475d2977e9d52b9ab0ac",
+    "audit_splits.py": "c6c67a00cf2856833f81be390e938c71f4d1d82eed2e3c1719c68076b159be56",
+    "train_v5.py": "8e08f3cae8c3619ea0e9b4ecd7f66dd2d890b7d5a466943022ab772889d6795a",
+    "evaluate_v5.py": "ab80a3bde96dcd9196fe67d4c11af62f01139360e947cc31149e0ad3d728683a",
+    "ids_env.py": "14e4c9ca693154d84a6b7b2065b14f0536e6908a0eed37213b90d9bfe3e19999",
+    "flow_features.py": "c6435f84d9abedf457600848af67f2b714796a3975345188fce207b4f11d4433",
+    "ensemble.py": "febfb721d9ea3246de7044919e62ff6af5baa0939487aaf691c483161675e07d",
+    "masked_scaler.py": "17d12c1a17b7939f3cca7f6d0a240a31356a68bd085c1c2ea539d67b770b6b9b",
+    "train_ensemble.py": "78d08127575cd8fb240a9eb8261456d0502611088a242eeb75147cf410603084",
+    "evaluate_agents.py": "c3710dd788e9da9de8deaf48420fe3d8f763bc7909cc98fe43e146e11e286f84",
+    "cnn_arch.py": "c6001485a559cfc43c124f0b61dc1ae6ef5a832d15310d7ad9327581ee2e0cb2",
+    "terminology.py": "283b62edaa227f6ea3ca2b26cf0834fde7c2cca0734f3471913cb544c5e209d2"
+  },
+  "post_freeze_amendments": [
+    {
+      "date": "2026-10-27T22:35:13-04:00",
+      "files": {
+        "train_ensemble.py": {
+          "sha256_at_freeze": "e5ca684dc498964c2774ea52681a1dec413f6e230842a9b1c48e7c542030f4f6",
+          "sha256_now": "78d08127575cd8fb240a9eb8261456d0502611088a242eeb75147cf410603084"
+        },
+        "evaluate_agents.py": {
+          "sha256_at_freeze": "fdf4f4895f2781657021a4fa6165f6fbd131b214b05924fe3bd5b1c13ad9b8eb",
+          "sha256_now": "c3710dd788e9da9de8deaf48420fe3d8f763bc7909cc98fe43e146e11e286f84"
+        }
+      },
+      "reason": "wire the frozen probe banks into the agent sweep: train_ensemble.py trains on the agent_train bank and gained --fresh-incomplete (skip finished agents, restart unfinished ones); evaluate_agents.py reads the final_test bank and saves exact counts next to each rate",
+      "unchanged": "split, partitions, detector files, voting weights, thresholds and ids_env.py are identical to the freeze",
+      "run_before_amendment": "no agent had been trained or evaluated when these edits were made"
+    }
+  ]
+}

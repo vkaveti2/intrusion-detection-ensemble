@@ -1,0 +1,16 @@
+{
+  "design": "cov0",
+  "protocol": "v5",
+  "masked_features": [
+    "PSH Flag Count"
+  ],
+  "train_rows": 1764598,
+  "inner_validation_rows": 88121,
+  "padded_rows_per_detector": 0,
+  "padded_rows_inner_validation": 0,
+  "detector_bands": null,
+  "aug_seed": 2026,
+  "fingerprint": "deb78d125a24c9c865b1b46f8286fc3a69f9de1b6fb155407373405fbdd6c47a",
+  "scaler_fit_rows": "train partition only"
+}
+RF 0.7 min, XGBoost 0.6 min

@@ -6,7 +6,7 @@ Run from the directory train_ensemble.py and evaluate_agents.py were run from.
 Produces:
   - thesis_convergence_results.png:
       One panel per defence (standalone detectors, then ensemble rules):
-      smoothed per-episode evasion rate for black-box and white-box agents,
+      smoothed per-episode evasion rate for reward-only and feature-observing agents,
       with the untrained (random-probe) baseline as a dashed reference.
   - thesis_final_evasion.png:
       Untrained baseline vs greedy trained-agent evasion per defence
@@ -15,10 +15,14 @@ Produces:
 
 import json
 import os
+import sys
 
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "code"))
+from terminology import capital
 
 plt.style.use("seaborn-v0_8-whitegrid" if "seaborn-v0_8-whitegrid" in plt.style.available else "default")
 plt.rcParams.update({
@@ -43,7 +47,7 @@ DEFENCES = [
     ("weighted",  "Confidence-weighted"),
     ("any",       "Any (1 of 3 flags)"),
 ]
-KNOWLEDGE = [("black", "Black-box agent", "#2a78d6"), ("white", "White-box agent", "#eb6834")]
+KNOWLEDGE = [("black", capital("black"), "#2a78d6"), ("white", capital("white"), "#eb6834")]
 BASELINE_COLOR = "#7a7974"
 INK = "#3a3a38"
 WINDOW = 15  # rolling window (episodes) for smoothing

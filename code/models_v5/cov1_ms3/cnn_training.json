@@ -1,0 +1,8 @@
+{
+  "best_epoch": 30,
+  "best_inner_val_acc": 0.9673893960674157,
+  "epochs": 30,
+  "model_seed": 3,
+  "inner_validation_rows": 91136,
+  "train_rows": 1735967
+}

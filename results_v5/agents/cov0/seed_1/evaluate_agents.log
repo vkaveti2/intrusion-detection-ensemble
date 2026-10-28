@@ -1,0 +1,39 @@
+[Ensemble] STATUS: Real xgboost model loaded successfully.
+[Ensemble] STATUS: Real rf model loaded successfully.
+[Ensemble] STATUS: Real CNN model loaded successfully.
+Untrained baseline (5000 random probes, paired across rules)...
+  majority  black: 100.0%
+  unanimous black: 100.0%
+  weighted  black: 100.0%
+  any       black: 100.0%
+  xgboost   black: 100.0%
+  rf        black: 100.0%
+  cnn       black: 100.0%
+  majority  white: 100.0%
+  unanimous white: 100.0%
+  weighted  white: 100.0%
+  any       white: 48.1%
+  xgboost   white: 100.0%
+  rf        white: 100.0%
+  cnn       white: 48.1%
+
+| Defence | Untrained | Trained reward-only | Trained feature-observing |
+|---|---|---|---|
+| majority | 81.3% | 100.0% | 100.0% |
+| unanimous | 86.4% | 100.0% | 100.0% |
+| weighted | 80.5% | 100.0% | 100.0% |
+| any | 48.2% | 100.0% | 48.1% |
+| xgboost | 86.3% | 100.0% | 100.0% |
+| rf | 81.4% | 100.0% | 100.0% |
+| cnn | 48.2% | 100.0% | 48.1% |
+
+Untrained evasion by payload size (bytes):
+  majority  {'0': '4%', '64': '100%', '128': '100%', '256': '100%', '512': '100%'}
+  unanimous {'0': '30%', '64': '100%', '128': '100%', '256': '100%', '512': '100%'}
+  weighted  {'0': '0%', '64': '100%', '128': '100%', '256': '100%', '512': '100%'}
+  any       {'0': '0%', '64': '43%', '128': '45%', '256': '100%', '512': '53%'}
+  xgboost   {'0': '29%', '64': '100%', '128': '100%', '256': '100%', '512': '100%'}
+  rf        {'0': '4%', '64': '100%', '128': '100%', '256': '100%', '512': '100%'}
+  cnn       {'0': '0%', '64': '43%', '128': '45%', '256': '100%', '512': '53%'}
+
+Saved → eval_results.json

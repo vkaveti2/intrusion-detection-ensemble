@@ -1,0 +1,152 @@
+{
+  "rows": 2520798,
+  "groups_total": 480,
+  "largest_group_flows": 991,
+  "singleton_groups": 135,
+  "partitions": {
+    "train": {
+      "rows": 1764598,
+      "grouped_rows": 63167,
+      "groups": 339,
+      "probe_flows": 62505,
+      "inner_validation_rows": 88121,
+      "inner_validation_groups": 11
+    },
+    "validation": {
+      "rows": 377863,
+      "grouped_rows": 13271,
+      "groups": 69,
+      "probe_flows": 13141
+    },
+    "final_test": {
+      "rows": 378337,
+      "grouped_rows": 13744,
+      "groups": 72,
+      "probe_flows": 13569
+    }
+  },
+  "bank": {
+    "detector_train": {
+      "flows": 62505,
+      "groups": 339
+    },
+    "agent_train": {
+      "flows": 9325,
+      "groups": 55
+    },
+    "dev": {
+      "flows": 3816,
+      "groups": 14
+    },
+    "final_test": {
+      "flows": 13569,
+      "groups": 72
+    }
+  },
+  "per_class_rows": {
+    "BENIGN": {
+      "train": 1466525,
+      "validation": 314243,
+      "final_test": 314289
+    },
+    "Bot": {
+      "train": 1364,
+      "validation": 292,
+      "final_test": 292
+    },
+    "DDoS": {
+      "train": 89610,
+      "validation": 19202,
+      "final_test": 19202
+    },
+    "DoS GoldenEye": {
+      "train": 7200,
+      "validation": 1543,
+      "final_test": 1543
+    },
+    "DoS Hulk": {
+      "train": 120992,
+      "validation": 25927,
+      "final_test": 25927
+    },
+    "DoS Slowhttptest": {
+      "train": 3660,
+      "validation": 784,
+      "final_test": 784
+    },
+    "DoS slowloris": {
+      "train": 3769,
+      "validation": 808,
+      "final_test": 808
+    },
+    "FTP-Patator": {
+      "train": 4152,
+      "validation": 889,
+      "final_test": 890
+    },
+    "Heartbleed": {
+      "train": 8,
+      "validation": 2,
+      "final_test": 1
+    },
+    "Infiltration": {
+      "train": 25,
+      "validation": 6,
+      "final_test": 5
+    },
+    "PortScan": {
+      "train": 63540,
+      "validation": 13363,
+      "final_test": 13791
+    },
+    "SSH-Patator": {
+      "train": 2253,
+      "validation": 483,
+      "final_test": 483
+    },
+    "Web Attack \ufffd Brute Force": {
+      "train": 1029,
+      "validation": 220,
+      "final_test": 221
+    },
+    "Web Attack \ufffd Sql Injection": {
+      "train": 15,
+      "validation": 3,
+      "final_test": 3
+    },
+    "Web Attack \ufffd XSS": {
+      "train": 456,
+      "validation": 98,
+      "final_test": 98
+    }
+  },
+  "seed": 2026,
+  "shares": [
+    0.7,
+    0.15,
+    0.15
+  ],
+  "agent_share": 0.7,
+  "inner_val_share": 0.05,
+  "fingerprint": "deb78d125a24c9c865b1b46f8286fc3a69f9de1b6fb155407373405fbdd6c47a",
+  "signature_columns": 60,
+  "excluded_from_signature": [
+    "Average Packet Size",
+    "Avg Fwd Segment Size",
+    "Destination Port",
+    "Flow Bytes/s",
+    "Fwd Packet Length Max",
+    "Fwd Packet Length Mean",
+    "Fwd Packet Length Min",
+    "Fwd Packet Length Std",
+    "Max Packet Length",
+    "Min Packet Length",
+    "PSH Flag Count",
+    "Packet Length Mean",
+    "Packet Length Std",
+    "Packet Length Variance",
+    "Subflow Fwd Bytes",
+    "Total Length of Fwd Packets",
+    "act_data_pkt_fwd"
+  ]
+}

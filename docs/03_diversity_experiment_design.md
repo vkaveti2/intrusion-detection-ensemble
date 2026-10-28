@@ -180,7 +180,7 @@ coverage matrix next to the designed one.
    metrics, measured coverage, per-rule metrics, diversity, F1 weights.
 3. From `results_v4_covK/`:
    `IDS_MODEL_DIR=… train_ensemble.py` (14 experiments: 7 defences ×
-   black/white-box, 50,000 steps, seed 0), then `evaluate_agents.py`.
+   reward-only / feature-observing, 50,000 steps, seed 0), then `evaluate_agents.py`.
 4. `summarize_results.py`: one table and figure across the coverage ladder
    (cov0–cov3) for every defence.
 
@@ -191,7 +191,7 @@ coverage matrix next to the designed one.
 | Attack recall, false-positive rate, F1 on held-out test split | `rule_eval.json` | cost of each rule (H3) |
 | Padded-probe detection per payload size (no agent) | `rule_eval.json` | predicted robustness (H1) |
 | Untrained evasion (random probes, paired) | `eval_results.json` | baseline |
-| Trained black-box / white-box evasion (greedy) | `eval_results.json` | RQ1, RQ2 (H1, H2) |
+| Trained reward-only / feature-observing evasion (greedy) | `eval_results.json` | RQ1, RQ2 (H1, H2) |
 | Episodes until training evasion first exceeds 50% / 90% (15-episode rolling mean) | convergence JSON | convergence dynamics (H4) |
 | Probes detected during training | convergence JSON | how much the attacker paid before succeeding |
 

@@ -1,0 +1,11 @@
+detector set: /Users/varunkaveti/Documents/code/thesis/code/models_v5/cov0
+FINAL-TEST partition + final-test bank: 378,337 rows, 13,569 probe flows
+weights (validation F1): {'xgboost': 0.346547, 'rf': 0.346208, 'cnn': 0.307245}
+rule       attack-recall  false-pos     F1    | padded probes caught at 64 B / 128 B / 256 B / 512 B
+majority     99.75%      0.078%  0.9968  | 0/13569  0/13569  0/13569  0/13569
+unanimous    96.52%      0.059%  0.9808  | 0/13569  0/13569  0/13569  0/13569
+weighted     99.81%      0.093%  0.9968  | 0/13569  0/13569  0/13569  0/13569
+any          99.97%      4.581%  0.8988  | 7836/13569  7307/13569  0/13569  6486/13569
+xgboost      99.83%      0.077%  0.9972  | 0/13569  0/13569  0/13569  0/13569
+rf           99.63%      0.080%  0.9962  | 0/13569  0/13569  0/13569  0/13569
+cnn          96.79%      4.560%  0.8833  | 7836/13569  7307/13569  0/13569  6486/13569

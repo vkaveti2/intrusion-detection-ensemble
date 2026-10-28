@@ -131,10 +131,12 @@ rule sees exactly the same probes.
 - **Reward.** +1 − 0.1 · delay/100 if the defence labels the probe benign;
   −1 if it flags it.
 - **Knowledge levels.**
-  - *Black-box*: the observation is always zeros. The agent learns only
+  - *Reward-only*: the observation is always zeros. The agent learns only
     from the reward (detected or not).
-  - *White-box*: the observation is the probe's 77 flow features,
-    standardised with the detectors' scaler and clipped to ±10σ.
+  - *Feature-observing*: the observation is the probe's 77 flow features,
+    standardised with the detectors' scaler and clipped to ±10σ. The agent
+    sees flow features, not model parameters or gradients, which is why this
+    is not called "white-box" (see `00_terminology.md`).
 
 ---
 
@@ -184,7 +186,7 @@ probes in real flows.
 the median PortScan and median BENIGN feature vectors, with hand-set weights.
 **Invalid**: an untrained random policy already reached 93.9–99.0%
 evasion, the decision boundary flipped after a 3–10% shift, delay was
-wrongly injected into per-flow features, white-box observations were
+wrongly injected into per-flow features, the feature-observing agent's observations were
 unscaled, and the threat model treated unanimous voting as strict.
 
 ### v2 — real-flow simulator, original detectors (seed 0)
@@ -206,7 +208,7 @@ XGBoost and RF 0.0% at every non-zero size (`02_voting_rule_metrics.md`).
 
 Evasion rate (share of probes labelled benign):
 
-| Defence | Untrained (random) | Trained black-box | Trained white-box |
+| Defence | Untrained (random) | Trained reward-only | Trained feature-observing |
 |---|---|---|---|
 | XGBoost | 83.4% | 100.0% | 100.0% |
 | RF | 80.5% | 100.0% | 100.0% |
@@ -216,8 +218,8 @@ Evasion rate (share of probes labelled benign):
 | Weighted | 80.5% | 100.0% | 100.0% |
 | Any | 72.1% | 100.0% | 58.5%* |
 
-\* The white-box agent settled on a sub-optimal action (a local optimum).
-The black-box agent shows the defence itself is fully evadable, so this is
+\* The feature-observing agent settled on an action below the best available one (a local optimum).
+The reward-only agent shows the defence itself is fully evadable, so this is
 an agent-side optimisation failure, not resilience.
 
 ### v3 — adversarially trained detectors (seed 0)
@@ -261,7 +263,7 @@ Design: `03_diversity_experiment_design.md`. Results:
    padded probes. As a result each voting rule reproduces exactly one
    member, with identical training curves (500/500 episodes):
    unanimous ≡ XGBoost, majority ≡ weighted ≡ RF, any ≡ CNN. The one
-   partial exception is unanimous vs XGBoost white-box (370/500 identical).
+   partial exception is unanimous vs XGBoost feature-observing (370/500 identical).
    Voting adds no resilience beyond its members.
 3. **Adversarial training closes the gap (v3).** All 7 defences reach 0%,
    but again the voting rule makes no difference, because each member is
@@ -290,7 +292,7 @@ with all three loaded). The Raspberry Pi run is deferred.
 - **Fixed scanner constants.** Header lengths, reply window and flow
   duration are inherited from the real scan flows and never varied. Of
   these, only the TCP window was checked (v3).
-- **White-box local optimum** in v2 (CNN / any).
+- **Feature-observing local optimum** in v2 (CNN / any).
 - **Dataset-specific shortcut.** Conclusions are about detectors trained on
   CIC-IDS2017, and may not transfer to other datasets.
 
