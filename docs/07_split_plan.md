@@ -13,7 +13,7 @@ Approved by Dr. Saha. Implemented in `code/splits.py`; verified by `code/audit_s
 
 The CSVs used here are the MachineLearningCVE files (77 numeric features). They have no source IP, flow ID or timestamp, so a split by scanner host, capture session or time is not possible.
 
-Instead, each row gets a **signature**: a hash of every feature the simulator does not modify. Excluded from the signature are the destination port, the 15 payload-dependent length and byte features that `set_forward_payload` recomputes, and `PSH Flag Count` (the masked detectors cannot see it). That leaves 61 features. Rows with the same signature form a group and always sit in the same partition.
+Instead, each row gets a **signature**: a hash of every feature the simulator does not modify. Excluded from the signature are the destination port, the 15 payload-dependent length and byte features that `set_forward_payload` recomputes (16 columns in all), and `PSH Flag Count` (the masked detectors cannot see it). That leaves 60 of the 77 features. Rows with the same signature form a group and always sit in the same partition.
 
 **This is separation by invariant-feature groups. It does not establish independence by host, capture session or time.**
 

@@ -1,5 +1,7 @@
 # 01 — Current State of the Project (as of 2026-10-14)
 
+> **Superseded by the corrected protocol (v5).** This document records the first pipeline: detectors trained with `PSH Flag Count` visible, a train/test split that is not group-disjoint from the probe bank, and (for the original CNN) epoch selection on the test split. Its pipeline, run history and findings describe that first pipeline; the methodology of the reported results is in `07_split_plan.md`, `12_frozen_protocol.md` and `00_terminology.md`. The numbers below are kept as the diagnostic comparison that motivated the correction (`09_psh_diagnostic_design.md`, `12_frozen_protocol.md`). **Reported results are in `v5_results.md`.**
+
 Working title: *Intrusion Detection: Evaluating Adversarial Resilience and
 Convergence Dynamics of Multi-Model Ensemble Systems on Edge Hardware*
 

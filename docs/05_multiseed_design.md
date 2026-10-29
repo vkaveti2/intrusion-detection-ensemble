@@ -1,5 +1,7 @@
 # 05 — Multi-Seed Replication (Step 3): Rationale and Design
 
+> **Superseded by the corrected protocol (v5).** This document records the first pipeline: detectors trained with `PSH Flag Count` visible, a train/test split that is not group-disjoint from the probe bank, and (for the original CNN) epoch selection on the test split. The design and predictions (written before results) were carried into the corrected protocol; Part A (agent seeds) and Part B (detector seeds) remain separate experiments, not a crossed design. The numbers below are kept as the diagnostic comparison that motivated the correction (`09_psh_diagnostic_design.md`, `12_frozen_protocol.md`). **Reported results are in `v5_results.md`.**
+
 Written 2026-10-15 while the runs were in progress, **before any result was
 inspected**. The predictions in section 7 are therefore genuine predictions.
 Driver script: `code/run_step3.sh`.

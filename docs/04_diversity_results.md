@@ -1,5 +1,7 @@
 # 04 — Diversity Experiment (v4): Results
 
+> **Superseded by the corrected protocol (v5).** This document records the first pipeline: detectors trained with `PSH Flag Count` visible, a train/test split that is not group-disjoint from the probe bank, and (for the original CNN) epoch selection on the test split. In particular its finding that hardening on one band transferred to every payload size, and the verdicts on H1 and H2, rested partly on `PSH Flag Count`. The numbers below are kept as the diagnostic comparison that motivated the correction (`09_psh_diagnostic_design.md`, `12_frozen_protocol.md`). **Reported results are in `v5_results.md`.**
+
 Run 2026-10-14 (22:29–22:59), seed 0. This document checks the results
 against the predictions in `03_diversity_experiment_design.md`, which was
 written before any v4 result existed. All tables come from

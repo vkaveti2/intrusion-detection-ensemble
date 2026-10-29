@@ -1,5 +1,7 @@
 # 06 — Multi-Seed Replication (Step 3): Results
 
+> **Superseded by the corrected protocol (v5).** This document records the first pipeline: detectors trained with `PSH Flag Count` visible, a train/test split that is not group-disjoint from the probe bank, and (for the original CNN) epoch selection on the test split. In particular its statements that majority, weighted and any were never evaded under partial hardening, and that tree robustness spreads to every payload size, held only with `PSH Flag Count` visible. The numbers below are kept as the diagnostic comparison that motivated the correction (`09_psh_diagnostic_design.md`, `12_frozen_protocol.md`). **Reported results are in `v5_results.md`.**
+
 Run 2026-10-15, 00:43–02:20, with `code/run_step3.sh`. Design and
 predictions: `05_multiseed_design.md`, written before any result was
 inspected. Full generated tables: `docs/multiseed_summary.md`. Raw
@@ -135,31 +137,26 @@ Conclusions from Part B:
 | 5 | C3 consistent | **Held** in all 9 configurations (p = 0.008) |
 | 6 | Part B: does the cov1 CNN gap reproduce? | **Yes, but it changes.** Present in 4 of 4 runs; its width and position vary |
 
-## 5. Updated conclusions (v2–v4 with replication)
+## 5. Conclusions as first drawn, and what the corrected protocol changed
 
-- **RQ1.** Across 4 detector sets × 5 agent seeds, plus 3 extra cov1
-  training runs, no ensemble rule was ever more robust than its most robust
-  member. When at least two members were robust, majority, weighted and any
-  were never evaded. Unanimous was evaded whenever its weakest member had a
-  gap.
-- **RQ2.** Majority (or near-equal confidence weighting) is the best
-  robustness / false-alarm trade-off, now replicated. *Any* was equally
-  robust in every hardened set but raised roughly 50–60× the false alarms.
-  Unanimous was the least robust.
-- **Partial hardening.** Tree models' robustness spreads to every payload
-  size in every training run. The CNN's does not, and its leftover gap is
-  unpredictable from run to run. That makes a strong argument for
-  majority-style aggregation: it insures against a member whose weak spot
-  you cannot predict in advance.
+*First drawn (PSH visible):*
+- **RQ1.** No ensemble rule was ever more robust than its most robust member; majority, weighted and any were never evaded when at least two members were robust; unanimous was evaded whenever its weakest member had a gap.
+- **RQ2.** Majority (or near-equal confidence weighting) was the best robustness / false-alarm trade-off; *any* matched it in robustness at 50-60 times the false alarms; unanimous was the least robust.
+- **Partial hardening.** Tree robustness spread to every payload size in every training run; the CNN's did not.
+
+*What changed under the corrected protocol (`v5_results.md`, `10_band_rotation.md`):*
+- **RQ1 stands, and is stated more carefully.** The tested ensembles did not outperform their strongest observed standalone member. XGBoost alone is never evaded in any hardened set and flags 13,569 of 13,569 padded probes at every agent size in every set; no rule beats it.
+- **The partial-hardening claim is overturned.** With `PSH Flag Count` removed, only XGBoost still covers every payload size. RF and the CNN keep gaps that depend on the training run, and *majority is not robust under partial hardening*: it is evaded 922 of 2,000 times in every cov1 run of the main sweep, because RF shares the gap at 64 B. Weighted voting is evaded less (729 of 2,000 for the reward-only agent), `any` never, unanimous inherits the CNN's gap.
+- **RQ2 is restated.** Under full hardening every rule resists. Under partial hardening the ordering is any (never evaded, at about 2.7% false alarms against 0.07-0.08%) above weighted above majority, with unanimous the least robust. The earlier claim that majority insures against an unpredictable member holds only when at least two members cover the weak size; the band-rotation diagnostic shows which sizes those are.
+- **Feature observation did not help the agent**, as before, and the feature-observing agent was less consistent than the reward-only agent.
 
 ## 6. Limitations that remain
 
 - One band assignment, and the padding seed (2026) was never varied.
-- Possible reliance of the hardened XGBoost on the *PSH Flag Count*
-  artefact, not checked (`04_diversity_results.md`).
+- The reliance on *PSH Flag Count* was checked and found substantial (`09_psh_diagnostic_design.md`); the corrected protocol removes it.
 - Why hardening transfers is still unverified.
 - Small effective action space; a single dataset (CIC-IDS2017).
-- RQ3 (Raspberry Pi benchmark) still pending.
+- The inference-cost results are in `13_benchmark_results.md`.
 
 ## 7. Figures and tables
 

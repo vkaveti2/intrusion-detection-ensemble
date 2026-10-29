@@ -1,5 +1,7 @@
 # 02 — Decision-Rule Metrics Without an Agent (Step 1)
 
+> **Superseded by the corrected protocol (v5).** This document records the first pipeline: detectors trained with `PSH Flag Count` visible, a train/test split that is not group-disjoint from the probe bank, and (for the original CNN) epoch selection on the test split. Its detection rates and rule metrics came from detectors that relied on `PSH Flag Count`. The numbers below are kept as the diagnostic comparison that motivated the correction (`09_psh_diagnostic_design.md`, `12_frozen_protocol.md`). **Reported results are in `v5_results.md`.**
+
 Run 2026-10-14 with `evaluate_detectors.py` on the original detectors
 (`code/models/`, used in v2) and the adversarially trained detectors
 (`code/models_adv/`, used in v3). Raw numbers: `rule_eval.json` and

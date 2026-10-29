@@ -1,5 +1,7 @@
 # 03 — Diversity Experiment (v4): Reasoning and Design
 
+> **Superseded by the corrected protocol (v5).** This document records the first pipeline: detectors trained with `PSH Flag Count` visible, a train/test split that is not group-disjoint from the probe bank, and (for the original CNN) epoch selection on the test split. The hypotheses and design (written before results) are still the design of the experiment; its results were produced by the first pipeline. The numbers below are kept as the diagnostic comparison that motivated the correction (`09_psh_diagnostic_design.md`, `12_frozen_protocol.md`). **Reported results are in `v5_results.md`.**
+
 Written 2026-10-14, **before** any v4 detector was trained or any result
 seen, so the predictions below are genuine predictions.
 
