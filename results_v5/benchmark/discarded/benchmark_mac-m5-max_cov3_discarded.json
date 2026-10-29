@@ -1,0 +1,537 @@
+{
+  "label": "mac-m5-max",
+  "detector_set": "cov3",
+  "baseline": "xgboost",
+  "timestamp": "2026-10-28 13:28:04 -0400",
+  "host": {
+    "hostname": "h8-ntr-lch11349.ad.psu.edu",
+    "platform": "macOS-27.0.1-arm64-arm-64bit",
+    "machine": "arm64",
+    "python": "3.9.6",
+    "cpu_count": 18,
+    "libraries": {
+      "numpy": "2.0.2",
+      "pandas": "2.3.3",
+      "scipy": "1.13.1",
+      "sklearn": "1.6.1",
+      "xgboost": "2.1.4",
+      "joblib": "1.5.3",
+      "torch": "2.8.0"
+    },
+    "OMP_NUM_THREADS": "1",
+    "cpu": "Apple M5 Max",
+    "memory_gb": 36.0,
+    "physical_cores": 18,
+    "power": "Now drawing from 'AC Power'"
+  },
+  "settings": {
+    "flows_per_repeat": 2000,
+    "repeats": 5,
+    "warmup_flows": 200,
+    "staged_flows": 500,
+    "single_flow_batch_size": 1,
+    "batched_pass_batch_size": 256,
+    "batched_pass_repeats": 5,
+    "configuration_order": "shuffled in every repeat (seed 1)",
+    "process": "fresh Python process per configuration per repeat",
+    "workload": "dev probe-bank flows padded to 0/64/128/256/512 B, seed 0",
+    "statistic": "median over repeats",
+    "excluded": "packet capture and flow-feature extraction are not measured"
+  },
+  "bank_sha256": "0cab1bd31fc8caa9057abd38d4c72f77ac3ac37e016979d851e351dbc1bcb661",
+  "model_files": {
+    "xgboost_model.pkl": {
+      "sha256": "b9622f01d9d9ce110cafd8f53df0d8e2828d1468b78be6125ddc52f2acc766db",
+      "mb": 2.303
+    },
+    "rf_model.pkl": {
+      "sha256": "b6d623d9cc7505d13f05aa5683a72b0674c43159c9d4626fad3c6772df6ad576",
+      "mb": 128.277
+    },
+    "cnn_model.pth": {
+      "sha256": "9b21c2062c4d99d885799ccadcb1d2fa2a38bb28de637d05f84401fcab184a9e",
+      "mb": 0.393
+    },
+    "cnn_arch.json": {
+      "sha256": "ef44e8b3b95a050f1d3d039a8bc2085b72d19cee1cbb1c45201ddc69e947c492",
+      "mb": 0.0
+    },
+    "scaler.pkl": {
+      "sha256": "1999517f7f44bda2d0e878bb0471f0a1952371e992c101d5a75b43975f9f04a6",
+      "mb": 0.004
+    },
+    "ensemble_weights.json": {
+      "sha256": "3909efbfae1034fddf528f8a85bdf777c62b3133c4288ffde38f875287067260",
+      "mb": 0.0
+    }
+  },
+  "thermal": [
+    {
+      "time": "13:13:29",
+      "temp": null,
+      "throttled": null,
+      "cpu0_mhz": null
+    },
+    {
+      "time": "13:14:27",
+      "temp": null,
+      "throttled": null,
+      "cpu0_mhz": null
+    },
+    {
+      "time": "13:15:27",
+      "temp": null,
+      "throttled": null,
+      "cpu0_mhz": null
+    },
+    {
+      "time": "13:16:28",
+      "temp": null,
+      "throttled": null,
+      "cpu0_mhz": null
+    },
+    {
+      "time": "13:17:26",
+      "temp": null,
+      "throttled": null,
+      "cpu0_mhz": null
+    },
+    {
+      "time": "13:28:04",
+      "temp": null,
+      "throttled": null,
+      "cpu0_mhz": null
+    }
+  ],
+  "results": {
+    "features": {
+      "latency_ms": {
+        "mean": 0.012464874999999861,
+        "p50": 0.012333000000003258,
+        "p90": 0.012749999999991934,
+        "p95": 0.013042000000004772,
+        "p99": 0.017001249999989282,
+        "max": 0.04962499999999759
+      },
+      "latency_ms_range": {
+        "p50": [
+          0.012082999999996069,
+          0.01408299999999807
+        ],
+        "p99": [
+          0.015834669999992973,
+          0.02050457999999283
+        ]
+      },
+      "single_stream_flows_per_s": 79685.77349565912,
+      "memory_mb": {
+        "libs": 24.109375,
+        "loaded": 24.109375,
+        "peak": 56.90625,
+        "added_by_models": 0.0
+      }
+    },
+    "xgboost": {
+      "latency_ms": {
+        "mean": 0.40485852349999935,
+        "p50": 0.40045800000004794,
+        "p90": 0.42308310000003235,
+        "p95": 0.44270029999995403,
+        "p99": 0.6100015800000157,
+        "max": 0.8836249999999435
+      },
+      "latency_ms_range": {
+        "p50": [
+          0.3732090000000965,
+          0.6593959999999788
+        ],
+        "p99": [
+          0.4418019999999423,
+          0.7315033300001073
+        ]
+      },
+      "single_stream_flows_per_s": 2468.423717080618,
+      "memory_mb": {
+        "libs": 91.578125,
+        "loaded": 162.453125,
+        "peak": 163.6875,
+        "added_by_models": 70.875
+      },
+      "batched_flows_per_s": 122398.23662390404,
+      "cpu_load_pct": 99.91885140072986,
+      "stages_ms_mean": {
+        "scale": 0.32575843199999444,
+        "model": 0.07091957799999271,
+        "vote": 0.002232581999999539,
+        "unattributed": 0.00594793150001266
+      },
+      "load_s": {
+        "xgboost": 0.335992625
+      },
+      "torch_threads": null,
+      "agreement": {
+        "staged_vs_end_to_end": [
+          2500,
+          2500
+        ],
+        "batched_vs_single_flow": [
+          1280,
+          1280
+        ]
+      }
+    },
+    "rf": {
+      "latency_ms": {
+        "mean": 2.008692105000006,
+        "p50": 1.9806874999999113,
+        "p90": 2.124574999999873,
+        "p95": 2.19936184999967,
+        "p99": 2.630229250000551,
+        "max": 4.362583000000031
+      },
+      "latency_ms_range": {
+        "p50": [
+          1.9785210000002884,
+          2.0913750000000064
+        ],
+        "p99": [
+          2.144360240000025,
+          3.2820374199998037
+        ]
+      },
+      "single_stream_flows_per_s": 497.76845733995214,
+      "memory_mb": {
+        "libs": 91.5,
+        "loaded": 422.96875,
+        "peak": 423.5625,
+        "added_by_models": 331.46875
+      },
+      "batched_flows_per_s": 95166.69897130356,
+      "cpu_load_pct": 99.78699554394566,
+      "stages_ms_mean": {
+        "scale": 0.3220617739999927,
+        "model": 1.654383056000004,
+        "vote": 0.0022203079999894015,
+        "unattributed": 0.030026967000019944
+      },
+      "load_s": {
+        "rf": 0.435243209
+      },
+      "torch_threads": null,
+      "agreement": {
+        "staged_vs_end_to_end": [
+          2500,
+          2500
+        ],
+        "batched_vs_single_flow": [
+          1280,
+          1280
+        ]
+      }
+    },
+    "cnn": {
+      "latency_ms": {
+        "mean": 0.41835864100000114,
+        "p50": 0.4170420000000341,
+        "p90": 0.4382499999999734,
+        "p95": 0.4517499999998731,
+        "p99": 0.49487050000008187,
+        "max": 0.6930419999999771
+      },
+      "latency_ms_range": {
+        "p50": [
+          0.4138540000000468,
+          0.4320205000000188
+        ],
+        "p99": [
+          0.4634684200000283,
+          0.907777169999919
+        ]
+      },
+      "single_stream_flows_per_s": 2388.567124414417,
+      "memory_mb": {
+        "libs": 91.546875,
+        "loaded": 279.53125,
+        "peak": 316.34375,
+        "added_by_models": 187.984375
+      },
+      "batched_flows_per_s": 690.1296677947188,
+      "cpu_load_pct": 99.91436830479142,
+      "stages_ms_mean": {
+        "scale": 0.31794618000000474,
+        "model": 0.0964776739999964,
+        "vote": 0.00265243200000409,
+        "unattributed": 0.001282354999995905
+      },
+      "load_s": {
+        "cnn": 0.7035390420000001
+      },
+      "torch_threads": 1,
+      "agreement": {
+        "staged_vs_end_to_end": [
+          2500,
+          2500
+        ],
+        "batched_vs_single_flow": [
+          1280,
+          1280
+        ]
+      }
+    },
+    "majority": {
+      "latency_ms": {
+        "mean": 2.9647442919999993,
+        "p50": 2.808333499999982,
+        "p90": 3.1569744000000455,
+        "p95": 3.2960788499995837,
+        "p99": 3.5750666599999725,
+        "max": 5.498124999999909
+      },
+      "latency_ms_range": {
+        "p50": [
+          2.7504380000002993,
+          2.9919374999995973
+        ],
+        "p99": [
+          3.148963009999708,
+          4.802800420000519
+        ]
+      },
+      "single_stream_flows_per_s": 337.24668058104317,
+      "memory_mb": {
+        "libs": 91.578125,
+        "loaded": 578.53125,
+        "peak": 616.703125,
+        "added_by_models": 486.953125
+      },
+      "batched_flows_per_s": 692.0596228288572,
+      "cpu_load_pct": 99.81955778532408,
+      "stages_ms_mean": {
+        "scale": 0.9921280559998936,
+        "model": 1.8974978299999758,
+        "vote": 0.004447043999991962,
+        "unattributed": 0.0706713620001378
+      },
+      "load_s": {
+        "xgboost": 0.33379337500000006,
+        "rf": 0.12972758299999998,
+        "cnn": 0.43900670799999986
+      },
+      "torch_threads": 1,
+      "agreement": {
+        "staged_vs_end_to_end": [
+          2500,
+          2500
+        ],
+        "batched_vs_single_flow": [
+          1280,
+          1280
+        ]
+      }
+    },
+    "weighted": {
+      "latency_ms": {
+        "mean": 2.9065497459999916,
+        "p50": 2.857228999999961,
+        "p90": 3.12619199999995,
+        "p95": 3.2704673000002016,
+        "p99": 3.8236830100001233,
+        "max": 6.404250000000111
+      },
+      "latency_ms_range": {
+        "p50": [
+          2.7382295000001333,
+          6.04708300000012
+        ],
+        "p99": [
+          3.0073558300004555,
+          15.990187590000067
+        ]
+      },
+      "single_stream_flows_per_s": 344.00765682747954,
+      "memory_mb": {
+        "libs": 91.4375,
+        "loaded": 578.46875,
+        "peak": 616.46875,
+        "added_by_models": 487.03125
+      },
+      "batched_flows_per_s": 659.3310507000464,
+      "cpu_load_pct": 99.77870705571169,
+      "stages_ms_mean": {
+        "scale": 1.0425270720000075,
+        "model": 2.020477646000005,
+        "vote": 0.007273745999972547,
+        "unattributed": -0.16372871799999356
+      },
+      "load_s": {
+        "xgboost": 0.35455004200000007,
+        "rf": 0.13462308300000003,
+        "cnn": 0.45707516700000006
+      },
+      "torch_threads": 1,
+      "agreement": {
+        "staged_vs_end_to_end": [
+          2500,
+          2500
+        ],
+        "batched_vs_single_flow": [
+          1280,
+          1280
+        ]
+      }
+    },
+    "unanimous": {
+      "latency_ms": {
+        "mean": 2.842662657,
+        "p50": 2.8418329999997383,
+        "p90": 2.997658099999967,
+        "p95": 3.151004500000143,
+        "p99": 3.5875076700001602,
+        "max": 6.374999999999353
+      },
+      "latency_ms_range": {
+        "p50": [
+          2.7898124999998775,
+          3.361958499999762
+        ],
+        "p99": [
+          3.0623446699999235,
+          6.098848509999453
+        ]
+      },
+      "single_stream_flows_per_s": 351.73174945703323,
+      "memory_mb": {
+        "libs": 91.53125,
+        "loaded": 578.984375,
+        "peak": 616.765625,
+        "added_by_models": 487.453125
+      },
+      "batched_flows_per_s": 686.5577556319695,
+      "cpu_load_pct": 99.88342824047963,
+      "stages_ms_mean": {
+        "scale": 1.069858492000062,
+        "model": 2.1193153359999073,
+        "vote": 0.005581003999985512,
+        "unattributed": -0.3520921749999548
+      },
+      "load_s": {
+        "xgboost": 0.359343375,
+        "rf": 0.13218541699999997,
+        "cnn": 0.44287054199999987
+      },
+      "torch_threads": 1,
+      "agreement": {
+        "staged_vs_end_to_end": [
+          2500,
+          2500
+        ],
+        "batched_vs_single_flow": [
+          1280,
+          1280
+        ]
+      }
+    },
+    "any": {
+      "latency_ms": {
+        "mean": 2.9459422685000027,
+        "p50": 2.872645500000326,
+        "p90": 3.1116711000001906,
+        "p95": 3.2463149000006903,
+        "p99": 3.831366999999215,
+        "max": 6.773583000000194
+      },
+      "latency_ms_range": {
+        "p50": [
+          2.836792000000088,
+          3.014499999999698
+        ],
+        "p99": [
+          3.5791349999999595,
+          4.550998010000269
+        ]
+      },
+      "single_stream_flows_per_s": 339.40381568294504,
+      "memory_mb": {
+        "libs": 91.5625,
+        "loaded": 578.703125,
+        "peak": 616.390625,
+        "added_by_models": 487.140625
+      },
+      "batched_flows_per_s": 689.5558663377859,
+      "cpu_load_pct": 99.83938272034818,
+      "stages_ms_mean": {
+        "scale": 0.9791602600000128,
+        "model": 1.878730658000105,
+        "vote": 0.004428815999958147,
+        "unattributed": 0.08362253449992663
+      },
+      "load_s": {
+        "xgboost": 0.33633316599999996,
+        "rf": 0.12742170800000008,
+        "cnn": 0.44575462500000007
+      },
+      "torch_threads": 1,
+      "agreement": {
+        "staged_vs_end_to_end": [
+          2500,
+          2500
+        ],
+        "batched_vs_single_flow": [
+          1280,
+          1280
+        ]
+      }
+    }
+  },
+  "slowdown_vs_baseline": {
+    "xgboost": {
+      "p50_latency_x": 1.0,
+      "p99_latency_x": 1.0,
+      "single_stream_throughput_x": 1.0,
+      "batched_throughput_x": 1.0,
+      "peak_memory_x": 1.0
+    },
+    "rf": {
+      "p50_latency_x": 4.94605551643287,
+      "p99_latency_x": 4.311840061136372,
+      "single_stream_throughput_x": 4.958979784038028,
+      "batched_throughput_x": 1.286145657535225,
+      "peak_memory_x": 2.5876288659793816
+    },
+    "cnn": {
+      "p50_latency_x": 1.0414125825928915,
+      "p99_latency_x": 0.8112610134551932,
+      "single_stream_throughput_x": 1.033432844256273,
+      "batched_throughput_x": 177.35541933014215,
+      "peak_memory_x": 1.9326078655975563
+    },
+    "majority": {
+      "p50_latency_x": 7.012804089316846,
+      "p99_latency_x": 5.860749836090393,
+      "single_stream_throughput_x": 7.3193417732911845,
+      "batched_throughput_x": 176.86082612880958,
+      "peak_memory_x": 3.7675639557082854
+    },
+    "weighted": {
+      "p50_latency_x": 7.134903036022802,
+      "p99_latency_x": 6.268316567311227,
+      "single_stream_throughput_x": 7.175490626705838,
+      "batched_throughput_x": 185.6400308979039,
+      "peak_memory_x": 3.766132111492936
+    },
+    "unanimous": {
+      "p50_latency_x": 7.096457056668609,
+      "p99_latency_x": 5.881144881624844,
+      "single_stream_throughput_x": 7.017915558919867,
+      "batched_throughput_x": 178.2781355535598,
+      "peak_memory_x": 3.767945780832379
+    },
+    "any": {
+      "p50_latency_x": 7.173400206763211,
+      "p99_latency_x": 6.280913239600324,
+      "single_stream_throughput_x": 7.27282252886191,
+      "batched_throughput_x": 177.50300243830574,
+      "peak_memory_x": 3.76565483008782
+    }
+  }
+}

@@ -1,0 +1,39 @@
+== cov3 17:10:13
+host: Apple M5 Max | arm64 | 18 logical cpus | python 3.9.6 | detector set cov3
+repeat 1/5 done (order: weighted, features, xgboost, majority, rf, unanimous, cnn, any)
+repeat 2/5 done (order: xgboost, unanimous, any, rf, cnn, majority, weighted, features)
+repeat 3/5 done (order: xgboost, cnn, features, weighted, majority, unanimous, any, rf)
+repeat 4/5 done (order: cnn, xgboost, unanimous, any, majority, weighted, features, rf)
+repeat 5/5 done (order: cnn, any, rf, features, majority, unanimous, weighted, xgboost)
+
+config       p50 ms   p99 ms   flows/s  batched/s  peak MB   vs xgboost (p50 / p99 / mem)
+xgboost       0.387    0.445      2565     123847      164   1.00x / 1.00x / 1.00x
+rf            1.939    2.095       516      97058      423   5.01x / 4.71x / 2.59x
+cnn           0.415    0.506      2363        703      316   1.07x / 1.14x / 1.93x
+majority      2.786    3.144       356        713      616   7.19x / 7.07x / 3.76x
+weighted      2.809    3.084       356        674      616   7.25x / 6.94x / 3.77x
+unanimous     2.824    3.148       352        710      616   7.29x / 7.08x / 3.76x
+any           2.782    2.995       358        714      616   7.18x / 6.74x / 3.76x
+features (payload recomputation): p50 0.0124 ms
+staged pass agrees with the end-to-end decisions in every configuration
+Saved -> /Users/varunkaveti/Documents/code/thesis/results_v5/benchmark/benchmark_mac-m5-max_cov3.json
+== cov0 17:15:02
+host: Apple M5 Max | arm64 | 18 logical cpus | python 3.9.6 | detector set cov0
+repeat 1/5 done (order: weighted, features, xgboost, majority, rf, unanimous, cnn, any)
+repeat 2/5 done (order: xgboost, unanimous, any, rf, cnn, majority, weighted, features)
+repeat 3/5 done (order: xgboost, cnn, features, weighted, majority, unanimous, any, rf)
+repeat 4/5 done (order: cnn, xgboost, unanimous, any, majority, weighted, features, rf)
+repeat 5/5 done (order: cnn, any, rf, features, majority, unanimous, weighted, xgboost)
+
+config       p50 ms   p99 ms   flows/s  batched/s  peak MB   vs xgboost (p50 / p99 / mem)
+xgboost       0.386    0.438      2582     128075      163   1.00x / 1.00x / 1.00x
+rf            1.973    2.104       508      92585      421   5.11x / 4.80x / 2.58x
+cnn           0.417    0.464      2396        721      316   1.08x / 1.06x / 1.94x
+majority      2.809    3.000       356        713      612   7.28x / 6.85x / 3.75x
+weighted      2.817    2.981       356        712      612   7.30x / 6.81x / 3.75x
+unanimous     2.829    3.091       354        712      612   7.33x / 7.06x / 3.75x
+any           2.789    2.998       358        710      612   7.22x / 6.84x / 3.75x
+features (payload recomputation): p50 0.0125 ms
+staged pass agrees with the end-to-end decisions in every configuration
+Saved -> /Users/varunkaveti/Documents/code/thesis/results_v5/benchmark/benchmark_mac-m5-max_cov0.json
+finished 17:19:49
